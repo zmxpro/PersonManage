@@ -5,6 +5,7 @@
 > * [js,引用jquery3.2.1](http://www.jb51.net/shouce/jquery1.82/)
 > * [Bootstrap库](https://v3.bootcss.com/components/)
 > * [表格插件Datatables，基于Bootstrap](http://www.datatables.club/example/)
+> * [表格插件Datatables，基于Bootstrap](http://gallery.echartsjs.com/editor.html?c=xB11DYv-gG)
 
 
-标签： 开发中，会继续补充
+`开发中，会继续补充`
