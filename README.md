@@ -8,4 +8,11 @@
 > * [首页饼图引用echarts图表组件](http://gallery.echartsjs.com/editor.html?c=xB11DYv-gG)
 
 
+目前已完成页面
+
+> * 首页
+> * 行业内人员信息，行业外人员信息（传参）
+> * 权限配置
+> * 通知管理
+
 `开发中，会继续补充`
