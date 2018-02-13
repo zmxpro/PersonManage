@@ -6,6 +6,7 @@
 > * [Bootstrap库](https://v3.bootcss.com/components/)
 > * [表格插件Datatables，基于Bootstrap](http://www.datatables.club/example/)
 > * [首页饼图引用echarts图表组件](http://gallery.echartsjs.com/editor.html?c=xB11DYv-gG)  ————  [echarts-API](http://echarts.baidu.com/option.html#title)
+> * [组织机构维护树形组件Demo](http://www.treejs.cn/v3/demo.php#_101)  ————  [zTree.js-API](http://www.treejs.cn/v3/api.php)
 
 
 
