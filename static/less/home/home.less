@@ -1,0 +1,218 @@
+@import "../common/global";
+@width:10px;
+.boxShadow{
+  -moz-box-shadow:0 3px 8px @boxShow;
+  -webkit-box-shadow:0 3px 8px @boxShow;
+  box-shadow: 0 3px 8px @boxShow;
+}
+.mainTitle{
+  color: @mainTitle;
+  height: 48px;
+  line-height: 48px;
+  font-size: 16px;
+  a{
+    float: right;
+    margin-right: 30px;
+    color: @mainTitle;
+    &:hover,&:active,&:focus{
+      color: @mainTitle;
+    }
+  }
+}
+/****顶部统计***/
+.survey{
+  .item{
+    float: left;
+    width : calc(~"50% - @{width}");
+    background: @white;
+    border-top: 4px solid @dBlue;
+    margin-right: 20px;
+    .boxShadow();
+    &:last-child{
+      margin: 0;
+    }
+    .title{
+      font-size: 18px;
+      color: #333;
+      padding: 6px 20px;
+    }
+    .g-count{
+      margin: 0 auto;
+      width: 453px;
+      height: 190px;
+      display: flex;
+      padding: 30px 0;
+      justify-content: center;
+      align-items: center;
+      .totalCount{
+        min-width: 80px;
+        margin-right: 16px;
+        text-align: center;
+        p:first-child{
+          font-size: 40px;
+          line-height: 36px;
+          color: @dBlue;
+          font-family: impact;
+          margin-bottom: 6px;
+        }
+      }
+      .img{
+        background: url(../../images/icon-count.png) no-repeat;
+        background-size: 100%;
+        width: 98px;
+        height: 90px;
+      }
+      .right{
+        .count{
+          margin-left: 26px;
+          p{
+            float: left;
+            &:first-child{
+              width: 42px;
+              line-height: 21px;
+              margin-right: 20px;
+            }
+            &:last-child{
+              font-size: 42px;
+              line-height: 42px;
+              color: @blue;
+              font-family: impact;
+            }
+          }
+          &.outCount{
+            margin-top: 46px;
+          }
+        }
+      }
+    }
+    .g-percent{
+      width: 100%;
+      height: 190px;
+    }
+  }
+}
+/****本年度人员情况***/
+.personCase{
+   .caseItem{
+     .item{
+       position: relative;
+       float: left;
+       width : calc(~"23% - 24px");
+       height: 184px;
+       margin-right: 24px;
+       background: @blue;
+       padding: 0 12px;
+       .boxShadow();
+       &:last-child{
+         width: 31%;
+         margin: 0;
+       }
+       .icon-09{
+         position: absolute;
+         right: -4px;
+         bottom: 1px;
+         font-size: 134px;
+         z-index: 1;
+         &:before{
+           color: @white;
+           opacity: 0.3;
+         }
+       }
+       .title{
+         font-size: 16px;
+         color: @white;
+         padding: 5px 0;
+         border-bottom: 1px solid @white;
+         letter-spacing: 1px;
+       }
+       .detail{
+         position: absolute;
+         left: 50%;
+         margin-left: -56px;
+         top:46px;
+         z-index: 2;
+         p{
+           font-size: 16px;
+           line-height: 32px;
+           text-align: center;
+           color: @white;
+           span{
+             display: inline-block;
+             width: 80px;
+             text-align: right;
+             margin-left: -24px;
+           }
+         }
+       }
+       &.status{
+         .detail{
+           left: 10px;
+           margin: 0;
+           width : calc(~"100% - 20px");
+           p{
+             float: left;
+             width : 50%;
+           }
+         }
+       }
+     }
+   }
+}
+/****通知消息***/
+.noticeBar{
+  width: 100%;
+  .noticeDetail{
+    .boxShadow();
+    padding: 20px 26px;
+    background: @white;
+    li{
+      padding: 6px;
+      border-bottom: 1px solid #F4F4F4;
+      &:last-child{
+        border: 0;
+      }
+      &:hover{
+        background: #F4F4F4;
+        cursor: pointer;
+      }
+      .content{
+        padding: 6px 24px;
+      }
+      .detail{
+        position: relative;
+        .icon-08{
+          vertical-align: middle;
+          margin-top: -3px;
+          display: inline-block;
+          transition: All 0.2s ease-in-out;
+          -webkit-transition: All 0.3s ease-in-out;
+          -moz-transition: All 0.3s ease-in-out;
+          -o-transition: All 0.3s ease-in-out;
+          transform: rotate(0deg);
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -o-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          &.square{
+            transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+          }
+        }
+        .title{
+          margin-left: 6px;
+        }
+        .time{
+          float: right;
+        }
+        .icon-09{
+          position: absolute;
+          right: 160px;
+          top: 5px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>通知管理</title>
+    <link rel="stylesheet" href="../../static/plugins/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="../../static/css/common/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/noticeManage/noticeManage.css">
+    <script src="../../static/js/common/jquery-3.2.1.min.js"></script>
+    <script src="../../static/plugins/bootstrap-3.3.7/js/bootstrap.js"></script>
+    <script src="../../static/js/common/jquery.dataTables.js"></script>
+    <script src="../../static/js/common/dataTables.bootstrap.js"></script>
+    <script src="../../static/js/noticeManage/noticeManage.js"></script>
+</head>
+<body>
+<div class="main clearfix">
+    <p class="caption">通知管理 <i>Notification management</i></p>
+    <!-- 导航区 -->
+    <div class="notice">
+        <ul class="nav nav-tabs" role="tablist" id="myTab">
+            <li role="presentation"><a role="tab" data-toggle="tab">已发通知</a></li>
+            <li role="presentation"><a role="tab" data-toggle="tab">已收通知</a></li>
+            <li><button class="iconBtn add"><i class="icon-21"></i>新增通知</button></li>
+        </ul>
+        <table id="tbUserList" class="table tableList">
+            <thead class="text-center ">
+            <tr>
+                <th></th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+</body>
+</html>

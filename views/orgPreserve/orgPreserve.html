@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组织机构维护</title>
+    <link rel="stylesheet" href="../../static/plugins/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="../../static/plugins/ztree/css/metroStyle.css">
+    <link rel="stylesheet" href="../../static/css/orgPreserve/orgPreserve.css">
+    <script src="../../static/js/common/jquery-3.2.1.min.js"></script>
+    <script src="../../static/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../static/plugins/ztree/js/jquery.ztree.core.min.js"></script>
+    <!--表单验证-->
+    <script src="../../static/plugins/validator/validator.min.js"></script>
+    <script src="../../static/js/orgPreserve/orgPreserve.js"></script>
+
+</head>
+<body>
+<div class="main clearfix">
+    <p class="caption">组织机构维护 <i>Organization maintenance</i></p>
+    <div class="framework">
+        <div class="leftBar">
+            <ul id="treeDemo" class="ztree leftBar"></ul>
+        </div>
+        <div class="rightBar">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">基本信息</a></li>
+                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">所属人员</a></li>
+                <li></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <div class="intro">
+                        <button class="iconBtn edit"><i class="icon-19"></i>编辑</button>
+                        <p class="title">机构简介</p>
+                        <p class="content">北京市局(公司)	北京市局(公司)	北	北京烟草	行业直属单位北京市局(公司)	北京市局(公司)	北	北京烟草	行业直属单位北京市局(公司)	北京市局(公司)	北	北京烟草	行业直属单位北京市局(公司)	北京市局(公司)	北	北京烟草	行业直属单位</p>
+                        <div class="details">
+
+                            <form data-toggle="validator" role="form">
+                                <div class="form-group">
+                                    <label for="inputName" class="control-label">Name</label>
+                                    <input type="text" class="form-control" id="inputName" placeholder="Cina Saffary" required>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="profile">2</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

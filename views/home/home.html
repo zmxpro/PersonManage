@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="../../static/plugins/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="../../static/css/home/home.css">
+    <script src="../../static/js/common/echarts.common.min.js"></script>
+    <script src="../../static/js/common/jquery-3.2.1.min.js"></script>
+    <script src="../../static/js/home/home.js"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="survey clearfix">
+            <div class="item">
+                <p class="title">人员情况概览</p>
+                <div class="g-count">
+                    <div class="totalCount">
+                        <p>362</p>
+                        <p>人员总数</p>
+                    </div>
+                    <p class="img"></p>
+                    <div class="right">
+                        <div class="count withinCount clearfix">
+                            <p>行业内人员数</p>
+                            <p>162</p>
+                        </div>
+                        <div class="count outCount clearfix">
+                            <p>行业外人员数</p>
+                            <p>200</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <p class="title">人员职别占比</p>
+                <div class="g-percent" id="percent"></div>
+            </div>
+        </div>
+        <div class="personCase">
+            <p class="mainTitle">本年度人员情况</p>
+            <div class="caseItem clearfix">
+                <div class="item">
+                    <p class="title">岗位情况</p>
+                    <div class="detail">
+                        <p><span>升职：</span>32人/次</p>
+                        <p><span>降职：</span>32人/次</p>
+                        <p><span>平级调动：</span>32人/次</p>
+                    </div>
+                    <i class="icon-09"></i>
+                </div>
+                <div class="item">
+                    <p class="title">职务情况</p>
+                    <div class="detail">
+                        <p><span>升职：</span>32人/次</p>
+                        <p><span>降职：</span>32人/次</p>
+                        <p><span>平级调动：</span>32人/次</p>
+                    </div>
+                    <i class="icon-09"></i>
+                </div>
+                <div class="item">
+                    <p class="title">职称证书情况</p>
+                    <div class="detail">
+                        <p><span>升职：</span>32人/次</p>
+                        <p><span>降职：</span>32人/次</p>
+                    </div>
+                    <i class="icon-09"></i>
+                </div>
+                <div class="item status">
+                    <p class="title">在职状态情况</p>
+                    <div class="detail">
+                        <p><span>离休：</span>32人/次</p>
+                        <p><span>已故：</span>32人/次</p>
+                        <p><span>退休：</span>32人/次</p>
+                        <p><span>解聘：</span>32人/次</p>
+                        <p><span>离职：</span>32人/次</p>
+                        <p><span>新聘：</span>32人/次</p>
+                    </div>
+                    <i class="icon-09"></i>
+                </div>
+            </div>
+        </div>
+        <div class="noticeBar">
+            <p class="mainTitle">通知消息 <a href="#">更多</a></p>
+            <ul class="noticeDetail" id="noticeSlide">
+                <li>
+                    <p class="detail">
+                        <i class="icon-08"></i>
+                        <span class="title">这是一条通知这是一条通知这是一条通知这是一条通知</span>
+                        <span class="time">2018-01-12 12:05:56</span>
+                    </p>
+                    <div class="content displayNone">
+                        这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知
+                        这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知
+                        这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知
+                    </div>
+                </li>
+                <li>
+                    <p class="detail">
+                        <i class="icon-08"></i>
+                        <span class="title">这是一条通知这是一条通知这是一条通知这是一条通知</span>
+                        <span class="time">2018-01-12 12:05:56</span>
+                    </p>
+                    <div class="content displayNone">
+                        这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知
+                        这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知
+                        这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知
+                    </div>
+                </li>
+                <li>
+                    <p class="detail">
+                        <i class="icon-08"></i>
+                        <span class="title">这是一条通知这是一条通知这是一条通知这是一条通知</span>
+                        <span class="time">2018-01-12 12:05:56</span>
+                    </p>
+                    <div class="content displayNone">
+                        这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知
+                        这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知
+                        这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知
+                    </div>
+                </li>
+                <li>
+                    <p class="detail">
+                        <i class="icon-08"></i>
+                        <span class="title">这是一条通知这是一条通知这是一条通知这是一条通知</span>
+                        <span class="time">2018-01-12 12:05:56</span>
+                    </p>
+                    <div class="content displayNone">
+                        这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知
+                        这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知
+                        这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知
+                    </div>
+                </li>
+                <li>
+                    <p class="detail">
+                        <i class="icon-08"></i>
+                        <span class="title">这是一条通知这是一条通知这是一条通知这是一条通知</span>
+                        <span class="time">2018-01-12 12:05:56</span>
+                    </p>
+                    <div class="content displayNone">
+                        这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知
+                        这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知
+                        这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知这是一条通知
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="noticeBar">
+            <p class="mainTitle">待办事项 <a href="#">更多</a></p>
+            <ul class="noticeDetail">
+                <li>
+                    <p class="detail">
+                        <i class="icon-08"></i>
+                        <span class="title">这是一条待办事项这是一条待办事项这是一条待办事项</span>
+                        <span class="time">2018-01-12 12:05:56</span>
+                        <i class="icon-09"></i>
+                    </p>
+                </li>
+                <li>
+                    <p class="detail">
+                        <i class="icon-08"></i>
+                        <span class="title">这是一条待办事项这是一条待办事项这是一条待办事项</span>
+                        <span class="time">2018-01-12 12:05:56</span>
+                        <i class="icon-09"></i>
+                    </p>
+                </li>
+                <li>
+                    <p class="detail">
+                        <i class="icon-08"></i>
+                        <span class="title">这是一条待办事项这是一条待办事项这是一条待办事项</span>
+                        <span class="time">2018-01-12 12:05:56</span>
+                        <i class="icon-09"></i>
+                    </p>
+                </li>
+                <li>
+                    <p class="detail">
+                        <i class="icon-08"></i>
+                        <span class="title">这是一条待办事项这是一条待办事项这是一条待办事项</span>
+                        <span class="time">2018-01-12 12:05:56</span>
+                        <i class="icon-09"></i>
+                    </p>
+                </li>
+                <li>
+                    <p class="detail">
+                        <i class="icon-08"></i>
+                        <span class="title">这是一条待办事项这是一条待办事项这是一条待办事项</span>
+                        <span class="time">2018-01-12 12:05:56</span>
+                        <i class="icon-09"></i>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+@import "../common/global";
+.ztree *{
+  font-family: Microsoft YaHei;
+}
+.ztree li span.button.root_open{
+  display: none;
+}
+.ztree li span.button.root_close{
+  display: none;
+}
+/*.ztree li ul{
+  padding: 0;
+}*/
+.framework{
+  display: flex;
+  height : calc(~"100vh - 84px");
+  -moz-box-shadow:0 0 8px @boxShow;
+  -webkit-box-shadow:0 0 8px @boxShow;
+  box-shadow:0 0 8 @boxShow;
+  .leftBar{
+    padding: 0 4px 0 20px;
+    height: 100%;
+    background: #F4F4F4;
+    .ztree{
+      min-width: 140px;
+      padding: 20px 16px 20px 0;
+      overflow-y: auto;
+      height: 100%;
+    }
+  }
+  .rightBar{
+    width: 100%;
+    padding: 20px 36px;
+    background: @white;
+    .tab-pane{
+      position: relative;
+      .intro{
+        .edit{
+          position: absolute;
+          right: 0;
+          top: -56px;
+        }
+        .title{
+          line-height: 20px;
+          padding-left: 12px;
+          margin: 20px 0 8px 0;
+          border-left: 4px solid @mainTitle;
+          font-size: 16px;
+        }
+        .content{
+          text-indent: 32px;
+        }
+        .details{
+
+        }
+      }
+    }
+
+  }
+}
