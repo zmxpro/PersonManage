@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>人员信息管理系统</title>
+    <link rel="stylesheet" href="static/plugins/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/index/index.css">
+    <script src="static/js/common/jquery-3.2.1.min.js"></script>
+    <script src="static/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="static/js/index/index.js"></script>
+</head>
+<body>
+<!--左侧导航-->
+<div class="leftBar">
+    <div class="navTop">
+        <div class="logo">
+            <img src="static/images/logo.png" alt="">
+        </div>
+        <p class="demo">人员管理后台界面</p>
+    </div>
+    <div class="listItem">
+        <a href="views/home/home.html" target="mainIframe" class="item">
+            <i class="icon icon-01"></i>首页<i class="icon-15"></i>
+        </a>
+        <a href="views/personSearch/personSearch.html" target="mainIframe" class="item">
+            <i class="icon icon-02"></i>人员查询<i class="icon-15"></i>
+        </a>
+        <a href="views/orgPreserve/orgPreserve.html" target="mainIframe" class="item">
+            <i class="icon icon-03"></i>组织机构维护<i class="icon-15"></i>
+        </a>
+        <a href="views/personInfo/personInfo.html" target="mainIframe" class="item">
+            <i class="icon icon-04"></i>行业内人员信息<i class="icon-15"></i>
+        </a>
+        <a href="views/personInfo/personInfo.html" target="mainIframe" class="item">
+            <i class="icon icon-05"></i>行业外人员信息<i class="icon-15"></i>
+        </a>
+        <a href="views/authorityManage/authorityManage.html" target="mainIframe" class="item">
+            <i class="icon icon-06"></i>权限配置<i class="icon-15"></i>
+        </a>
+        <a href="views/noticeManage/noticeManage.html" target="mainIframe" class="item">
+            <i class="icon icon-07"></i>通知管理<i class="icon-15"></i>
+        </a>
+    </div>
+    <div class="navBottom">
+        <img src="static/images/head.jpg" alt="">
+        <div class="person">
+            <p>姓名：程皓</p>
+            <p>部门：部门管理</p>
+        </div>
+    </div>
+</div>
+<!--顶部导航-->
+<div class="topBar clearfix">
+    <p class="title pull-left">中国烟草总公司职工进修学院</p>
+    <div class="pull-right">
+        <i class="icon-02" id="personSearch" title="人员查询"></i>
+        <i class="icon-10 point" id="message" title="消息通知"></i>
+        <i class="icon-11" id="setAccount" title="帐号设置"></i>
+        <i class="icon-12" id="loginOut" title="退出"></i>
+    </div>
+</div>
+<!--主体内容-->
+<div class="content">
+    <iframe src="" id="mainIframe" name="mainIframe" frameborder="0"></iframe>
+</div>
+</body>
+</html>
