@@ -1,5 +1,7 @@
 # 人员信息管理系统
 
+##[Demo预览](https://zmxpro.github.io/peopleManage/)
+ 
 对于此次项目开发使用的插件，做了一些整理
 
 > * [js,引用jquery3.2.1](http://www.jb51.net/shouce/jquery1.82/)
