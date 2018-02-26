@@ -506,3 +506,57 @@ body {
 .modal .modal-footer .btn-default.active:focus {
   background: rgba(157, 157, 157, 0.8);
 }
+.navPart {
+  padding: 24px 36px;
+  background: #fff;
+  position: relative;
+  min-height: calc(100vh - 80px);
+}
+.navPart .tab-content .tab-pane {
+  padding: 30px 0;
+}
+.navPart .tab-content .tab-pane .showForm {
+  display: flex;
+}
+.navPart .tab-content .tab-pane .showForm .edit {
+  position: absolute;
+  right: 36px;
+  top: 24px;
+}
+.navPart .tab-content .tab-pane .showForm .head {
+  width: 216px;
+  height: 260px;
+  margin-right: 36px;
+}
+.navPart .tab-content .tab-pane .showForm .detail {
+  width: 100%;
+}
+.navPart .tab-content .tab-pane .showForm .detail .title {
+  background: #E4E4E4;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 8px;
+}
+.navPart .tab-content .tab-pane .showForm .detail .title span {
+  float: left;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+}
+.navPart .tab-content .tab-pane .showForm .detail .title span.name {
+  font-size: 21px;
+  text-indent: 10px;
+  margin-right: 20px;
+}
+.navPart .tab-content .tab-pane .showForm .detail .inlineItem {
+  display: inline-block;
+  width: 50%;
+  height: 36px;
+  line-height: 36px;
+  float: left;
+}
+.navPart .tab-content .tab-pane .showForm .detail .inlineItem span:first-child {
+  display: inline-block;
+  text-indent: 10px;
+  width: 110px;
+}

@@ -70,7 +70,7 @@
                             oTable.fnPageChange( pageNum );
                         });
                     },
-                    ajax: function (data, callback, settings) {
+                    ajax: function (data, callback) {
                         //console.log(param);
                         //ajax请求数据
                         $.ajax({
@@ -168,6 +168,7 @@
                                     callback(returnData);
                                     //数据加载完成后显示全选框
                                     $('.checkBoxAll').css('visibility','inherit');
+                                    self.lookDetail();
                                     //调用删除方法
                                     self.deleteItem();
                                 }, 1000);
@@ -196,18 +197,26 @@
                     columnDefs:[{
                         targets: 7,
                         render: function (data, type, row) {
-                            return '<a class="icon-16" data-id="'+row.id+'" data-toggle="modal" data-target="#myModal"></a>';
+                            return '<a class="icon-16" dataId="'+row.id+'" data-toggle="modal" data-target="#myModal"></a>';
                         }
                     }]
                 });
             },
+            //查看详情
+            lookDetail:function () {
+                $('#tbUserList tbody tr').on('click', function (event) {
+                    location.href = "../../views/personInfo/personDetail.html"
+                })
+            },
             //删除
             deleteItem:function () {
-                $('#myModal').on('show.bs.modal', function (event) {
-                    var button = $(event.relatedTarget);// 触发事件的按钮
-                    var recipient = button.data("id");// 解析出id
+                $('.icon-16').click(function (e) {
+                    e.stopPropagation();
+                    $('#myModal').modal('show');
+                    var recipient = $(this).attr("dataId");// 解析出id
                     console.log(recipient);
                 })
+
             }
         };
         new personInfo();

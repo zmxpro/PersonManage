@@ -353,7 +353,7 @@ body {
   border-bottom: 2px solid #00726c;
 }
 .nav-tabs > li {
-  margin: 0 16px 0 0;
+  margin: 0 13px 0 0;
 }
 .nav-tabs > li:first-child a {
   border-radius: 4px 4px 0 0;
@@ -366,7 +366,7 @@ body {
   border-radius: 0 4px 0 0;
   position: relative;
   margin-right: 2px;
-  padding: 6px;
+  padding: 4px;
   border: 1px solid transparent;
   background: #E4E4E4;
   color: #00726c;
@@ -379,12 +379,12 @@ body {
   content: "";
   display: block;
   position: absolute;
-  left: -18px;
+  left: -16px;
   top: -1px;
   width: 0;
   height: 0;
-  border-top: 34px solid #E4E4E4;
-  border-left: 18px solid transparent;
+  border-top: 30px solid #E4E4E4;
+  border-left: 16px solid transparent;
   border-bottom: 0;
   z-index: 1;
 }
@@ -392,12 +392,12 @@ body {
   content: "";
   display: block;
   position: absolute;
-  right: -18px;
+  right: -16px;
   top: -1px;
   width: 0;
   height: 0;
-  border-bottom: 34px solid #E4E4E4;
-  border-right: 18px solid transparent;
+  border-bottom: 30px solid #E4E4E4;
+  border-right: 16px solid transparent;
   z-index: 1;
 }
 .nav-tabs > li.active > a,
@@ -410,13 +410,13 @@ body {
   cursor: default;
 }
 .nav-tabs > li.active > a:before {
-  border-top: 34px solid #00726c;
+  border-top: 30px solid #00726c;
 }
 .nav-tabs > li.active > a:after {
-  border-bottom: 34px solid #00726c;
+  border-bottom: 30px solid #00726c;
 }
 .nav-tabs > li:first-child a {
-  padding: 6px 12px;
+  padding: 4px 12px;
 }
 .nav-tabs > li:first-child a:before {
   display: none;

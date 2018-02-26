@@ -335,12 +335,12 @@ body{
   }
 }
 /***tab切换***/
-@navBorder:18px;
+@navBorder:16px;
 .nav-tabs {
   background: @white;
   border-bottom: 2px solid @dBlue;
   > li {
-    margin: 0 16px 0 0;
+    margin: 0 13px 0 0;
     &:first-child{
       a{
         border-radius: 4px 4px 0 0;
@@ -354,7 +354,7 @@ body{
       border-radius: 0 4px 0 0;
       position: relative;
       margin-right: 2px;
-      padding: 6px;
+      padding: 4px;
       border: 1px solid transparent;
       background: #E4E4E4;
       color: @dBlue;
@@ -370,7 +370,7 @@ body{
         top:-1px;
         width: 0;
         height: 0;
-        border-top: 34px solid #E4E4E4;
+        border-top: 30px solid #E4E4E4;
         border-left: @navBorder solid transparent;
         border-bottom: 0;
         z-index: 1;
@@ -383,7 +383,7 @@ body{
         top:-1px;
         width: 0;
         height: 0;
-        border-bottom: 34px solid #E4E4E4;
+        border-bottom: 30px solid #E4E4E4;
         border-right: @navBorder solid transparent;
         z-index: 1;
       }
@@ -399,15 +399,15 @@ body{
         cursor: default;
       }
       &:before{
-        border-top: 34px solid @dBlue;
+        border-top: 30px solid @dBlue;
       }
       &:after{
-        border-bottom: 34px solid @dBlue;
+        border-bottom: 30px solid @dBlue;
       }
     }
     &:first-child{
       a{
-        padding: 6px 12px;
+        padding: 4px 12px;
         &:before{
           display: none;
         }

@@ -1,6 +1,6 @@
 @import "../common/global";
 .ztree *{
-  font-family: Microsoft YaHei;
+  font-family: "Microsoft YaHei";
 }
 .ztree li span.button.root_open{
   display: none;
@@ -28,30 +28,52 @@
       height: 100%;
     }
   }
-  .rightBar{
+  .navPart{
     width: 100%;
     padding: 20px 36px;
     background: @white;
+    position: relative;
+    .tab-content{
+      overflow-y: auto;
+      height: calc(~"100% - 40px");
+    }
     .tab-pane{
-      position: relative;
-      .intro{
+      padding: 20px 0 8px 0;
+      .showForm{
         .edit{
           position: absolute;
-          right: 0;
-          top: -56px;
+          right: 36px;
+          top: 20px;
+          z-index: 10;
         }
         .title{
           line-height: 20px;
           padding-left: 12px;
-          margin: 20px 0 8px 0;
           border-left: 4px solid @mainTitle;
           font-size: 16px;
         }
         .content{
           text-indent: 32px;
+          margin: 8px 0 20px 0;
         }
-        .details{
-
+        .inlineItem{
+          display: inline-block;
+          height: 30px;
+          line-height: 30px;
+          width : calc(~"50% - 20px");
+          span{
+            &:first-child{
+              display: inline-block;
+              width: 170px;
+              text-align: right;
+            }
+          }
+          &.deep{
+            background: #F4F4F4;
+          }
+          &:nth-child(even){
+            margin-right: 36px;
+          }
         }
       }
     }

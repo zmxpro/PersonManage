@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>行业内人员信息</title>
+    <link rel="stylesheet" href="../../static/plugins/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="../../static/css/personInfo/personDetail.css">
+    <script src="../../static/js/common/jquery-3.2.1.min.js"></script>
+    <script src="../../static/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <!--表单验证-->
+    <script src="../../static/plugins/validator/validator.min.js"></script>
+    <script src="../../static/js/personInfo/personDetail.js"></script>
+</head>
+<body>
+<div class="main clearfix">
+    <p class="caption" id="caption">行业内人员信息 <i>Out of trade personnel information</i></p>
+    <div class="navPart">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#basicInfo" aria-controls="basicInfo" role="tab" data-toggle="tab">基本信息</a></li>
+            <li role="presentation"><a href="#professionInfo" aria-controls="professionInfo" role="tab" data-toggle="tab">职业信息</a></li>
+            <li role="presentation"><a href="#eduRecord" aria-controls="eduRecord" role="tab" data-toggle="tab">教育履历</a></li>
+            <li role="presentation"><a href="#insRecord" aria-controls="insRecord" role="tab" data-toggle="tab">考核记录</a></li>
+            <li role="presentation"><a href="#disRecord" aria-controls="disRecord" role="tab" data-toggle="tab">奖惩记录</a></li>
+            <li></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="basicInfo">
+                <div class="showForm">
+                    <button class="iconBtn edit"><i class="icon-19"></i>编辑</button>
+                    <img src="" alt="照片" class="head">
+                    <div class="detail">
+                        <p class="title">
+                            <span class="name">程皓</span>
+                            <span class="org">中国烟草总公司职工进修学院</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>性别：</span>
+                            <span>男</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>入行时间：</span>
+                            <span>2008-12-18</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>年龄：</span>
+                            <span>32岁</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>电子邮箱：</span>
+                            <span>123456@qq.com</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>身高：</span>
+                            <span>182</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>手机号码：</span>
+                            <span>18658415756</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>体重：</span>
+                            <span>70kg</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>办公电话：</span>
+                            <span>0571-86669002</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>政治面貌：</span>
+                            <span>党员</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>身份证号码：</span>
+                            <span>320XXXXXXXXXXX9009</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>入党时间：</span>
+                            <span>1985-02-09</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>在职状态：</span>
+                            <span>在职</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="editForm displayNone">
+                    <form class="form-inline" data-toggle="validator" role="form">
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputName2">Name</label>
+                            <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe" required>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputEmail2">Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="professionInfo">
+                2
+            </div>
+            <div role="tabpanel" class="tab-pane" id="eduRecord">
+                3
+            </div>
+            <div role="tabpanel" class="tab-pane" id="insRecord">
+                4
+            </div>
+            <div role="tabpanel" class="tab-pane" id="disRecord">
+                5
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

@@ -353,7 +353,7 @@ body {
   border-bottom: 2px solid #00726c;
 }
 .nav-tabs > li {
-  margin: 0 16px 0 0;
+  margin: 0 13px 0 0;
 }
 .nav-tabs > li:first-child a {
   border-radius: 4px 4px 0 0;
@@ -366,7 +366,7 @@ body {
   border-radius: 0 4px 0 0;
   position: relative;
   margin-right: 2px;
-  padding: 6px;
+  padding: 4px;
   border: 1px solid transparent;
   background: #E4E4E4;
   color: #00726c;
@@ -379,12 +379,12 @@ body {
   content: "";
   display: block;
   position: absolute;
-  left: -18px;
+  left: -16px;
   top: -1px;
   width: 0;
   height: 0;
-  border-top: 34px solid #E4E4E4;
-  border-left: 18px solid transparent;
+  border-top: 30px solid #E4E4E4;
+  border-left: 16px solid transparent;
   border-bottom: 0;
   z-index: 1;
 }
@@ -392,12 +392,12 @@ body {
   content: "";
   display: block;
   position: absolute;
-  right: -18px;
+  right: -16px;
   top: -1px;
   width: 0;
   height: 0;
-  border-bottom: 34px solid #E4E4E4;
-  border-right: 18px solid transparent;
+  border-bottom: 30px solid #E4E4E4;
+  border-right: 16px solid transparent;
   z-index: 1;
 }
 .nav-tabs > li.active > a,
@@ -410,13 +410,13 @@ body {
   cursor: default;
 }
 .nav-tabs > li.active > a:before {
-  border-top: 34px solid #00726c;
+  border-top: 30px solid #00726c;
 }
 .nav-tabs > li.active > a:after {
-  border-bottom: 34px solid #00726c;
+  border-bottom: 30px solid #00726c;
 }
 .nav-tabs > li:first-child a {
-  padding: 6px 12px;
+  padding: 4px 12px;
 }
 .nav-tabs > li:first-child a:before {
   display: none;
@@ -507,7 +507,7 @@ body {
   background: rgba(157, 157, 157, 0.8);
 }
 .ztree * {
-  font-family: Microsoft YaHei;
+  font-family: "Microsoft YaHei";
 }
 .ztree li span.button.root_open {
   display: none;
@@ -536,26 +536,49 @@ body {
   overflow-y: auto;
   height: 100%;
 }
-.framework .rightBar {
+.framework .navPart {
   width: 100%;
   padding: 20px 36px;
   background: #fff;
-}
-.framework .rightBar .tab-pane {
   position: relative;
 }
-.framework .rightBar .tab-pane .intro .edit {
-  position: absolute;
-  right: 0;
-  top: -56px;
+.framework .navPart .tab-content {
+  overflow-y: auto;
+  height: calc(100% - 40px);
 }
-.framework .rightBar .tab-pane .intro .title {
+.framework .navPart .tab-pane {
+  padding: 20px 0 8px 0;
+}
+.framework .navPart .tab-pane .showForm .edit {
+  position: absolute;
+  right: 36px;
+  top: 20px;
+  z-index: 10;
+}
+.framework .navPart .tab-pane .showForm .title {
   line-height: 20px;
   padding-left: 12px;
-  margin: 20px 0 8px 0;
   border-left: 4px solid #9D9D9D;
   font-size: 16px;
 }
-.framework .rightBar .tab-pane .intro .content {
+.framework .navPart .tab-pane .showForm .content {
   text-indent: 32px;
+  margin: 8px 0 20px 0;
+}
+.framework .navPart .tab-pane .showForm .inlineItem {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  width: calc(50% - 20px);
+}
+.framework .navPart .tab-pane .showForm .inlineItem span:first-child {
+  display: inline-block;
+  width: 170px;
+  text-align: right;
+}
+.framework .navPart .tab-pane .showForm .inlineItem.deep {
+  background: #F4F4F4;
+}
+.framework .navPart .tab-pane .showForm .inlineItem:nth-child(even) {
+  margin-right: 36px;
 }
