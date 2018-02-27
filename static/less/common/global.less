@@ -452,11 +452,17 @@ body{
     cursor: pointer;
     margin: 0;
   }
+  span{
+    font-size: 14px;
+    font-family: "Microsoft YaHei UI";
+  }
   .check{
     display: none;
     & + label:before{
       color: @mainTitle;
       font-size: 14px;
+      margin-top: 1px;
+      float: left;
     }
     &:checked + label:before {
       content: "\e910";
@@ -507,4 +513,10 @@ body{
     padding: 10px;
     text-align: center;
   }
+}
+
+//表单公共样式
+.form-control{
+  border-radius: 0;
+  resize: none;
 }

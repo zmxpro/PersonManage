@@ -8,6 +8,7 @@
                 this.loadTable();//加载权限配置表格
                 this.refresh();//刷新
                 this.checkAll();//全选
+                this.addAuthority()//
             },
             //刷新
             refresh:function () {
@@ -23,6 +24,12 @@
                             {"-o-transform": "rotate("+deg+"deg)"},
                             {"-ms-transform": "rotate("+deg+"deg)"});
                     }
+                })
+            },
+            //新增权限
+            addAuthority:function () {
+                $('#addAuthority').click(function () {
+                    location.href = 'addAuthority.html';
                 })
             },
             //全选

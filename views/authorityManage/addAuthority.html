@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新增权限</title>
+    <link rel="stylesheet" href="../../static/plugins/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="../../static/css/authorityManage/addAuthority.css">
+    <script src="../../static/js/common/jquery-3.2.1.min.js"></script>
+    <script src="../../static/plugins/bootstrap-3.3.7/js/bootstrap.js"></script>
+    <script src="../../static/js/authorityManage/addAuthority.js"></script>
+</head>
+<body>
+<div class="main clearfix">
+    <p class="caption">权限配置 <i>Permission configuration</i></p>
+    <!-- 导航区 -->
+    <div class="addNotice">
+        <p class="noticeTitle">权限信息</p>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="accountName" class="col-sm-2 control-label">账号名称:</label>
+                <div class="col-sm-2">
+                    <input type="email" class="form-control" id="accountName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="defaultPassword" class="col-sm-2 control-label">默认密码:</label>
+                <div class="col-sm-2">
+                    <input type="email" class="form-control" id="defaultPassword" maxlength="20">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="user" class="col-sm-2 control-label">使用者:</label>
+                <div class="col-sm-2">
+                    <input type="email" class="form-control" id="user" maxlength="20">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">最多开设账户数:</label>
+                <div class="col-sm-2">
+                    <span class="form-control borderNone">3个</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label authorityLabel">权限范围:</label>
+                <div class="col-sm-10">
+                    <ul class="authorityList clearfix" id="authorityList">
+                        <li>
+                            <div class="checkBox">
+                                <input type="checkbox" id="item1" name="personItem" class="check" value="1">
+                                <label for="item1" class="icon-18">
+                                    <span>组织机构维护</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkBox">
+                                <input type="checkbox" id="item2" name="personItem" class="check" value="1">
+                                <label for="item2" class="icon-18">
+                                    <span>远程培训处</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkBox">
+                                <input type="checkbox" id="item3" name="personItem" class="check" value="1">
+                                <label for="item3" class="icon-18">
+                                    <span>教务处</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkBox">
+                                <input type="checkbox" id="item4" name="personItem" class="check" value="1">
+                                <label for="item4" class="icon-18">
+                                    <span>教研处</span>
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="bottomBtn">
+                <button type="submit" class="btn btn-primary">保存</button>
+            </p>
+        </form>
+    </div>
+    <!-- 查看消息通知详情弹框 -->
+    <div class="modal fade bs-example-modal-sm" id="receivedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
+                    <ul id="treeDemo" class="ztree leftBar"></ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="surePerson">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
