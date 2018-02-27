@@ -88,6 +88,7 @@ body{
 @dBlueOpt:#1E8F87;//渐变色
 @blue:#00bcaa;//浅主色
 @white:#fff;//白色
+@borderColor:#E4E4E4;//边框色
 @mainTitle:#9D9D9D;//主标题色
 @navWidth:220px;//左侧菜单宽度
 @topHeight:50px;//顶部高度
@@ -107,7 +108,7 @@ body{
   min-width: 966px;
 }
 .caption{
-  font-size: 18px;
+  font-size: 16px;
   height: 24px;
   line-height: 24px;
   margin-bottom: 10px;
@@ -145,6 +146,24 @@ body{
   &.gray{
     .change(126,126,126);
   }
+  &.btn-default{
+    border: 0;
+    border-radius: 4px;
+    padding: 4px 16px;
+    background: rgba(157, 157, 157, 1);
+    &:hover, &:focus, &:active:focus, &.active:focus {
+      background: rgba(157, 157, 157, 0.8);
+    }
+  }
+  &.btn-primary{
+    border: 0;
+    border-radius: 4px;
+    padding: 4px 16px;
+    background: rgba(0,114,108, 1);
+    &:hover, &:focus, &:active:focus, &.active:focus {
+      background: rgba(0,114,108, 0.8);
+    }
+  }
 }
 /***带图标的按钮***/
 .iconBtn{
@@ -152,7 +171,7 @@ body{
   border-radius: 4px;
   font-size: 14px;
   background: rgba(0,113,108,1);
-  width: 94px;
+  min-width: 94px;
   height: 24px;
   text-align: center;
   color: white;
@@ -414,6 +433,9 @@ body{
       }
     }
   }
+  &.child{
+    border: 0;
+  }
 }
 /***多选框***/
 .checkBox{
@@ -453,7 +475,7 @@ body{
       box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
     }
     .modal-dialog {
-      margin: 100px auto;
+      margin: 200px auto;
     }
   }
   .modal-header{
@@ -484,16 +506,5 @@ body{
   .modal-footer{
     padding: 10px;
     text-align: center;
-    .btn{
-      border: 0;
-      border-radius: 4px;
-      padding: 4px 16px;
-    }
-    .btn-default{
-      background: rgba(157, 157, 157, 1);
-      &:hover, &:focus, &:active:focus, &.active:focus {
-        background: rgba(157, 157, 157, 0.8);
-      }
-    }
   }
 }

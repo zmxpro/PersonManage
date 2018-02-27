@@ -180,7 +180,7 @@
                         {
                             "data": "id",
                             "render": function (data, type, full, meta) {
-                                var htm = '<div class="checkBox">' +
+                                var htm = '<div class="checkBox" onclick="">' +
                                     '<input type="checkbox" id="item' + data + '" name="personItem" class="check" value="' + data + '">' +
                                     '<label for="item' + data + '" class="icon-18"></label>' +
                                     '</div>';
@@ -204,9 +204,21 @@
             },
             //查看详情
             lookDetail:function () {
+                //多选框禁止跳转链接
+                $('#tbUserList tbody tr td:first-child').on('click', function (e) {
+                    var e = window.event || e;
+                    if (e.stopPropagation){
+                        e.stopPropagation();
+                    }
+                    else{
+                        e.cancelBubble = true;
+                    }
+                });
+                //跳转详情页
                 $('#tbUserList tbody tr').on('click', function (event) {
                     location.href = "../../views/personInfo/personDetail.html"
-                })
+                });
+
             },
             //删除
             deleteItem:function () {

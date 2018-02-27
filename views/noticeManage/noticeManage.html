@@ -21,9 +21,9 @@
     <!-- 导航区 -->
     <div class="notice">
         <ul class="nav nav-tabs" role="tablist" id="myTab">
-            <li role="presentation"><a role="tab" data-toggle="tab">已发通知</a></li>
-            <li role="presentation"><a role="tab" data-toggle="tab">已收通知</a></li>
-            <li><button class="iconBtn add"><i class="icon-21"></i>新增通知</button></li>
+            <li role="presentation" class="active"><a role="tab" dataId="1" data-toggle="tab">已发通知</a></li>
+            <li role="presentation"><a role="tab" dataId="2" data-toggle="tab">已收通知</a></li>
+            <li><button class="iconBtn add" id="addNotice"><i class="icon-21"></i>新增通知</button></li>
         </ul>
         <table id="tbUserList" class="table tableList">
             <thead class="text-center ">
@@ -32,6 +32,27 @@
             </tr>
             </thead>
         </table>
+    </div>
+
+    <!-- 查看消息通知详情弹框 -->
+    <div class="modal fade bs-example-modal-sm" id="noticeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
+                    <h5 class="modal-title" id="noticeModalTitle">
+
+                    </h5>
+                    <p class="noticeContent" id="noticeModalContent">
+
+                    </p>
+                </div>
+                <!--<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">确定</button>
+                </div>-->
+            </div>
+        </div>
     </div>
 </div>
 </body>

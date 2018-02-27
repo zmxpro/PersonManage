@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新增通知</title>
+    <link rel="stylesheet" href="../../static/plugins/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="../../static/plugins/ztree/css/metroStyle.css">
+    <link rel="stylesheet" href="../../static/css/noticeManage/addNotice.css">
+    <script src="../../static/js/common/jquery-3.2.1.min.js"></script>
+    <script src="../../static/plugins/ztree/js/jquery.ztree.core.min.js"></script>
+    <script src="../../static/plugins/ztree/js/jquery.ztree.excheck.min.js"></script>
+    <script src="../../static/plugins/bootstrap-3.3.7/js/bootstrap.js"></script>
+    <script src="../../static/js/noticeManage/addNotice.js"></script>
+</head>
+<body>
+<div class="main clearfix">
+    <p class="caption">通知管理 <i>Notification management</i></p>
+    <!-- 导航区 -->
+    <div class="addNotice">
+        <p class="noticeTitle">新增通知</p>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="noticeTitle" class="col-sm-1 control-label">通知标题:</label>
+                <div class="col-sm-4">
+                    <input type="email" class="form-control" id="noticeTitle" maxlength="20" placeholder="最多不超过20字！">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="selects" class="col-sm-1 control-label">通知接收人:</label>
+                <div class="col-sm-3">
+                    <div class="input-group" id="checkPerson">
+                        <input type="text" class="form-control" id="selects" placeholder="中国烟草学院" aria-describedby="sizing-addon1" readonly>
+                        <span class="input-group-addon" id="sizing-addon1"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="noticeContent" class="col-sm-1 control-label">通知正文:</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" id="noticeContent" rows="10"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label">已选择单位:</label>
+                <div class="col-sm-11">
+                    <ul class="checkList clearfix" id="checkList"></ul>
+                </div>
+            </div>
+            <p class="bottomBtn">
+                <button type="submit" class="btn btn-primary">发送</button>
+            </p>
+        </form>
+    </div>
+    <!-- 查看消息通知详情弹框 -->
+    <div class="modal fade bs-example-modal-sm" id="receivedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
+                    <ul id="treeDemo" class="ztree leftBar"></ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="surePerson">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

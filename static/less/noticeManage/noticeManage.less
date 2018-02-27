@@ -34,6 +34,7 @@
       }
       &:first-child{
         padding: 10px 0;
+        cursor: pointer;
       }
       .title{
         font-size: 15px;
@@ -66,4 +67,21 @@
 }
 .dataTables_wrapper .dataTables_paginate.paging_simple_numbers{
   padding: 0;
+}
+.modal .modal-header{
+  padding: 50px 40px 40px 40px;
+}
+.modal .modal-header {
+  .modal-title{
+    line-height: 20px;
+  }
+  .noticeContent{
+    text-indent: 28px;
+    margin: 10px 0;
+  }
+}
+@media (min-width: 768px){
+  .modal-sm {
+    width: 450px;
+  }
 }

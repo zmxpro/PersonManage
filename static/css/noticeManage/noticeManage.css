@@ -89,7 +89,7 @@ body {
   min-width: 966px;
 }
 .caption {
-  font-size: 18px;
+  font-size: 16px;
   height: 24px;
   line-height: 24px;
   margin-bottom: 10px;
@@ -149,13 +149,37 @@ body {
   color: #fff;
   outline: none;
 }
+.btn.btn-default {
+  border: 0;
+  border-radius: 4px;
+  padding: 4px 16px;
+  background: #9d9d9d;
+}
+.btn.btn-default:hover,
+.btn.btn-default:focus,
+.btn.btn-default:active:focus,
+.btn.btn-default.active:focus {
+  background: rgba(157, 157, 157, 0.8);
+}
+.btn.btn-primary {
+  border: 0;
+  border-radius: 4px;
+  padding: 4px 16px;
+  background: #00726c;
+}
+.btn.btn-primary:hover,
+.btn.btn-primary:focus,
+.btn.btn-primary:active:focus,
+.btn.btn-primary.active:focus {
+  background: rgba(0, 114, 108, 0.8);
+}
 /***带图标的按钮***/
 .iconBtn {
   border: 0;
   border-radius: 4px;
   font-size: 14px;
   background: #00716c;
-  width: 94px;
+  min-width: 94px;
   height: 24px;
   text-align: center;
   color: white;
@@ -421,6 +445,9 @@ body {
 .nav-tabs > li:first-child a:before {
   display: none;
 }
+.nav-tabs.child {
+  border: 0;
+}
 /***多选框***/
 .checkBox {
   font-size: 0;
@@ -462,7 +489,7 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
   .modal .modal-dialog {
-    margin: 100px auto;
+    margin: 200px auto;
   }
 }
 .modal .modal-header {
@@ -491,20 +518,6 @@ body {
 .modal .modal-footer {
   padding: 10px;
   text-align: center;
-}
-.modal .modal-footer .btn {
-  border: 0;
-  border-radius: 4px;
-  padding: 4px 16px;
-}
-.modal .modal-footer .btn-default {
-  background: #9d9d9d;
-}
-.modal .modal-footer .btn-default:hover,
-.modal .modal-footer .btn-default:focus,
-.modal .modal-footer .btn-default:active:focus,
-.modal .modal-footer .btn-default.active:focus {
-  background: rgba(157, 157, 157, 0.8);
 }
 .notice {
   padding: 24px 36px;
@@ -540,6 +553,7 @@ body {
 }
 .table.tableList tr td:first-child {
   padding: 10px 0;
+  cursor: pointer;
 }
 .table.tableList tr td .title {
   font-size: 15px;
@@ -567,4 +581,19 @@ body {
 }
 .dataTables_wrapper .dataTables_paginate.paging_simple_numbers {
   padding: 0;
+}
+.modal .modal-header {
+  padding: 50px 40px 40px 40px;
+}
+.modal .modal-header .modal-title {
+  line-height: 20px;
+}
+.modal .modal-header .noticeContent {
+  text-indent: 28px;
+  margin: 10px 0;
+}
+@media (min-width: 768px) {
+  .modal-sm {
+    width: 450px;
+  }
 }

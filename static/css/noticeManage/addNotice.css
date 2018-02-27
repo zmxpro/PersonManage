@@ -519,57 +519,103 @@ body {
   padding: 10px;
   text-align: center;
 }
-.navPart {
+.addNotice {
   padding: 24px 36px;
   background: #fff;
-  position: relative;
   min-height: calc(100vh - 80px);
 }
-.navPart .tab-content .tab-pane {
-  padding: 30px 0;
+.addNotice .noticeTitle {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #00726c;
+  height: 32px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #00726c;
 }
-.navPart .tab-content .tab-pane .showForm {
-  display: flex;
+.addNotice .form-horizontal {
+  padding: 30px 20px 0 20px;
 }
-.navPart .tab-content .tab-pane .showForm .edit {
+.addNotice .form-horizontal .form-group {
+  margin-bottom: 20px;
+}
+.addNotice .form-horizontal .form-group .checkList li {
+  float: left;
+  margin: 7px 16px 7px 0;
+  padding: 0 6px;
+  background: #eee;
+}
+.addNotice .form-horizontal .form-group .checkList li .close {
+  outline: none;
+  opacity: 0.8;
+  float: right;
+  margin-top: -2px;
+  margin-left: 6px;
+}
+.addNotice .form-horizontal .form-group .checkList li .close.icon-22:before {
+  font-size: 14px;
+  color: #9D9D9D;
+}
+.addNotice .form-horizontal .form-group .checkList li .close:hover {
+  opacity: 1;
+}
+.addNotice .form-horizontal .form-group .control-label {
+  font-weight: normal;
+}
+.addNotice .form-horizontal .form-group .form-control {
+  border-radius: 0;
+  resize: none;
+}
+.addNotice .form-horizontal .form-group .input-group {
+  position: relative;
+  cursor: pointer;
+}
+.addNotice .form-horizontal .form-group .input-group .form-control {
+  cursor: pointer;
+}
+.addNotice .form-horizontal .form-group .input-group .input-group-addon {
+  border-radius: 0;
   position: absolute;
-  right: 36px;
-  top: 24px;
+  right: 1px;
+  top: 2px;
+  z-index: 100;
+  border: 0;
+  border-left: 1px solid #ccc;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
 }
-.navPart .tab-content .tab-pane .showForm .head {
-  width: 216px;
-  height: 260px;
-  margin-right: 36px;
+.addNotice .form-horizontal .form-group .input-group .input-group-addon:before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 10px solid #999999;
+  position: absolute;
+  margin-top: -3px;
 }
-.navPart .tab-content .tab-pane .showForm .detail {
-  width: 100%;
+.addNotice .form-horizontal .bottomBtn {
+  border-top: 1px solid #E4E4E4;
+  padding-top: 20px;
+  margin-top: 30px;
+  text-align: right;
 }
-.navPart .tab-content .tab-pane .showForm .detail .title {
-  background: #E4E4E4;
-  height: 40px;
-  line-height: 40px;
-  margin-bottom: 8px;
+.addNotice .form-horizontal .bottomBtn .btn {
+  margin: 0;
 }
-.navPart .tab-content .tab-pane .showForm .detail .title span {
-  float: left;
-  display: inline-block;
-  height: 40px;
-  line-height: 40px;
-}
-.navPart .tab-content .tab-pane .showForm .detail .title span.name {
-  font-size: 21px;
-  text-indent: 10px;
-  margin-right: 20px;
-}
-.navPart .tab-content .tab-pane .showForm .detail .inlineItem {
-  display: inline-block;
-  width: 50%;
-  height: 36px;
-  line-height: 36px;
-  float: left;
-}
-.navPart .tab-content .tab-pane .showForm .detail .inlineItem span:first-child {
-  display: inline-block;
-  text-indent: 10px;
-  width: 110px;
+@media (min-width: 768px) {
+  .modal .modal-dialog {
+    margin: 100px auto 0 auto;
+  }
+  .modal .modal-sm {
+    width: 460px;
+  }
+  .modal .modal-sm .modal-header {
+    padding: 40px 40px 20px 40px;
+  }
+  .modal .modal-sm .modal-header .ztree {
+    max-height: 400px;
+    overflow-y: auto;
+  }
 }
