@@ -6,13 +6,13 @@
         }
         addNoticePage.prototype = {
             init: function () {
+                this.initTree();//初始化树形结构
                 this.checkPerson(); //选择通知接收人
             },
             //选择通知接收人
             checkPerson:function () {
                 var self = this;
                 $('#checkPerson').click(function () {
-                    self.initTree();//初始化树形结构
                     $('#receivedModal').modal('show');
                     self.surePerson();//确定选择通知接收人
                 })
@@ -90,7 +90,8 @@
                 var self = this;
                 $('#surePerson').unbind().click(function () {
                     var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-                    var nodes = zTree.getChangeCheckedNodes(true);
+                    var nodes = zTree.getCheckedNodes(true);
+                    zTree.checkAllNodes(false);
                     var result= [];//存储接收人
                     for (var i = 0; i < nodes.length; i++) {
                         var item = {};
@@ -101,7 +102,7 @@
                             result.push(item);
                         }
                     }
-                    console.log(result);
+                    console.log(nodes);
 
                     //已选择单位
                     var htm = "";
