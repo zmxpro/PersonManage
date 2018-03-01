@@ -18,19 +18,24 @@
 <div class="main clearfix">
     <p class="caption" id="caption">行业内人员信息 <i>Out of trade personnel information</i></p>
     <div class="navPart">
-        <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#basicInfo" aria-controls="basicInfo" role="tab" data-toggle="tab">基本信息</a></li>
-            <li role="presentation"><a href="#professionInfo" aria-controls="professionInfo" role="tab" data-toggle="tab">职业信息</a></li>
-            <li role="presentation"><a href="#eduRecord" aria-controls="eduRecord" role="tab" data-toggle="tab">教育履历</a></li>
-            <li role="presentation"><a href="#insRecord" aria-controls="insRecord" role="tab" data-toggle="tab">考核记录</a></li>
-            <li role="presentation"><a href="#disRecord" aria-controls="disRecord" role="tab" data-toggle="tab">奖惩记录</a></li>
+        <ul class="nav nav-tabs parentNav" role="tablist">
+            <li role="presentation" class="active"><a href="#basicInfo" aria-controls="basicInfo" role="tab"
+                                                      data-toggle="tab">基本信息</a></li>
+            <li role="presentation"><a href="#professionInfo" aria-controls="professionInfo" role="tab"
+                                       data-toggle="tab">职业信息</a></li>
+            <li role="presentation"><a href="#eduRecord" aria-controls="eduRecord" role="tab" data-toggle="tab">教育履历</a>
+            </li>
+            <li role="presentation"><a href="#insRecord" aria-controls="insRecord" role="tab" data-toggle="tab">考核记录</a>
+            </li>
+            <li role="presentation"><a href="#disRecord" aria-controls="disRecord" role="tab" data-toggle="tab">奖惩记录</a>
+            </li>
             <li></li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="basicInfo">
+                <button class="iconBtn edit"><i class="icon-19"></i>编辑</button>
                 <div class="showForm">
-                    <button class="iconBtn edit"><i class="icon-19"></i>编辑</button>
                     <img src="" alt="照片" class="head">
                     <div class="detail">
                         <p class="title">
@@ -87,11 +92,12 @@
                         </p>
                     </div>
                 </div>
-                <div class="editForm displayNone">
+                <div class="editForm">
+                    <img src="" alt="照片" class="head">
                     <form class="form-inline" data-toggle="validator" role="form">
                         <div class="form-group col-sm-6">
-                            <label for="exampleInputName2">Name</label>
-                            <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe" required>
+                            <label for="exampleInputName1">Name</label>
+                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Jane Doe" required>
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="exampleInputEmail2">Email</label>
@@ -99,13 +105,153 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+                    <div class="detail">
+                        <p class="title">
+                            <span class="name">程皓</span>
+                            <span class="org">中国烟草总公司职工进修学院</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>性别：</span>
+                            <span>男</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>入行时间：</span>
+                            <span>2008-12-18</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>年龄：</span>
+                            <span>32岁</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>电子邮箱：</span>
+                            <span>123456@qq.com</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>身高：</span>
+                            <span>182</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>手机号码：</span>
+                            <span>18658415756</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>体重：</span>
+                            <span>70kg</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>办公电话：</span>
+                            <span>0571-86669002</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>政治面貌：</span>
+                            <span>党员</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>身份证号码：</span>
+                            <span>320XXXXXXXXXXX9009</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>入党时间：</span>
+                            <span>1985-02-09</span>
+                        </p>
+                        <p class="inlineItem">
+                            <span>在职状态：</span>
+                            <span>在职</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="editForm ">
+                    <form class="form-inline" data-toggle="validator" role="form">
+                        <div class="form-group col-sm-6">
+                            <input type="text" class="form-control" id="exampleInputName0" placeholder="程皓" required>
+                        </div>
+
+                        <span class="org">中国烟草总公司职工进修学院</span>
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputEmail2">性别：</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="男">
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputEmail2">入行时间：</label>
+                            <input type="date" class="form-control" id="exampleInputEmail7" value="2018-02-28">
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputEmail2">年龄：</label>
+                            <input type="text" class="form-control" id="exampleInputEmail2" placeholder="32">&nbsp;岁
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputEmail2">电子邮箱：</label>
+                            <input type="email" class="form-control" id="exampleInputEmail8"
+                                   placeholder="123456@qq.com">
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputEmail2">身高：</label>
+                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="182">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputEmail2">手机号码：</label>
+                            <input type="text" class="form-control" id="exampleInputEmail9"
+                                   placeholder="18658415756">
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputEmail2">体重：</label>
+                            <input type="text" class="form-control" id="exampleInputEmail4" placeholder="70">&nbsp;KG
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputEmail2">办公电话：</label>
+                            <input type="text" class="form-control" id="exampleInputEmail10"
+                                   placeholder="0571-86669002">
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputEmail2">政治面貌：</label>
+                            <input type="text" list="itemList" class="form-control" id="exampleInputEmail5"
+                                   placeholder="党员">
+                            <datalist id="itemList">
+                                <option>团员</option>
+                                <option>党员</option>
+                            </datalist>
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputEmail2">身份证号码：</label>
+                            <input type="text" class="form-control" id="exampleInputEmail11"
+                                   placeholder="320XXXXXXXXXXX9009">
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputEmail2">入党时间：</label>
+                            <input type="date" class="form-control" id="exampleInputEmail6" value="2018-02-28">
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="exampleInputEmail2"> 在职状态：</label>
+                            <input type="text" list="stutasList" class="form-control" id="exampleInputEmail12"
+                                   placeholder="在职">
+                            <datalist id="stutasList">
+                                <option>在职</option>
+                                <option>离职</option>
+                            </datalist>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="professionInfo">
-                <ul class="nav nav-tabs child" role="tablist">
-                    <li role="presentation" class="active"><a href="#station" aria-controls="station" role="tab" data-toggle="tab">岗位信息</a></li>
-                    <li role="presentation"><a href="#technical" aria-controls="technical" role="tab" data-toggle="tab">职称信息</a></li>
-                    <li role="presentation"><a href="#vocational" aria-controls="vocational" role="tab" data-toggle="tab">职业证书信息</a></li>
+                <ul class="nav nav-tabs childNav" role="tablist">
+                    <li role="presentation" class="active"><a href="#station" aria-controls="station" role="tab"
+                                                              data-toggle="tab">岗位信息</a></li>
+                    <li role="presentation"><a href="#technical" aria-controls="technical" role="tab"
+                                               data-toggle="tab">职称信息</a></li>
+                    <li role="presentation"><a href="#vocational" aria-controls="vocational" role="tab"
+                                               data-toggle="tab">职业证书信息</a>
+                    </li>
                     <li></li>
                 </ul>
                 <div class="tab-content">

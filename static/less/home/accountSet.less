@@ -1,0 +1,88 @@
+@import "../common/global";
+.personal{
+  padding: 24px 36px;
+  background: @white;
+  min-height: calc(~"100vh - 80px");
+  .personEdit{
+    text-align: right;
+    padding-bottom: 12px;
+    border-bottom: 2px solid @dBlue;
+  }
+  .personDetail{
+    display: flex;
+    padding: 30px 20px;
+    .head{
+      position: relative;
+      width: 120px;
+      height: 120px;
+      img{
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+      }
+      &:hover{
+        p{
+          display: block;
+        }
+        &:before{
+          content: '';
+          position: absolute;
+          display: block;
+          width: 120px;
+          height: 120px;
+          background: #333;
+          border-radius: 50%;
+          opacity: 0.6;
+          z-index: 10;
+        }
+      }
+      p{
+        display: none;
+        position: absolute;
+        font-size: 16px;
+        letter-spacing: 2px;
+        z-index: 10;
+        color: #fff;
+        width: 36px;
+        line-height: 22px;
+        left: 50%;
+        margin-left: -18px;
+        top: 38px;
+      }
+      .changeHead{
+        position: absolute;
+        top: 0;
+        right: 0;
+        opacity: 0;
+        cursor: pointer;
+        width: 120px;
+        height: 120px;
+        font-size: 0;
+        z-index: 100;
+        border-radius: 50%;
+      }
+    }
+    .form-horizontal{
+      width: 100%;
+      margin-left: -80px;
+      .changePassword{
+        position: relative;
+        color: @dBlue;
+        i{
+          cursor: pointer;
+          position: absolute;
+          top:7px;
+          right: 6px;
+          display: block;
+          width: 70px;
+          height: 22px;
+        }
+      }
+    }
+  }
+  .saveBtn{
+    border-top: 1px solid @borderColor;
+    padding-top: 14px;
+    text-align: right;
+  }
+}

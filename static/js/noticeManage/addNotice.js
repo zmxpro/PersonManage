@@ -4,17 +4,19 @@
         function addNoticePage() {
             this.init();
         }
+
         addNoticePage.prototype = {
             init: function () {
                 this.initTree();//初始化树形结构
                 this.checkPerson(); //选择通知接收人
             },
             //选择通知接收人
-            checkPerson:function () {
+            checkPerson: function () {
                 var self = this;
                 $('#checkPerson').click(function () {
                     $('#receivedModal').modal('show');
                     self.surePerson();//确定选择通知接收人
+                    self.initTree();//初始化树形结构
                 })
             },
             //初始化树形结构
@@ -40,11 +42,11 @@
                     }
                 };
 
-                function onClick(e, treeId, treeNode) {
+                function onClick(e, treeId, zNodes) {
                     var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-                    if (treeNode.level > 0) {
-                        zTree.expandNode(treeNode);
-                    }
+                    // if (zNodes.level > 0) {
+                    zTree.expandNode(zNodes);
+                    // }
                 }
 
                 var zNodes = [
@@ -81,33 +83,44 @@
                     {id: 139, pId: 13, name: "沧州烟草"}
                 ];
 
+                var s = {
+                    "address": {
+                        "street": "科技园路.",
+                        "city": "江苏苏州",
+                        "country": "中国"
+                    },
+                    "sss": {
+                        "street": "科技园路.",
+                        "city": "江苏苏州",
+                        "country": "中国"
+                    }
+                };
+
 
                 $.fn.zTree.init($("#treeDemo"), setting, zNodes);
-
             },
-            //确定选择通知接收人
-            surePerson:function () {
+            surePerson: function () {
                 var self = this;
                 $('#surePerson').unbind().click(function () {
                     var zTree = $.fn.zTree.getZTreeObj("treeDemo");
                     var nodes = zTree.getCheckedNodes(true);
-                    zTree.checkAllNodes(false);
-                    var result= [];//存储接收人
+                    zTree.checkAllNodes(false);//取消选中
+                    var result = [];//存储接收人
                     for (var i = 0; i < nodes.length; i++) {
                         var item = {};
-                        var halfCheck = nodes[i].getCheckStatus();
-                        if (!halfCheck.half){
+                        if (nodes[i].isParent) {
+                            //txt.replace(nodes[i].Name, "");
+                        } else {
                             item.id = nodes[i].id;
                             item.name = nodes[i].name;
                             result.push(item);
                         }
                     }
-                    console.log(nodes);
-
+                    console.log(result);
                     //已选择单位
                     var htm = "";
-                    for(var i = 0 ;i < result.length;i++){
-                        htm += '<li><p>'+result[i].name+'<i class="close icon-22" dataId="'+i+'"></i></p></li>';
+                    for (var i = 0; i < result.length; i++) {
+                        htm += '<li><p>' + result[i].name + '<i class="close icon-22" dataId="' + i + '"></i></p></li>';
                     }
                     $('#checkList').html(htm);
                     self.deletePerson(result);
@@ -116,11 +129,10 @@
                 })
             },
             //删除指定通知接收人
-            deletePerson:function (result) {
+            deletePerson: function (result) {
                 $('.close').click(function () {
                     var dataId = $(this).attr('dataId');
-                    result.splice(dataId,1);
-                    console.log(result);
+                    result.splice(dataId, 1);
                     $(this).parent().parent().remove();
                 })
             }

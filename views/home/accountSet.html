@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>账号设置</title>
+    <link rel="stylesheet" href="../../static/plugins/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="../../static/css/home/personSet.css">
+    <script src="../../static/js/common/echarts.common.min.js"></script>
+    <script src="../../static/js/common/jquery-3.2.1.min.js"></script>
+    <script src="../../static/plugins/bootstrap-3.3.7/js/bootstrap.js"></script>
+    <script src="../../static/js/home/accountSet.js"></script>
+</head>
+<body>
+<div class="main clearfix">
+    <p class="caption">账号设置 <i>Account settings</i></p>
+
+    <div class="personal">
+        <p class="personEdit">
+            <button class="iconBtn" id="editBtn"><i class="icon-19"></i>编辑</button>
+        </p>
+        <div class="personDetail">
+            <div class="head">
+                <input type="file" class="changeHead" accept="image/*" id="changeHead">
+                <p>修改头像</p>
+                <img src="../../static/images/head.jpg" class="head" alt="" id="head">
+            </div>
+
+            <form class="form-horizontal formEdit" id="personForm">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label changePassword"><i id="changePassword"></i>修改密码</label>
+                </div>
+                <div class="form-group">
+                    <label for="account" class="col-sm-2 control-label">账号:</label>
+                    <div class="col-sm-2">
+                        <input type="email" class="form-control" id="account" maxlength="20" value="dashuju" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nickname" class="col-sm-2 control-label">账号昵称:</label>
+                    <div class="col-sm-2">
+                        <input type="email" class="form-control" id="nickname" maxlength="20" value="进修学院" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="framework" class="col-sm-2 control-label">组织机构:</label>
+                    <div class="col-sm-2">
+                        <input type="email" class="form-control" id="framework" maxlength="20" value="远程培训处" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="extend" class="col-sm-2 control-label">权限范围:</label>
+                    <div class="col-sm-2">
+                        <input type="email" class="form-control" id="extend" maxlength="20" value="远程培训处" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="useName" class="col-sm-2 control-label">使用人员姓名:</label>
+                    <div class="col-sm-2">
+                        <input type="email" class="form-control" id="useName" maxlength="20" value="李旭明" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="usePhone" class="col-sm-2 control-label">使用人员手机:</label>
+                    <div class="col-sm-2">
+                        <input type="email" class="form-control" id="usePhone" maxlength="20" value="18812980988" readonly>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <p class="saveBtn displayNone" id="saveBtn">
+            <button type="submit" class="btn btn-primary">保存</button>
+        </p>
+    </div>
+
+    <!-- 修改密码弹框 -->
+    <div class="modal fade bs-example-modal-sm" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

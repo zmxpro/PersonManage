@@ -38,14 +38,14 @@
       height: calc(~"100% - 40px");
     }
     .tab-pane{
-      padding: 20px 0 8px 0;
+      padding: 12px 0 8px 0;
+      .edit{
+        position: absolute;
+        right: 36px;
+        top: 20px;
+        z-index: 10;
+      }
       .showForm{
-        .edit{
-          position: absolute;
-          right: 36px;
-          top: 20px;
-          z-index: 10;
-        }
         .title{
           line-height: 20px;
           padding-left: 12px;
@@ -76,7 +76,27 @@
           }
         }
       }
-    }
+      .editForm{
+        .form-group{
+          margin: 0 0 15px 0;
+          &.bottomBtn{
+            width: 100%;
+            padding-top: 12px;
+            border-top: 1px solid #E4E4E4;
+            text-align: right;
+            margin: 0;
+          }
+        }
+      }
 
+      .dataTables_wrapper {
+        background: #fff;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        margin-top: 20px;
+      }
+    }
   }
 }
+

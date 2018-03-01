@@ -48,7 +48,7 @@ body {
   background: #E5E5E5;
 }
 .displayNone {
-  display: none;
+  display: none !important;
 }
 /***清除浮动***/
 .clearfix {
@@ -101,7 +101,6 @@ body {
 /***按钮***/
 .btn {
   padding: 3px 24px;
-  margin-right: 10px;
   font-size: 13px;
   border-radius: 15px;
   letter-spacing: 2px;
@@ -179,7 +178,7 @@ body {
   border-radius: 4px;
   font-size: 14px;
   background: #00716c;
-  min-width: 94px;
+  /*min-width: 94px;*/
   height: 24px;
   text-align: center;
   color: white;
@@ -200,6 +199,15 @@ body {
   font-size: 12px;
   color: #fff;
 }
+.iconBtn.alreadyClick {
+  background: #ccc;
+}
+.iconBtn.alreadyClick:hover,
+.iconBtn.alreadyClick:active {
+  outline: none;
+  background: #ccc;
+  cursor: not-allowed;
+}
 .operate {
   width: 100%;
   height: 40px;
@@ -209,6 +217,9 @@ body {
   -moz-box-shadow: 0 0 8px #B9B9B9;
   -webkit-box-shadow: 0 0 8px #B9B9B9;
   box-shadow: 0 0 8 #B9B9B9;
+}
+.operate .btn {
+  margin-right: 10px;
 }
 .operate .refresh {
   font-size: 18px;
@@ -372,21 +383,21 @@ body {
   background: rgba(0, 113, 108, 0.7);
 }
 /***tab切换***/
-.nav-tabs {
+.nav-tabs.parentNav {
   background: #fff;
   border-bottom: 2px solid #00726c;
 }
-.nav-tabs > li {
+.nav-tabs.parentNav > li {
   margin: 0 13px 0 0;
 }
-.nav-tabs > li:first-child a {
+.nav-tabs.parentNav > li:first-child a {
   border-radius: 4px 4px 0 0;
 }
-.nav-tabs > li:last-child {
+.nav-tabs.parentNav > li:last-child {
   float: right;
   margin: 0;
 }
-.nav-tabs > li > a {
+.nav-tabs.parentNav > li > a {
   border-radius: 0 4px 0 0;
   position: relative;
   margin-right: 2px;
@@ -395,11 +406,11 @@ body {
   background: #E4E4E4;
   color: #00726c;
 }
-.nav-tabs > li > a:hover {
+.nav-tabs.parentNav > li > a:hover {
   background: #E4E4E4;
   border-color: #E4E4E4;
 }
-.nav-tabs > li > a:before {
+.nav-tabs.parentNav > li > a:before {
   content: "";
   display: block;
   position: absolute;
@@ -412,7 +423,7 @@ body {
   border-bottom: 0;
   z-index: 1;
 }
-.nav-tabs > li > a:after {
+.nav-tabs.parentNav > li > a:after {
   content: "";
   display: block;
   position: absolute;
@@ -424,29 +435,44 @@ body {
   border-right: 16px solid transparent;
   z-index: 1;
 }
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:hover,
-.nav-tabs > li.active > a:focus {
+.nav-tabs.parentNav > li.active > a,
+.nav-tabs.parentNav > li.active > a:hover,
+.nav-tabs.parentNav > li.active > a:focus {
   color: #fff;
   background-color: #00726c;
   border: 1px solid #00726c;
   border-bottom-color: transparent;
   cursor: default;
 }
-.nav-tabs > li.active > a:before {
+.nav-tabs.parentNav > li.active > a:before {
   border-top: 30px solid #00726c;
 }
-.nav-tabs > li.active > a:after {
+.nav-tabs.parentNav > li.active > a:after {
   border-bottom: 30px solid #00726c;
 }
-.nav-tabs > li:first-child a {
+.nav-tabs.parentNav > li:first-child a {
   padding: 4px 12px;
 }
-.nav-tabs > li:first-child a:before {
+.nav-tabs.parentNav > li:first-child a:before {
   display: none;
 }
-.nav-tabs.child {
+.nav-tabs.childNav {
   border: 0;
+}
+.nav-tabs.childNav > li > a {
+  border: 0;
+  background: #fff;
+  color: #999;
+  padding: 6px 2px;
+  margin-right: 12px;
+}
+.nav-tabs.childNav > li.active > a,
+.nav-tabs.childNav > li.active > a:hover,
+.nav-tabs.childNav > li.active > a:focus {
+  border: 0;
+  background: #fff;
+  color: #333;
+  border-bottom: 2px solid #00726c;
 }
 /***多选框***/
 .checkBox {
@@ -525,9 +551,64 @@ body {
   padding: 10px;
   text-align: center;
 }
-.form-control {
+.form-horizontal.formEdit .form-control[disabled],
+.form-horizontal.formEdit .form-control[readonly],
+.form-horizontal.formEdit fieldset[disabled] .form-control {
+  background-color: transparent;
+  opacity: 1;
+  outline: none;
+  border: 0;
+  box-shadow: none;
+}
+.form-horizontal .form-group.mustRequired label {
+  position: relative;
+}
+.form-horizontal .form-group.mustRequired label:before {
+  content: "*";
+  position: absolute;
+  right: 12px;
+  top: 6px;
+  font-size: 16px;
+  color: #FF3F3F;
+}
+.form-horizontal .form-group .form-control {
   border-radius: 0;
   resize: none;
+}
+.form-horizontal .form-group .control-label {
+  font-weight: 500;
+}
+.form-horizontal .input-group {
+  position: relative;
+  cursor: pointer;
+  height: 34px;
+  display: inherit;
+}
+.form-horizontal .input-group .form-control {
+  cursor: pointer;
+}
+.form-horizontal .input-group .input-group-addon {
+  border-radius: 0;
+  position: absolute;
+  right: 1px;
+  top: 2px;
+  z-index: 100;
+  border: 0;
+  border-left: 1px solid #ccc;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+.form-horizontal .input-group .input-group-addon:before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 10px solid #999999;
+  position: absolute;
+  margin-top: -3px;
 }
 .ztree * {
   font-family: "Microsoft YaHei";
@@ -570,9 +651,9 @@ body {
   height: calc(100% - 40px);
 }
 .framework .navPart .tab-pane {
-  padding: 20px 0 8px 0;
+  padding: 12px 0 8px 0;
 }
-.framework .navPart .tab-pane .showForm .edit {
+.framework .navPart .tab-pane .edit {
   position: absolute;
   right: 36px;
   top: 20px;
@@ -604,4 +685,21 @@ body {
 }
 .framework .navPart .tab-pane .showForm .inlineItem:nth-child(even) {
   margin-right: 36px;
+}
+.framework .navPart .tab-pane .editForm .form-group {
+  margin: 0 0 15px 0;
+}
+.framework .navPart .tab-pane .editForm .form-group.bottomBtn {
+  width: 100%;
+  padding-top: 12px;
+  border-top: 1px solid #E4E4E4;
+  text-align: right;
+  margin: 0;
+}
+.framework .navPart .tab-pane .dataTables_wrapper {
+  background: #fff;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  margin-top: 20px;
 }

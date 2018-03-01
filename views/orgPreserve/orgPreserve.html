@@ -7,11 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>组织机构维护</title>
     <link rel="stylesheet" href="../../static/plugins/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="../../static/css/common/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="../../static/plugins/ztree/css/metroStyle.css">
     <link rel="stylesheet" href="../../static/css/orgPreserve/orgPreserve.css">
     <script src="../../static/js/common/jquery-3.2.1.min.js"></script>
-    <script src="../../static/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script src="../../static/plugins/ztree/js/jquery.ztree.core.min.js"></script>
+    <script src="../../static/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../static/js/common/jquery.dataTables.js"></script>
+    <script src="../../static/js/common/dataTables.bootstrap.js"></script>
     <!--表单验证-->
     <script src="../../static/plugins/validator/validator.min.js"></script>
     <script src="../../static/js/orgPreserve/orgPreserve.js"></script>
@@ -25,16 +28,16 @@
             <ul id="treeDemo" class="ztree leftBar"></ul>
         </div>
         <div class="navPart">
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">基本信息</a></li>
-                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">所属人员</a></li>
+            <ul class="nav nav-tabs parentNav" role="tablist" id="parentNav">
+                <li role="presentation" dataId="1" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">基本信息</a></li>
+                <li role="presentation" dataId="2"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">所属人员</a></li>
                 <li></li>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="home">
-                    <div class="showForm ">
-                        <button class="iconBtn edit"><i class="icon-19"></i>编辑</button>
+                    <button class="iconBtn edit" id="editInfo"><i class="icon-19"></i>编辑</button>
+                    <div class="showForm" id="showForm">
                         <p class="title">机构简介</p>
                         <p class="content">北京市局(公司)	北京市局(公司)	北	北京烟草	行业直属单位北京市局(公司)	北京市局(公司)	北	北京烟草	行业直属单位北京市局(公司)	北京市局(公司)	北	北京烟草	行业直属单位北京市局(公司)	北京市局(公司)	北	北京烟草	行业直属单位</p>
                         <p class="inlineItem deep">
@@ -120,21 +123,195 @@
                         <p class="inlineItem deep"></p>
                         <p class="inlineItem deep"></p>
                     </div>
-                    <div class="editForm displayNone">
-                        <form class="form-inline" data-toggle="validator" role="form">
-                            <div class="form-group col-sm-6">
-                                <label for="exampleInputName2">Name</label>
-                                <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe" required>
+                    <div class="editForm displayNone" id="editForm">
+                        <form class="form-horizontal" data-toggle="validator" role="form">
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <label class="control-label col-sm-5">机构简介：</label>
+                                </div>
+                                <div class="col-sm-8" style="margin-left: -29%;">
+                                    <textarea class="form-control" rows="5"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 mustRequired">
+                                <label class="control-label col-sm-5">单位（部门）名称：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" value="总公司进修学院" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 mustRequired">
+                                <label class="control-label col-sm-5">单位（部门）简称：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" value="总公司进修学院" required>
+                                </div>
                             </div>
                             <div class="form-group col-sm-6">
-                                <label for="exampleInputEmail2">Email</label>
-                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                                <label class="control-label col-sm-5">上级单位：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" value="国家局">
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="form-group col-sm-6 mustRequired">
+                                <label class="control-label col-sm-5">单位（部门）性质：</label>
+                                <div class="col-sm-7">
+                                    <div class="input-group">
+                                        <select class="form-control">
+                                            <option value="all">普通级别1</option>
+                                            <option value="check_pending">普通级别2</option>
+                                            <option value="no">普通级别3</option>
+                                            <option value="yes">普通级别4</option>
+                                        </select>
+                                        <span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 mustRequired">
+                                <label class="control-label col-sm-5">系统机构（部门）层次：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" value="总公司进修学院" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 mustRequired">
+                                <label class="control-label col-sm-5">机构（部门）级别：</label>
+                                <div class="col-sm-7">
+                                    <div class="input-group">
+                                        <select class="form-control">
+                                            <option value="all">普通级别1</option>
+                                            <option value="check_pending">普通级别2</option>
+                                            <option value="no">普通级别3</option>
+                                            <option value="yes">普通级别4</option>
+                                        </select>
+                                        <span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 mustRequired">
+                                <label class="control-label col-sm-5">单位（部门）类型：</label>
+                                <div class="col-sm-7">
+                                    <div class="input-group">
+                                        <select class="form-control">
+                                            <option value="all">中等级别1</option>
+                                            <option value="check_pending">中等级别2</option>
+                                            <option value="no">中等级别3</option>
+                                            <option value="yes">中等级别4</option>
+                                        </select>
+                                        <span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-5">所属区域代码：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" value="总公司进修学院">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 mustRequired">
+                                <label class="control-label col-sm-5">单位（部门）编码：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" value="总公司进修学院" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-5">组织机构代码：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" value="总公司进修学院">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-5">批准成立时间：</label>
+                                <div class="col-sm-7">
+                                    <input type="date" class="form-control" value="2017/09/03" >
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-5">批准成立机关：</label>
+                                <div class="col-sm-7">
+                                    <div class="input-group">
+                                        <select class="form-control">
+                                            <option value="all">中等级别1</option>
+                                            <option value="check_pending">中等级别2</option>
+                                            <option value="no">中等级别3</option>
+                                            <option value="yes">中等级别4</option>
+                                        </select>
+                                        <span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-5">批准成立文号：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" value="总公司进修学院">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-5">行业类别：</label>
+                                <div class="col-sm-7">
+                                    <div class="input-group">
+                                        <select class="form-control">
+                                            <option value="all">中等级别1</option>
+                                            <option value="check_pending">中等级别2</option>
+                                            <option value="no">中等级别3</option>
+                                            <option value="yes">中等级别4</option>
+                                        </select>
+                                        <span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-5">顺序标识：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" value="总公司进修学院">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-5">编制总数：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" value="总公司进修学院">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-5">邮编：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" value="总公司进修学院">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-5">地址：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" value="总公司进修学院">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-5">责任人：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" value="总公司进修学院">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 bottomBtn">
+                                <button type="submit" class="btn btn-primary">保存</button>
+                            </div>
                         </form>
                     </div>
                 </div>
-                <div role="tabpanel" class="tab-pane" id="profile">2</div>
+                <div role="tabpanel" class="tab-pane" id="profile">
+                    <ul class="nav nav-tabs childNav" role="tablist" id="childNav">
+                        <li role="presentation" class="active"><a role="tab" dataId="1" data-toggle="tab">行业内</a></li>
+                        <li role="presentation"><a role="tab" dataId="2" data-toggle="tab">行业外</a></li>
+                        <li></li>
+                    </ul>
+                    <table id="tbUserList" class="table tableList">
+                        <thead class="text-center ">
+                        <tr>
+                            <th width="10%">全选</th>
+                            <th width="14%">姓名</th>
+                            <th width="20%">部门</th>
+                            <th width="14%">工号</th>
+                            <th width="14%">在职状态</th>
+                            <th width="14%">手机号码</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

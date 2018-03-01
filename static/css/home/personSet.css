@@ -463,8 +463,7 @@ body {
   border: 0;
   background: #fff;
   color: #999;
-  padding: 6px 2px;
-  margin-right: 12px;
+  padding: 6px;
 }
 .nav-tabs.childNav > li.active > a,
 .nav-tabs.childNav > li.active > a:hover,
@@ -610,217 +609,88 @@ body {
   position: absolute;
   margin-top: -3px;
 }
-.boxShadow {
-  -moz-box-shadow: 0 3px 8px #B9B9B9;
-  -webkit-box-shadow: 0 3px 8px #B9B9B9;
-  box-shadow: 0 3px 8px #B9B9B9;
-}
-.mainTitle {
-  color: #9D9D9D;
-  height: 48px;
-  line-height: 48px;
-  font-size: 16px;
-}
-.mainTitle a {
-  float: right;
-  margin-right: 30px;
-  color: #9D9D9D;
-}
-.mainTitle a:hover,
-.mainTitle a:active,
-.mainTitle a:focus {
-  color: #9D9D9D;
-}
-/****顶部统计***/
-.survey .item {
-  float: left;
-  width: calc(50% - 10px);
+.personal {
+  padding: 24px 36px;
   background: #fff;
-  border-top: 4px solid #00726c;
-  margin-right: 20px;
-  -moz-box-shadow: 0 3px 8px #B9B9B9;
-  -webkit-box-shadow: 0 3px 8px #B9B9B9;
-  box-shadow: 0 3px 8px #B9B9B9;
+  min-height: calc(100vh - 80px);
 }
-.survey .item:last-child {
-  margin: 0;
-}
-.survey .item .title {
-  font-size: 18px;
-  color: #333;
-  padding: 6px 20px;
-}
-.survey .item .g-count {
-  margin: 0 auto;
-  width: 453px;
-  height: 190px;
-  display: flex;
-  padding: 30px 0;
-  justify-content: center;
-  align-items: center;
-}
-.survey .item .g-count .totalCount {
-  min-width: 80px;
-  margin-right: 16px;
-  text-align: center;
-}
-.survey .item .g-count .totalCount p:first-child {
-  font-size: 40px;
-  line-height: 36px;
-  color: #00726c;
-  font-family: impact;
-  margin-bottom: 6px;
-}
-.survey .item .g-count .img {
-  background: url(../../images/icon-count.png) no-repeat;
-  background-size: 100%;
-  width: 98px;
-  height: 90px;
-}
-.survey .item .g-count .right .count {
-  margin-left: 26px;
-}
-.survey .item .g-count .right .count p {
-  float: left;
-}
-.survey .item .g-count .right .count p:first-child {
-  width: 42px;
-  line-height: 21px;
-  margin-right: 20px;
-}
-.survey .item .g-count .right .count p:last-child {
-  font-size: 42px;
-  line-height: 42px;
-  color: #00bcaa;
-  font-family: impact;
-}
-.survey .item .g-count .right .count.outCount {
-  margin-top: 46px;
-}
-.survey .item .g-percent {
-  width: 100%;
-  height: 190px;
-}
-/****本年度人员情况***/
-.personCase .caseItem .item {
-  position: relative;
-  float: left;
-  width: calc(23% - 24px);
-  height: 184px;
-  margin-right: 24px;
-  background: #00bcaa;
-  padding: 0 12px;
-  -moz-box-shadow: 0 3px 8px #B9B9B9;
-  -webkit-box-shadow: 0 3px 8px #B9B9B9;
-  box-shadow: 0 3px 8px #B9B9B9;
-}
-.personCase .caseItem .item:last-child {
-  width: 31%;
-  margin: 0;
-}
-.personCase .caseItem .item .icon-09 {
-  position: absolute;
-  right: -4px;
-  bottom: 1px;
-  font-size: 134px;
-  z-index: 1;
-}
-.personCase .caseItem .item .icon-09:before {
-  color: #fff;
-  opacity: 0.3;
-}
-.personCase .caseItem .item .title {
-  font-size: 16px;
-  color: #fff;
-  padding: 5px 0;
-  border-bottom: 1px solid #fff;
-  letter-spacing: 1px;
-}
-.personCase .caseItem .item .detail {
-  position: absolute;
-  left: 50%;
-  margin-left: -56px;
-  top: 46px;
-  z-index: 2;
-}
-.personCase .caseItem .item .detail p {
-  font-size: 16px;
-  line-height: 32px;
-  text-align: center;
-  color: #fff;
-}
-.personCase .caseItem .item .detail p span {
-  display: inline-block;
-  width: 80px;
+.personal .personEdit {
   text-align: right;
-  margin-left: -24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #00726c;
 }
-.personCase .caseItem .item.status .detail {
-  left: 10px;
-  margin: 0;
-  width: calc(100% - 20px);
+.personal .personDetail {
+  display: flex;
+  padding: 30px 20px;
 }
-.personCase .caseItem .item.status .detail p {
-  float: left;
-  width: 50%;
-}
-/****通知消息***/
-.noticeBar {
-  width: 100%;
-}
-.noticeBar .noticeDetail {
-  -moz-box-shadow: 0 3px 8px #B9B9B9;
-  -webkit-box-shadow: 0 3px 8px #B9B9B9;
-  box-shadow: 0 3px 8px #B9B9B9;
-  padding: 20px 26px;
-  background: #fff;
-}
-.noticeBar .noticeDetail li {
-  padding: 6px;
-  border-bottom: 1px solid #F4F4F4;
-}
-.noticeBar .noticeDetail li:last-child {
-  border: 0;
-}
-.noticeBar .noticeDetail li:hover {
-  background: #F4F4F4;
-  cursor: pointer;
-}
-.noticeBar .noticeDetail li .content {
-  padding: 6px 24px;
-}
-.noticeBar .noticeDetail li .detail {
+.personal .personDetail .head {
   position: relative;
+  width: 120px;
+  height: 120px;
 }
-.noticeBar .noticeDetail li .detail .icon-08 {
-  vertical-align: middle;
-  margin-top: -3px;
-  display: inline-block;
-  transition: All 0.2s ease-in-out;
-  -webkit-transition: All 0.3s ease-in-out;
-  -moz-transition: All 0.3s ease-in-out;
-  -o-transition: All 0.3s ease-in-out;
-  transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
+.personal .personDetail .head img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
 }
-.noticeBar .noticeDetail li .detail .icon-08.square {
-  transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
+.personal .personDetail .head:hover p {
+  display: block;
 }
-.noticeBar .noticeDetail li .detail .title {
-  margin-left: 6px;
-}
-.noticeBar .noticeDetail li .detail .time {
-  float: right;
-}
-.noticeBar .noticeDetail li .detail .icon-24 {
+.personal .personDetail .head:hover:before {
+  content: '';
   position: absolute;
-  right: 160px;
-  top: 5px;
+  display: block;
+  width: 120px;
+  height: 120px;
+  background: #333;
+  border-radius: 50%;
+  opacity: 0.6;
+  z-index: 10;
+}
+.personal .personDetail .head p {
+  display: none;
+  position: absolute;
+  font-size: 16px;
+  letter-spacing: 2px;
+  z-index: 10;
+  color: #fff;
+  width: 36px;
+  line-height: 22px;
+  left: 50%;
+  margin-left: -18px;
+  top: 38px;
+}
+.personal .personDetail .head .changeHead {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 120px;
+  height: 120px;
+  font-size: 0;
+  z-index: 100;
+  border-radius: 50%;
+}
+.personal .personDetail .form-horizontal {
+  width: 100%;
+  margin-left: -80px;
+}
+.personal .personDetail .form-horizontal .changePassword {
+  position: relative;
+  color: #00726c;
+}
+.personal .personDetail .form-horizontal .changePassword i {
+  cursor: pointer;
+  position: absolute;
+  top: 7px;
+  right: 6px;
+  display: block;
+  width: 70px;
+  height: 22px;
+}
+.personal .saveBtn {
+  border-top: 1px solid #E4E4E4;
+  padding-top: 14px;
+  text-align: right;
 }

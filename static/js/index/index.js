@@ -29,9 +29,14 @@
                     sessionStorage.setItem("itemList",6);
                     self.itemListStatus();
                 });
+                //帐号设置
+                $("#setAccount").click(function () {
+                    sessionStorage.setItem("itemList",0);
+                    self.itemListStatus("personSet");
+                });
             },
             //菜单的选中状态
-            itemListStatus:function () {
+            itemListStatus:function (status) {
                 var index = sessionStorage.getItem("itemList");
                 if(index == null){
                     index = 0;
@@ -41,6 +46,9 @@
                         $(this).addClass('active');
                         $(this).siblings().removeClass("active");
                         var url = $(this).attr("href");
+                        if(status == "personSet"){
+                            url = "views/home/accountSet.html"
+                        }
                         $('#mainIframe').attr("src",url);
                     }
                 })

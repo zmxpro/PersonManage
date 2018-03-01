@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>待办事项</title>
+    <link rel="stylesheet" href="../../static/plugins/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="../../static/css/common/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/toDo/toDo.css">
+    <script src="../../static/js/common/jquery-3.2.1.min.js"></script>
+    <script src="../../static/plugins/bootstrap-3.3.7/js/bootstrap.js"></script>
+    <script src="../../static/js/common/jquery.dataTables.js"></script>
+    <script src="../../static/js/common/dataTables.bootstrap.js"></script>
+    <script src="../../static/js/toDo/toDo.js"></script>
+</head>
+<body>
+<div class="main clearfix">
+    <p class="caption">待办事项 <i>To do list</i></p>
+    <!-- 导航区 -->
+    <div class="notice">
+        <ul class="nav nav-tabs parentNav" role="tablist" id="myTab">
+            <li role="presentation" class="active"><a role="tab" dataId="1" data-toggle="tab">未完成</a></li>
+            <li role="presentation"><a role="tab" dataId="2" data-toggle="tab">草稿箱</a></li>
+            <li></li>
+        </ul>
+        <table id="tbUserList" class="table tableList">
+            <thead class="text-center ">
+            <tr>
+                <th></th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+
+    <!-- 查看代办事项弹框 -->
+    <div class="modal fade bs-example-modal-sm" id="noticeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
+                    <h5 class="modal-title" id="noticeModalTitle">
+
+                    </h5>
+                    <p class="noticeContent" id="noticeModalContent">
+
+                    </p>
+                </div>
+                <!--<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">确定</button>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
