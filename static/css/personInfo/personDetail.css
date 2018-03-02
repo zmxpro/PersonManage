@@ -510,6 +510,16 @@ body {
 .checkBox .check:checked + label:before {
   content: "\e910";
 }
+/***下拉菜单***/
+select.form-control {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: url(../../images/icon-select.png) no-repeat scroll right center transparent;
+}
+select.form-control::-ms-expand {
+  display: none;
+}
 /***弹出框***/
 .modal .modal-content {
   border: 0;
@@ -610,6 +620,18 @@ body {
   position: absolute;
   margin-top: -3px;
 }
+.form-horizontal .dataTime .form-control {
+  cursor: pointer;
+}
+.form-horizontal .dataTime .glyphicon-calendar {
+  position: absolute;
+  right: 24px;
+  top: 10px;
+  cursor: pointer;
+}
+.form-horizontal .dataTime .glyphicon-calendar:before {
+  color: #999;
+}
 .navPart {
   padding: 24px 36px;
   background: #fff;
@@ -617,7 +639,7 @@ body {
   min-height: calc(100vh - 80px);
 }
 .navPart .tab-content .tab-pane {
-  padding: 30px 0;
+  padding: 12px 0;
 }
 .navPart .tab-content .tab-pane .edit {
   position: absolute;
@@ -625,15 +647,17 @@ body {
   top: 24px;
 }
 .navPart .tab-content .tab-pane .showForm {
-  display: flex;
+  margin-top: 18px;
 }
 .navPart .tab-content .tab-pane .showForm .head {
-  width: 216px;
+  width: 210px;
   height: 260px;
   margin-right: 36px;
+  float: left;
 }
 .navPart .tab-content .tab-pane .showForm .detail {
-  width: 100%;
+  width: calc(100% - 246px);
+  float: left;
 }
 .navPart .tab-content .tab-pane .showForm .detail .title {
   background: #E4E4E4;

@@ -14,7 +14,8 @@
             init: function () {
                 this.initTree();//初始化树形结构
                 this.editInfo();//基本信息编辑
-                this.changeNav();//
+                this.approvalData();//日期初始化
+                this.changeNav();//导航切换
             },
             //初始化树形结构
             initTree: function () {
@@ -112,6 +113,17 @@
                     $('#editForm').removeClass('displayNone');
                 })
             },
+            //日期初始化
+            approvalData:function(){
+                $("#approvalData").datetimepicker({
+                    minView: "month",//选择日期后，不会再跳转去选择时分秒
+                    language:  'zh-CN',  //日期
+                    autoclose: true,
+                    startDate:"2018-03-01",
+                    format: 'yyyy-mm-dd'
+                });
+            },
+            //导航切换
             changeNav:function () {
                 var self = this;
                 $('#parentNav li').click(function () {
