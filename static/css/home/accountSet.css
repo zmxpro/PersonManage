@@ -570,23 +570,23 @@ select.form-control::-ms-expand {
   border: 0;
   box-shadow: none;
 }
-.form-horizontal .form-group.mustRequired label {
-  position: relative;
-}
-.form-horizontal .form-group.mustRequired label:before {
-  content: "*";
-  position: absolute;
-  right: 12px;
-  top: 6px;
-  font-size: 16px;
-  color: #FF3F3F;
-}
 .form-horizontal .form-group .form-control {
   border-radius: 0;
   resize: none;
 }
 .form-horizontal .form-group .control-label {
   font-weight: 500;
+}
+.form-horizontal .form-group.mustRequired .control-label {
+  position: relative;
+}
+.form-horizontal .form-group.mustRequired .control-label:before {
+  content: "*";
+  position: absolute;
+  right: 12px;
+  top: 6px;
+  font-size: 16px;
+  color: #FF3F3F;
 }
 .form-horizontal .input-group {
   position: relative;

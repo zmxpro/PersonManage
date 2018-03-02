@@ -5,16 +5,16 @@
   position: relative;
   min-height: calc(~"100vh - 80px");
   .tab-content{
-    .tab-pane{
-      padding: 12px 0;
-      .edit{
-        position: absolute;
-        right: 36px;
-        top:24px;
-      }
+    padding: 12px 0;
+    .edit{
+      position: absolute;
+      right: 36px;
+      top:24px;
+    }
+    .tab-pane0{
       .showForm{
         margin-top: 18px;
-        .head{
+        .headImg{
           width: 210px;
           height: 260px;
           margin-right: 36px;
@@ -54,7 +54,173 @@
           }
         }
       }
+      /***头像***/
+      .head{
+        position: relative;
+        width: 210px;
+        height: 260px;
+        float: left;
+        margin-left: 138px;
+        margin-right: 22px;
+        &:hover{
+          p{
+            display: block;
+          }
+          &:before{
+            content: '';
+            position: absolute;
+            display: block;
+            width: 210px;
+            height: 260px;
+            background: #333;
+            opacity: 0.6;
+            z-index: 10;
+          }
+        }
+        p{
+          display: none;
+          position: absolute;
+          font-size: 16px;
+          letter-spacing: 2px;
+          z-index: 10;
+          color: #fff;
+          width: 36px;
+          line-height: 22px;
+          left: 50%;
+          margin-left: -18px;
+          top: 108px;
+        }
+        .changeHead{
+          position: absolute;
+          top: 0;
+          right: 0;
+          opacity: 0;
+          cursor: pointer;
+          width: 210px;
+          height: 260px;
+          font-size: 0;
+          z-index: 100;
+        }
+      }
+      .form-horizontal{
+        /***单位***/
+        .unit{
+          position: absolute;
+          top: 6px;
+          right: -10px;
+        }
+      }
+    }
+    .tab-pane1{
+      .childNav{
+        li:last-child{
+          float: right;
+          a{
+            color: #333;
+            span:first-child{
+              margin-right: 12px;
+            }
+          }
 
+        }
+      }
+    }
+    .tab-pane2{
+
+    }
+    .tab-pane3{
+
+    }
+    .tab-pane4{
+
+    }
+  }
+}
+/***表格***/
+.dataTables_wrapper {
+  background: @white;
+  -moz-box-shadow: 0 0 8px @white;
+  -webkit-box-shadow: 0 0 8px @white;
+  box-shadow: 0 0 8px @white;
+}
+.dataTables_wrapper .dataTables_paginate.paging_simple_numbers{
+  padding: 16px 60px 0 60px;
+  border-top: 1px solid #e4e4e4;
+}
+.table.tableList{
+  tr{
+    &:hover{
+      background: transparent;
+      cursor: inherit;
+    }
+    th:last-child,td:last-child{
+      padding: 0;
+    }
+    td{
+      border: 0;
+      &:hover{
+        cursor: inherit;
+      }
+    }
+    .infoItem{
+      width: 680px;
+      margin: 12px 0;
+      .infoEdit{
+        padding: 0 6px 0 16px;
+        height: 36px;
+        line-height: 36px;
+        background: #E4E4E4;
+        span{
+          color: @dBlue;
+          cursor: pointer;
+        }
+        i{
+          cursor: pointer;
+          padding: 0 10px;
+          font-size: 22px;
+          margin-top: -1px;
+        }
+      }
+      .infoDetail{
+        border-left: 1px solid #e4e4e4;
+        li{
+          padding: 0 16px;
+          float: left;
+          width: calc(~"50%");
+          height: 36px;
+          line-height: 36px;
+          border-bottom: 1px solid #e4e4e4;
+          border-right: 1px solid #e4e4e4;
+          p{
+            float: left;
+            height: 36px;
+            line-height: 36px;
+            width: 80px;
+          }
+        }
+      }
+    }
+    &:last-child{
+      td{
+        border: 0;
+      }
+      .infoItem{
+        margin-bottom: 16px;
+      }
+    }
+  }
+}
+@media (min-width: 768px){
+  .modal-sm {
+    width: 800px;
+  }
+  .modal {
+    .modal-dialog {
+      margin: 100px auto;
+    }
+    .modal-content{
+      -webkit-box-shadow: none;
+      box-shadow: none;
     }
   }
 }

@@ -566,8 +566,15 @@ select{
     }
   }
   .form-group{
+    .form-control{
+      border-radius: 0;
+      resize: none;
+    }
+    .control-label{
+      font-weight: 500;
+    }
     &.mustRequired{
-      label{
+      .control-label{
         position: relative;
         &:before{
           content:"*";
@@ -578,13 +585,6 @@ select{
           color: #FF3F3F;
         }
       }
-    }
-    .form-control{
-      border-radius: 0;
-      resize: none;
-    }
-    .control-label{
-      font-weight: 500;
     }
   }
   //下拉菜单
