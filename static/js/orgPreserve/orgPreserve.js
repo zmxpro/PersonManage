@@ -16,6 +16,7 @@
                 this.editInfo();//基本信息编辑
                 this.approvalData();//日期初始化
                 this.changeNav();//导航切换
+                this.personTable();//初始化所属人员表格
             },
             //初始化树形结构
             initTree: function () {
@@ -132,10 +133,11 @@
 
                     }
                     if(dataId == 2){
-                        self.personTable();
+                        table.ajax.reload();
                     }
                 })
             },
+            //初始化所属人员表格
             personTable:function () {
               table = $('#tbUserList').DataTable({
                   "dom": '<"top">rt<"bottom"><"clear">p',
