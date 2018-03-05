@@ -54,62 +54,6 @@
           }
         }
       }
-      /***头像***/
-      .head{
-        position: relative;
-        width: 210px;
-        height: 260px;
-        float: left;
-        margin-left: 138px;
-        margin-right: 22px;
-        &:hover{
-          p{
-            display: block;
-          }
-          &:before{
-            content: '';
-            position: absolute;
-            display: block;
-            width: 210px;
-            height: 260px;
-            background: #333;
-            opacity: 0.6;
-            z-index: 10;
-          }
-        }
-        p{
-          display: none;
-          position: absolute;
-          font-size: 16px;
-          letter-spacing: 2px;
-          z-index: 10;
-          color: #fff;
-          width: 36px;
-          line-height: 22px;
-          left: 50%;
-          margin-left: -18px;
-          top: 108px;
-        }
-        .changeHead{
-          position: absolute;
-          top: 0;
-          right: 0;
-          opacity: 0;
-          cursor: pointer;
-          width: 210px;
-          height: 260px;
-          font-size: 0;
-          z-index: 100;
-        }
-      }
-      .form-horizontal{
-        /***单位***/
-        .unit{
-          position: absolute;
-          top: 6px;
-          right: -10px;
-        }
-      }
     }
     .tab-pane1{
       .childNav{
@@ -133,6 +77,70 @@
     }
     .tab-pane4{
 
+    }
+  }
+  .modal{
+    /***头像***/
+    .head{
+      position: relative;
+      width: 210px;
+      height: 260px;
+      float: left;
+      margin-left: 138px;
+      margin-right: 22px;
+      .headImg{
+        width: 210px;
+        height: 260px;
+        margin-right: 36px;
+        float: left;
+      }
+      &:hover{
+        p{
+          display: block;
+        }
+        &:before{
+          content: '';
+          position: absolute;
+          display: block;
+          width: 210px;
+          height: 260px;
+          background: #333;
+          opacity: 0.6;
+          z-index: 10;
+        }
+      }
+      p{
+        display: none;
+        position: absolute;
+        font-size: 16px;
+        letter-spacing: 2px;
+        z-index: 10;
+        color: #fff;
+        width: 36px;
+        line-height: 22px;
+        left: 50%;
+        margin-left: -18px;
+        top: 108px;
+      }
+      .changeHead{
+        position: absolute;
+        top: 0;
+        right: 0;
+        opacity: 0;
+        cursor: pointer;
+        width: 210px;
+        height: 260px;
+        font-size: 0;
+        z-index: 100;
+      }
+    }
+    .form-horizontal{
+      /***单位***/
+      .unit{
+        position: absolute;
+        top: 6px;
+        right: -10px;
+      }
     }
   }
 }

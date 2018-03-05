@@ -646,9 +646,6 @@ select.form-control::-ms-expand {
   right: 36px;
   top: 24px;
 }
-.navPart .tab-content .tab-pane0 {
-  /***头像***/
-}
 .navPart .tab-content .tab-pane0 .showForm {
   margin-top: 18px;
 }
@@ -691,7 +688,19 @@ select.form-control::-ms-expand {
   text-indent: 10px;
   width: 110px;
 }
-.navPart .tab-content .tab-pane0 .head {
+.navPart .tab-content .tab-pane1 .childNav li:last-child {
+  float: right;
+}
+.navPart .tab-content .tab-pane1 .childNav li:last-child a {
+  color: #333;
+}
+.navPart .tab-content .tab-pane1 .childNav li:last-child a span:first-child {
+  margin-right: 12px;
+}
+.navPart .modal {
+  /***头像***/
+}
+.navPart .modal .head {
   position: relative;
   width: 210px;
   height: 260px;
@@ -699,10 +708,16 @@ select.form-control::-ms-expand {
   margin-left: 138px;
   margin-right: 22px;
 }
-.navPart .tab-content .tab-pane0 .head:hover p {
+.navPart .modal .head .headImg {
+  width: 210px;
+  height: 260px;
+  margin-right: 36px;
+  float: left;
+}
+.navPart .modal .head:hover p {
   display: block;
 }
-.navPart .tab-content .tab-pane0 .head:hover:before {
+.navPart .modal .head:hover:before {
   content: '';
   position: absolute;
   display: block;
@@ -712,7 +727,7 @@ select.form-control::-ms-expand {
   opacity: 0.6;
   z-index: 10;
 }
-.navPart .tab-content .tab-pane0 .head p {
+.navPart .modal .head p {
   display: none;
   position: absolute;
   font-size: 16px;
@@ -725,7 +740,7 @@ select.form-control::-ms-expand {
   margin-left: -18px;
   top: 108px;
 }
-.navPart .tab-content .tab-pane0 .head .changeHead {
+.navPart .modal .head .changeHead {
   position: absolute;
   top: 0;
   right: 0;
@@ -736,22 +751,13 @@ select.form-control::-ms-expand {
   font-size: 0;
   z-index: 100;
 }
-.navPart .tab-content .tab-pane0 .form-horizontal {
+.navPart .modal .form-horizontal {
   /***单位***/
 }
-.navPart .tab-content .tab-pane0 .form-horizontal .unit {
+.navPart .modal .form-horizontal .unit {
   position: absolute;
   top: 6px;
   right: -10px;
-}
-.navPart .tab-content .tab-pane1 .childNav li:last-child {
-  float: right;
-}
-.navPart .tab-content .tab-pane1 .childNav li:last-child a {
-  color: #333;
-}
-.navPart .tab-content .tab-pane1 .childNav li:last-child a span:first-child {
-  margin-right: 12px;
 }
 /***表格***/
 .dataTables_wrapper {

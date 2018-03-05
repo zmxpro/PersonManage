@@ -3,6 +3,8 @@
         var eduRecord,//教育履历
             insRecord,//考核记录
             disRecord;//奖惩记录
+        var receivedModal = $('#receivedModal');//模态框
+        var modelContent = $('#receivedModal .modelContent');//模态框
         function personDetail() {
             this.init();
         }
@@ -24,15 +26,19 @@
                 var self = this;
                 $('#infoParentNav li').click(function () {
                     var infoIndex = $(this).index();
+                    var modalHtm = '';
                     switch (infoIndex){
                         case 0:
                             break;
                         case 1:
                             break;
                         case 2:
+                            self.addEduRecord();
                             eduRecord.ajax.reload();
                             break;
                         case 3:
+                            self.addInsRecord();
+                            self.eduTimeInit();
                             insRecord.ajax.reload();
                             break;
                         case 4:
@@ -42,11 +48,36 @@
                     }
                 })
             },
-            /*******************华丽分割线之tab-pane0*******************/
+            /*******************华丽分割线之tab-pane0基本信息*******************/
+            /*******************华丽分割线之tab-pane1职业信息*******************/
 
-            /*******************华丽分割线之tab-pane1*******************/
-
-            /*******************华丽分割线之tab-pane2*******************/
+            /*******************华丽分割线之tab-pane2教育履历*******************/
+            //新增教育履历
+            addEduRecord:function () {
+                //新增
+                $('#addEduBtn').click(function () {
+                    $(this).next('.modal').modal('show');
+                })
+            },
+            //教育履历时间初始化
+            eduTimeInit:function () {
+                var self = this;
+                //开始时间
+                self.initData($('#eduStartData'));
+                $('#eduStartData').click(function () {
+                    var start = $('#eduEndData').val();
+                    $(this).datetimepicker("update", start);
+                    $(this).datetimepicker("setEndDate", start);
+                });
+                //结束时间
+                $('#eduEndData').click(function () {
+                    var start = $('#eduStartData').val();
+                    $(this).datetimepicker("update", start);
+                    $(this).datetimepicker("setStartDate", start);
+                });
+                self.initData($('#eduEndData'));
+            },
+            //教育履历表格
             eduRecordTab:function () {
                 var self = this;
                 eduRecord = $('#eduRecord .table').DataTable({
@@ -102,8 +133,8 @@
                                 content  = row.content.substring(0,50) + "……";
                             }
                             return '<div class="infoItem">' +
-                                '<p class="infoEdit clearfix" dataId = '+ row.id +'>' +
-                                '<span class="pull-left">编辑</span><i class="pull-right">×</i>' +
+                                '<p class="clearfix" dataId = '+ row.id +'>' +
+                                '<span class="pull-left infoEdit">编辑</span><i class="pull-right">×</i>' +
                                 '</p>' +
                                 '<ul class="infoDetail clearfix">' +
                                 '<li><p>学校名称</p>2018-02-02</li>' +
@@ -116,8 +147,21 @@
                     }]
                 });
             },
+            //教育履历编辑
+            editEduItem:function () {
+                $('#eduRecord').on('click','.infoEdit',function () {
 
-            /*******************华丽分割线之tab-pane3*******************/
+                })
+            },
+
+            /*******************华丽分割线之tab-pane3考核记录*******************/
+            addInsRecord:function () {
+                var self = this;
+
+                $('#addInsBtn').click(function () {
+                    $(this).next('.modal').modal('show');
+                })
+            },
             insRecordTab:function () {
                 var self = this;
                 insRecord = $('#insRecord .table').DataTable({
@@ -182,7 +226,7 @@
                 });
             },
 
-            /*******************华丽分割线之tab-pane4*******************/
+            /*******************华丽分割线之tab-pane4奖惩记录*******************/
             disRecordTab:function () {
                 var self = this;
                 disRecord = $('#disRecord .table').DataTable({
@@ -254,13 +298,25 @@
                     $('#receivedModal').modal('show')
                 });
             },
-            //日期初始化
+            //日期初始化-年月日
             initData:function (obj) {
                 obj.datetimepicker({
-                    minView: "month",//选择日期后，不会再跳转去选择时分秒
-                    language:  'zh-CN',  //日期
-                    autoclose: true,
-                    format: 'yyyy-mm-dd'
+                    minView: "month", //选择日期后，不会再跳转去选择时分秒
+                    language:  'zh-CN',
+                    startDate:"2017-01-01",
+                    format: 'yyyy-mm-dd',
+                    autoclose: 1
+                });
+            },
+            //日期初始化-年
+            initYearData:function (obj) {
+                obj.datetimepicker({
+                    startView: 'decade',
+                    minView: 'decade',
+                    format: 'yyyy',
+                    maxViewMode: 2,
+                    minViewMode:2,
+                    autoclose: true
                 });
             },
             /*上传图片*/
