@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>行业内人员信息</title>
     <link rel="stylesheet" href="../../static/plugins/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="../../static/plugins/ztree/css/metroStyle.css">
     <link rel="stylesheet" href="../../static/css/common/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="../../static/css/personInfo/personDetail.css">
     <script src="../../static/js/common/jquery-3.2.1.min.js"></script>
@@ -21,6 +22,10 @@
     <link rel="stylesheet" href="../../static/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
     <script src="../../static/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
     <script src="../../static/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <!--树形-->
+
+    <script src="../../static/plugins/ztree/js/jquery.ztree.core.min.js"></script>
+    <script src="../../static/plugins/ztree/js/jquery.ztree.excheck.min.js"></script>
 </head>
 <body>
 <div class="main clearfix">
@@ -43,8 +48,8 @@
             </li>
             <li></li>
         </ul>
-        <!-- 切换页 -->
         <div class="tab-content">
+            <!-- 基础信息 -->
             <div role="tabpanel" class="tab-pane tab-pane0 active" id="basicInfo">
                 <button class="iconBtn edit" id="editPerson"><i class="icon-19"></i>编辑</button>
                 <!-- 基础信息编辑弹框 -->
@@ -224,6 +229,7 @@
                     </div>                    
                 </div>
            </div>
+            <!-- 职业信息 -->
             <div role="tabpanel" class="tab-pane tab-pane1" id="professionInfo">
                 <ul class="nav nav-tabs childNav" role="tablist">
                     <li role="presentation" class="active">
@@ -243,349 +249,88 @@
                     </li>
                 </ul>
                 <div class="tab-content">
+                    <!-- 岗位信息 -->
                     <div role="tabpanel" class="tab-pane active" id="station">
-                        <button class="iconBtn edit"><i class="icon-19"></i>新增岗位信息</button>
+                        <button class="iconBtn addBtn"><i class="icon-19"></i>新增岗位信息</button>
                     </div>
+                    <!-- 职称信息 -->
                     <div role="tabpanel" class="tab-pane" id="technical">
-                        <button class="iconBtn edit"><i class="icon-19"></i>新增职称信息</button>
+                        <button class="iconBtn addBtn"><i class="icon-19"></i>新增职称信息</button>
                     </div>
+                    <!-- 职业证书信息 -->
                     <div role="tabpanel" class="tab-pane" id="vocational">
-                        <button class="iconBtn edit"><i class="icon-19"></i>新增职业证书</button>
+                        <button class="iconBtn addBtn"><i class="icon-19"></i>新增职业证书</button>
                     </div>
                 </div>
             </div>
+            <!-- 教育履历 -->
             <div role="tabpanel" class="tab-pane tab-pane2" id="eduRecord">
-                <button class="iconBtn edit" id="addEduBtn"><i class="icon-19"></i>新增教育履历</button>
-                <!-- 教育履历弹框 -->
-                <div class="modal fade bs-example-modal-sm" id="eduModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
-                            </div>
-                            <div class="modal-content">
-                                <form class="form-horizontal clearfix" data-toggle="validator" role="form">
-                                    <div class="form-group col-sm-6 mustRequired">
-                                        <label class="control-label col-sm-4">学校名称：</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" value="" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">开始日期：</label>
-                                        <div class="col-sm-8 dataTime">
-                                            <input type="text" id="eduStartData" class="form-control" readonly>
-                                            <label for="inlineData" class="glyphicon glyphicon-calendar fa fa-calendar"></label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6 mustRequired">
-                                        <label class="control-label col-sm-4">学历名称：</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" value="" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">结束日期：</label>
-                                        <div class="col-sm-8 dataTime">
-                                            <input type="text" id="eduEndData" class="form-control" readonly>
-                                            <label for="inlineData" class="glyphicon glyphicon-calendar fa fa-calendar"></label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6 mustRequired">
-                                        <label class="control-label col-sm-4">学历情况：</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <select class="form-control">
-                                                    <option value="">博士</option>
-                                                    <option value="">硕士</option>
-                                                    <option value="">本科</option>
-                                                    <option value="">大专</option>
-                                                    <option value="">中专</option>
-                                                    <option value="">技校</option>
-                                                    <option value="">高中</option>
-                                                    <option value="">初中</option>
-                                                    <option value="">其他</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6 mustRequired">
-                                        <label class="control-label col-sm-4">毕业方式：</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <select class="form-control">
-                                                    <option value="">毕业</option>
-                                                    <option value="">肄业</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer col-sm-12">
-                                        <button type="submit" class="btn btn-primary" id="saveEdu">保存</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <table class="table tableList">
-                    <thead class="text-center ">
-                        <tr>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+                <button class="iconBtn addBtn" id="addEduBtn"><i class="icon-19"></i>新增教育履历</button>
             </div>
+            <!-- 考核记录 -->
             <div role="tabpanel" class="tab-pane tab-pane3" id="insRecord">
-                <button class="iconBtn edit" id="addInsBtn"><i class="icon-19"></i>新增考核记录</button>
-                <!-- 考核记录弹框 -->
-                <div class="modal fade bs-example-modal-sm" id="insModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
-                            </div>
-                            <div class="modal-content">
-                                <form class="form-horizontal clearfix" data-toggle="validator" role="form">
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">姓名：</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" value="程皓" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">性别：</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <select class="form-control">
-                                                    <option value="all">男</option>
-                                                    <option value="check_pending">女</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">入行时间：</label>
-                                        <div class="col-sm-8 dataTime">
-                                            <input type="text" id="inlineData" class="form-control" readonly>
-                                            <label for="inlineData" class="glyphicon glyphicon-calendar fa fa-calendar"></label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">年龄：</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control" value="32" required>
-                                            <span class="unit">岁</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">电子邮箱：</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" value="123456@qq.com" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">身高：</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control" value="182" required>
-                                            <span class="unit">cm</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">手机号码：</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" value="18658415756" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">体重：</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control" value="0571-86669002" required>
-                                            <span class="unit">kg</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">办公电话：</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" value="0571-86669002" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">政治面貌：</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" value="党员" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">身份证号码：</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" value="320XXXXXXXXXXX9009" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">入党时间：</label>
-                                        <div class="col-sm-8 dataTime">
-                                            <input type="text" id="approvalData" class="form-control" readonly>
-                                            <label for="approvalData" class="glyphicon glyphicon-calendar fa fa-calendar"></label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">在职状态：</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <select class="form-control">
-                                                    <option value="">在职</option>
-                                                    <option value="">离休</option>
-                                                    <option value="">退休</option>
-                                                    <option value="">离职</option>
-                                                    <option value="">已故</option>
-                                                    <option value="">其他</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer col-sm-12">
-                                        <button type="submit" class="btn btn-primary" id="surePerson">确定</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <table class="table tableList">
-                    <thead class="text-center ">
-                    <tr>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+                <button class="iconBtn addBtn" id="addInsBtn"><i class="icon-19"></i>新增考核记录</button>
             </div>
+            <!-- 奖惩记录 -->
             <div role="tabpanel" class="tab-pane tab-pane4" id="disRecord">
-                <button class="iconBtn edit"><i class="icon-19"></i>新增奖惩记录</button>
-                <!-- 奖惩记录弹框 -->
-                <div class="modal fade bs-example-modal-sm" id="disModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
-                            </div>
-                            <div class="modal-content">
-                                <form class="form-horizontal clearfix" data-toggle="validator" role="form">
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">姓名：</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" value="程皓" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">性别：</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <select class="form-control">
-                                                    <option value="all">男</option>
-                                                    <option value="check_pending">女</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">入行时间：</label>
-                                        <div class="col-sm-8 dataTime">
-                                            <input type="text" id="inlineData" class="form-control" readonly>
-                                            <label for="inlineData" class="glyphicon glyphicon-calendar fa fa-calendar"></label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">年龄：</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control" value="32" required>
-                                            <span class="unit">岁</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">电子邮箱：</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" value="123456@qq.com" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">身高：</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control" value="182" required>
-                                            <span class="unit">cm</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">手机号码：</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" value="18658415756" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">体重：</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control" value="0571-86669002" required>
-                                            <span class="unit">kg</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">办公电话：</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" value="0571-86669002" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">政治面貌：</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" value="党员" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">身份证号码：</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" value="320XXXXXXXXXXX9009" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">入党时间：</label>
-                                        <div class="col-sm-8 dataTime">
-                                            <input type="text" id="approvalData" class="form-control" readonly>
-                                            <label for="approvalData" class="glyphicon glyphicon-calendar fa fa-calendar"></label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-6">
-                                        <label class="control-label col-sm-4">在职状态：</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <select class="form-control">
-                                                    <option value="">在职</option>
-                                                    <option value="">离休</option>
-                                                    <option value="">退休</option>
-                                                    <option value="">离职</option>
-                                                    <option value="">已故</option>
-                                                    <option value="">其他</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer col-sm-12">
-                                        <button type="submit" class="btn btn-primary" id="surePerson">确定</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                <button class="iconBtn addBtn" id="addDisBtn"><i class="icon-19"></i>新增奖惩记录</button>
+            </div>
+        </div>
+    </div>
+    <!-- 编辑或者新增弹框 -->
+    <div class="modal fade bs-example-modal-sm" id="editAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
                 </div>
-                <table class="table tableList">
-                    <thead class="text-center ">
-                    <tr>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+                <div class="modal-content modalContent"></div>
+            </div>
+        </div>
+    </div>
+    <!-- 树形弹框 -->
+    <div class="modal fade bs-example-modal-sm" id="treeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" style="width: 460px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
+                </div>
+                <div class="modal-content">
+                    <ul id="treeDemo" class="ztree leftBar"></ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="choiceIns">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 删除提示框 -->
+    <div class="modal fade bs-example-modal-sm" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="sss"></div>
+        <div class="modal-dialog modal-sm deleteModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
+                    <h5 class="modal-title">确定删除此项？</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary sureBtn">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 删除成功 -->
+    <div class="modal fade bs-example-modal-sm" id="deleteSucModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="sss"></div>
+        <div class="modal-dialog modal-sm deleteModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">&nbsp;</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
             </div>
         </div>
     </div>

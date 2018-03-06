@@ -601,11 +601,11 @@ select.form-control::-ms-expand {
   border-radius: 0;
   position: absolute;
   right: 1px;
-  top: 2px;
+  top: 1px;
   z-index: 100;
   border: 0;
   border-left: 1px solid #ccc;
-  padding: 15px;
+  padding: 16px;
   display: flex;
   justify-content: center;
 }
@@ -641,7 +641,7 @@ select.form-control::-ms-expand {
 .navPart .tab-content {
   padding: 12px 0;
 }
-.navPart .tab-content .edit {
+.navPart .tab-content .iconBtn {
   position: absolute;
   right: 36px;
   top: 24px;
@@ -822,6 +822,12 @@ select.form-control::-ms-expand {
   line-height: 36px;
   width: 80px;
 }
+.table.tableList tr .infoItem .infoDetail li .red {
+  color: #FF3F3F;
+}
+.table.tableList tr .infoItem .infoDetail li .gray {
+  color: #999;
+}
 .table.tableList tr:last-child td {
   border: 0;
 }
@@ -831,6 +837,9 @@ select.form-control::-ms-expand {
 @media (min-width: 768px) {
   .modal-sm {
     width: 800px;
+  }
+  .modal-sm.deleteModal {
+    width: 300px;
   }
   .modal .modal-dialog {
     margin: 100px auto;

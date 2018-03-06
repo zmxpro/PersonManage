@@ -6,7 +6,7 @@
   min-height: calc(~"100vh - 80px");
   .tab-content{
     padding: 12px 0;
-    .edit{
+    .iconBtn{
       position: absolute;
       right: 36px;
       top:24px;
@@ -205,6 +205,12 @@
             line-height: 36px;
             width: 80px;
           }
+          .red{
+            color: #FF3F3F;
+          }
+          .gray{
+            color: #999;
+          }
         }
       }
     }
@@ -221,6 +227,9 @@
 @media (min-width: 768px){
   .modal-sm {
     width: 800px;
+    &.deleteModal{
+      width: 300px;
+    }
   }
   .modal {
     .modal-dialog {
