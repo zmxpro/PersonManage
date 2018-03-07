@@ -391,9 +391,7 @@
                                         '<li><p>评定时间</p>2017-06-02</li>' +
                                         '<li><p>过期时间</p>2017-06-08</li>' +
                                         '<li><p>出具单位</p>鉴定处</li>' +
-                                        '<li><p>职称</p>高级职称</li>' +
-                                        '<li><p>组织机构</p>国家局</li>' +
-                                        '<li><p>单位部门</p>教育处</li>' +
+                                        '<li><p>职称</p>高级职称<i class="pull-right red">升</i></li>' +
                                         '<li><p>专业类</p>法律类</li>' +
                                         '<li><p>是否在聘</p>在聘</li>' +
                                         '</ul></div>';
@@ -410,8 +408,6 @@
                                         '<li><p>出具单位</p>鉴定处</li>' +
                                         '<li><p>职业证书</p>一级证书</li>' +
                                         '<li style="width:100%;"><p>证书编号</p>578764564132132132564851</li>' +
-                                        '<li><p>组织机构</p>国家局</li>' +
-                                        '<li><p>单位部门</p>教育处</li>' +
                                         '<li><p>职业工种</p>烟叶工</li>' +
                                         '<li><p>是否在岗</p>在岗</li>' +
                                         '</ul></div>';
@@ -650,6 +646,17 @@
                     '</div>'+
                     '</div>'+
                     '<div class="form-group col-sm-6 mustRequired">'+
+                    '<label class="control-label col-sm-4">职级升降：</label>'+
+                    '<div class="col-sm-8">'+
+                    '<div class="input-group">'+
+                    '<select class="form-control">'+
+                    '<option value="">升</option>'+
+                    '<option value="">降</option>'+
+                    '</select>'+
+                    '</div>'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="form-group col-sm-6 mustRequired">'+
                     '<label class="control-label col-sm-4">职务：</label>'+
                     '<div class="col-sm-8">'+
                     '<div class="input-group">'+
@@ -661,6 +668,17 @@
                     '<option value="">工会（监事会）职务</option>'+
                     '<option value="">学会职务</option>'+
                     '<option value="">其他职务</option>'+
+                    '</select>'+
+                    '</div>'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="form-group col-sm-6 mustRequired">'+
+                    '<label class="control-label col-sm-4">职务升降：</label>'+
+                    '<div class="col-sm-8">'+
+                    '<div class="input-group">'+
+                    '<select class="form-control">'+
+                    '<option value="">升</option>'+
+                    '<option value="">降</option>'+
                     '</select>'+
                     '</div>'+
                     '</div>'+
@@ -699,13 +717,24 @@
                     '<div class="form-group col-sm-6 mustRequired">'+
                     '<label class="control-label col-sm-4">出具单位：</label>'+
                     '<div class="col-sm-8">'+
+                    '<input type="text" class="form-control" value="" required>'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="form-group col-sm-6 mustRequired">'+
+                    '<label class="control-label col-sm-4">专业类：</label>'+
+                    '<div class="col-sm-8">'+
                     '<div class="input-group">'+
                     '<select class="form-control">'+
-                    '<option value="">鉴定处</option>'+
-                    '<option value="">鉴定处</option>'+
-                    '<option value="">鉴定处</option>'+
-                    '<option value="">鉴定处</option>'+
-                    '<option value="">鉴定处</option>'+
+                    '<option value="">经济类</option>'+
+                    '<option value="">管理类</option>'+
+                    '<option value="">法律类</option>'+
+                    '<option value="">语言类</option>'+
+                    '<option value="">理工类</option>'+
+                    '<option value="">农业类</option>'+
+                    '<option value="">财务类</option>'+
+                    '<option value="">信息类</option>'+
+                    '<option value="">烟草类</option>'+
+                    '<option value="">其他</option>'+
                     '</select>'+
                     '</div>'+
                     '</div>'+
@@ -725,44 +754,13 @@
                     '</div>'+
                     '</div>'+
                     '</div>'+
-                    '<div class="form-group col-sm-6 mustRequired">'+
-                    '<label class="control-label col-sm-4">组织机构：</label>'+
-                    '<div class="col-sm-8">'+
-                    '<div class="input-group initOrg" id="rpData">'+
-                    '<input type="text" class="form-control" readonly>'+
-                    '<span class="input-group-addon"></span>'+
-                    '</div>'+
-                    '</div>'+
-                    '</div>'+
-                    '<div class="form-group col-sm-6 mustRequired">'+
-                    '<label class="control-label col-sm-4">单位部门：</label>'+
+                    '<div class="form-group col-sm-6">'+
+                    '<label class="control-label col-sm-4">职称升降：</label>'+
                     '<div class="col-sm-8">'+
                     '<div class="input-group">'+
                     '<select class="form-control">'+
-                    '<option value="">教育处</option>'+
-                    '<option value="">教育处</option>'+
-                    '<option value="">教育处</option>'+
-                    '<option value="">教育处</option>'+
-                    '<option value="">教育处</option>'+
-                    '</select>'+
-                    '</div>'+
-                    '</div>'+
-                    '</div>'+
-                    '<div class="form-group col-sm-6 mustRequired">'+
-                    '<label class="control-label col-sm-4">专业类：</label>'+
-                    '<div class="col-sm-8">'+
-                    '<div class="input-group">'+
-                    '<select class="form-control">'+
-                    '<option value="">经济类</option>'+
-                    '<option value="">管理类</option>'+
-                    '<option value="">法律类</option>'+
-                    '<option value="">语言类</option>'+
-                    '<option value="">理工类</option>'+
-                    '<option value="">农业类</option>'+
-                    '<option value="">财务类</option>'+
-                    '<option value="">信息类</option>'+
-                    '<option value="">烟草类</option>'+
-                    '<option value="">其他</option>'+
+                    '<option value="">升</option>'+
+                    '<option value="">降</option>'+
                     '</select>'+
                     '</div>'+
                     '</div>'+
@@ -812,58 +810,19 @@
                     '<div class="form-group col-sm-6 mustRequired">'+
                     '<label class="control-label col-sm-4">出具单位：</label>'+
                     '<div class="col-sm-8">'+
-                    '<div class="input-group">'+
-                    '<select class="form-control">'+
-                    '<option value="">鉴定处</option>'+
-                    '<option value="">鉴定处</option>'+
-                    '<option value="">鉴定处</option>'+
-                    '<option value="">鉴定处</option>'+
-                    '<option value="">鉴定处</option>'+
-                    '</select>'+
-                    '</div>'+
+                    '<input type="text" class="form-control" value="鉴定处" required>'+
                     '</div>'+
                     '</div>'+
                     '<div class="form-group col-sm-6">'+
                     '<label class="control-label col-sm-4">职业证书：</label>'+
                     '<div class="col-sm-8">'+
-                    '<div class="input-group">'+
-                    '<select class="form-control">'+
-                    '<option value="">一级证书</option>'+
-                    '<option value="">二级证书</option>'+
-                    '<option value="">三级证书</option>'+
-                    '<option value="">四级证书</option>'+
-                    '<option value="">五级证书</option>'+
-                    '</select>'+
-                    '</div>'+
+                    '<input type="text" class="form-control" value="一级证书" required>'+
                     '</div>'+
                     '</div>'+
                     '<div class="form-group col-sm-6 mustRequired">'+
                     '<label class="control-label col-sm-4">证书编号：</label>'+
                     '<div class="col-sm-8">'+
                     '<input type="text" class="form-control" value="" required>'+
-                    '</div>'+
-                    '</div>'+
-                    '<div class="form-group col-sm-6 mustRequired">'+
-                    '<label class="control-label col-sm-4">组织机构：</label>'+
-                    '<div class="col-sm-8">'+
-                    '<div class="input-group initOrg" id="rpData">'+
-                    '<input type="text" class="form-control" readonly>'+
-                    '<span class="input-group-addon"></span>'+
-                    '</div>'+
-                    '</div>'+
-                    '</div>'+
-                    '<div class="form-group col-sm-6 mustRequired">'+
-                    '<label class="control-label col-sm-4">单位部门：</label>'+
-                    '<div class="col-sm-8">'+
-                    '<div class="input-group">'+
-                    '<select class="form-control">'+
-                    '<option value="">教育处</option>'+
-                    '<option value="">教育处</option>'+
-                    '<option value="">教育处</option>'+
-                    '<option value="">教育处</option>'+
-                    '<option value="">教育处</option>'+
-                    '</select>'+
-                    '</div>'+
                     '</div>'+
                     '</div>'+
                     '<div class="form-group col-sm-6 mustRequired">'+
@@ -889,7 +848,7 @@
                     '<div class="input-group">'+
                     '<select class="form-control">'+
                     '<option value="">在岗</option>'+
-                    '<option value="">离职</option>'+
+                    '<option value="">离岗</option>'+
                     '</select>'+
                     '</div>'+
                     '</div>'+
