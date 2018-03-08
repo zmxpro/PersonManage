@@ -5,10 +5,16 @@
         }
         personInfo.prototype = {
             init:function () {
+                this.addPerson();//新增
                 this.loadTable();//加载人员表格
                 this.changeTile();//修改title信息
                 this.refresh();//刷新
                 this.checkAll();//全选
+            },
+            addPerson:function () {
+                $('#addPerson').click(function () {
+                    location.href = 'addPerson.html'
+                })
             },
             //修改title信息，此方法需要菜单列传参后修改状态值
             changeTile:function () {
@@ -216,6 +222,7 @@
                 });
                 //跳转详情页
                 $('#tbUserList tbody tr').on('click', function (event) {
+                    $(this).find('.icon-16').attr("dataId");
                     location.href = "../../views/personInfo/personDetail.html"
                 });
 
