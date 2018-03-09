@@ -504,7 +504,7 @@ body {
 .checkBox .check + label:before {
   color: #9D9D9D;
   font-size: 14px;
-  margin-top: 1px;
+  margin: 1px 4px 0 0;
   float: left;
 }
 .checkBox .check:checked + label:before {
@@ -631,4 +631,110 @@ select.form-control::-ms-expand {
 }
 .form-horizontal .dataTime .glyphicon-calendar:before {
   color: #999;
+}
+.condition {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.condition .seaResult .results {
+  float: left;
+}
+.condition .seaResult .results span {
+  color: #00726c;
+  cursor: pointer;
+}
+.condition .seaResult .seaBtn {
+  float: right;
+}
+.condition .seaResult .seaBtn .iconBtn.btnGray {
+  padding-right: 24px;
+  background: #F4F4F4;
+  color: #333;
+  position: relative;
+}
+.condition .seaResult .seaBtn .iconBtn.btnGray i {
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  margin: 0;
+  transform: rotate(90deg);
+}
+.condition .seaResult .seaBtn .iconBtn.btnGray i:before {
+  color: #333;
+}
+.condition .seaResult .seaBtn .iconBtn:first-child {
+  margin-right: 6px;
+}
+.condition .seaCondition {
+  margin-top: 10px;
+  padding: 10px 0;
+  border-top: 1px dashed #E4E4E4;
+  border-bottom: 1px dashed #E4E4E4;
+}
+.condition .seaCondition .seaItemOrg .seaTitle {
+  color: #999;
+  text-align: center;
+  width: 4em;
+}
+.condition .seaCondition .seaItemOrg .seaTitle.w2 {
+  letter-spacing: 2em;
+  margin-right: -2em;
+}
+.condition .seaCondition .seaItemOrg .form-control {
+  height: 30px;
+  cursor: pointer;
+  padding: 4px 36px 4px 10px;
+  margin: 5px 10px 5px 24px;
+  display: inline-block;
+  border-radius: 0;
+  width: 280px;
+  background: url(../../images/icon-select.png) no-repeat right;
+}
+.condition .seaCondition .seaItemOrg .choiceTemplate {
+  color: #00726c;
+  cursor: pointer;
+}
+.condition .seaCondition .seaItem {
+  padding-top: 10px;
+}
+.condition .seaCondition .seaItem .seaTitle {
+  vertical-align: top;
+  color: #999;
+  text-align: center;
+  width: 4em;
+}
+.condition .seaCondition .seaItem .seaTitle.w2 {
+  letter-spacing: 2em;
+  margin-right: -2em;
+}
+.condition .seaCondition .seaItem .choiceTemplate {
+  color: #00726c;
+  cursor: pointer;
+}
+.condition .seaCondition .seaItem .seaItems {
+  width: calc(100% - 84px);
+  margin-left: 24px;
+  display: inline-block;
+}
+.condition .seaCondition .seaItem .seaItems .checkBox {
+  display: inline-block;
+  margin: 0 10px 10px 0;
+}
+.condition .seaCondition .checkBox .check:checked + label span {
+  color: #F57C00;
+}
+.condition .addSea {
+  margin-top: 10px;
+  text-align: right;
+}
+.errorMsg .errorText {
+  text-align: center;
+  color: #FF3F3F;
+}
+@media (min-width: 768px) {
+  .modal .modal-content {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
 }

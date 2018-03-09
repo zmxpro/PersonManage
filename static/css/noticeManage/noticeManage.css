@@ -504,7 +504,7 @@ body {
 .checkBox .check + label:before {
   color: #9D9D9D;
   font-size: 14px;
-  margin-top: 1px;
+  margin: 1px 4px 0 0;
   float: left;
 }
 .checkBox .check:checked + label:before {

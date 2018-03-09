@@ -1,0 +1,166 @@
+@import "../common/global";
+.addPart{
+  padding: 24px 36px;
+  background: @white;
+  position: relative;
+  min-height: calc(~"100vh - 80px");
+  .g-title{
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: @dBlue;
+    height: 32px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid @dBlue;
+  }
+  .addItem{
+    display: none;
+    .addTitle{
+      padding: 20px 0;
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      line-height: 38px;
+      span{
+        font-size: 24px;
+        float: left;
+        font-weight: normal;
+        margin-right: 10px;
+      }
+    }
+    .addContent{
+      width: 75%;
+      &.clearfix{
+        width: 100%;
+      }
+      form{
+        position: relative;
+        padding: 20px 0 10px 0;
+        border-top: 1px solid @borderColor;
+        &:first-child{
+          border: 0;
+        }
+        .icon-22{
+          position: absolute;
+          right: 10px;
+          top: 20px;
+          font-size: 18px;
+          cursor: pointer;
+          &:before{
+            color: #444;
+          }
+          &:hover{
+            opacity: 0.8;
+          }
+        }
+      }
+      .clickBtn{
+        width: 50%;
+        span{
+          color: @dBlue;
+          display: block;
+          width: 33.33333333%;
+          padding: 16px 12px 4px 12px;
+          text-align: right;
+          cursor: pointer;
+        }
+      }
+      /**基本信息**/
+      .head{
+        position: relative;
+        width: 210px;
+        height: 260px;
+        float: left;
+        margin-bottom: 6px;
+        .headImg{
+          width: 210px;
+          height: 260px;
+          margin-right: 36px;
+          float: left;
+        }
+        &:before{
+          content: '';
+          position: absolute;
+          display: block;
+          width: 210px;
+          height: 260px;
+          background: #999;
+          opacity: 0.2;
+          z-index: 10;
+        }
+        .addImg{
+          display: block;
+          position: absolute;
+          font-size: 16px;
+          letter-spacing: 2px;
+          z-index: 10;
+          width: 36px;
+          line-height: 22px;
+          left: 50%;
+          margin-left: -18px;
+          top: 108px;
+        }
+        .changeHead{
+          position: absolute;
+          top: 0;
+          right: 0;
+          opacity: 0;
+          cursor: pointer;
+          width: 210px;
+          height: 260px;
+          font-size: 0;
+          z-index: 100;
+        }
+        .size{
+          font-size: 12px;
+          text-align: center;
+          margin-top: 6px;
+          color: #666;
+        }
+      }
+      .peronInfo{
+        width: calc(~"100% - 210px");
+        float: left;
+        form{
+          padding: 0;
+        }
+        .line{
+          margin-right: 50%;
+        }
+        .unit{
+          position: absolute;
+          top: 6px;
+          right: -10px;
+        }
+      }
+    }
+    .addBtn{
+      border-top: 1px solid #E4E4E4;
+      padding-top: 15px;
+      margin-top: 15px;
+      text-align: right;
+      .btn{
+        margin-right: 8px;
+        &:last-child{
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 768px){
+  .modal-sm {
+    width: 800px;
+    &.deleteModal{
+      width: 300px;
+    }
+  }
+  .modal {
+    .modal-dialog {
+      margin: 100px auto;
+    }
+    .modal-content{
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+}

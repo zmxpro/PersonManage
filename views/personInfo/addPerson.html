@@ -1,0 +1,714 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新增行业内人员</title>
+    <link rel="stylesheet" href="../../static/plugins/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="../../static/plugins/ztree/css/metroStyle.css">
+    <link rel="stylesheet" href="../../static/css/common/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/personInfo/addPerson.css">
+    <script src="../../static/js/common/jquery-3.2.1.min.js"></script>
+    <script src="../../static/plugins/bootstrap-3.3.7/js/bootstrap.js"></script>
+    <!--表格-->
+    <script src="../../static/js/common/jquery.dataTables.js"></script>
+    <script src="../../static/js/common/dataTables.bootstrap.js"></script>
+    <!--表单验证-->
+    <script src="../../static/plugins/validator/validator.min.js"></script>
+    <!--日期-->
+    <link rel="stylesheet" href="../../static/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
+    <script src="../../static/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../../static/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <!--树形-->
+    <script src="../../static/plugins/ztree/js/jquery.ztree.core.min.js"></script>
+    <script src="../../static/plugins/ztree/js/jquery.ztree.excheck.min.js"></script>
+    <script src="../../static/js/personInfo/addPerson.js"></script>
+</head>
+<body>
+<div class="main clearfix">
+    <p class="caption" id="caption">行业内人员信息 <i>Out of trade personnel information</i></p>
+    <div class="addPart">
+        <p class="g-title">新增行业内人员</p>
+        <div id="addPersonBar">
+            <!--基础信息-->
+            <div class="addItem">
+                <p class="addTitle"><span>➜</span>基础信息</p>
+                <div class="addContent clearfix">
+                    <div class="head">
+                        <input type="file" class="changeHead" accept="image/*" id="changeHead">
+                        <p class="addImg">添加照片</p>
+                        <img src="" class="head" alt="" id="head">
+                        <p class="size">照片规格 210*260</p>
+                    </div>
+                    <div class="peronInfo">
+                        <form class="form-horizontal clearfix" data-toggle="validator" role="form">
+                            <div class="form-group col-sm-6 line">
+                                <label class="control-label col-sm-4">姓名：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 line">
+                                <label class="control-label col-sm-4">性别：</label>
+                                <div class="col-sm-7">
+                                    <div class="input-group">
+                                        <select class="form-control">
+                                            <option>男</option>
+                                            <option>女</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 line">
+                                <label class="control-label col-sm-4">身高：</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" required>
+                                    <span class="unit">cm</span>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 line">
+                                <label class="control-label col-sm-4">体重：</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" required>
+                                    <span class="unit">kg</span>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 line">
+                                <label class="control-label col-sm-4">年龄：</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" required>
+                                    <span class="unit">岁</span>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 line">
+                                <label class="control-label col-sm-4">身份证号码：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 line">
+                                <label class="control-label col-sm-4">民族：</label>
+                                <div class="col-sm-7">
+                                    <div class="input-group">
+                                        <select class="form-control">
+                                            <option>汉族</option>
+                                            <option>苗族</option>
+                                            <option>其他</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-4">手机号码：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-4">电子邮箱：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-4">组织机构：</label>
+                                <div class="col-sm-7">
+                                    <div class="input-group initOrg">
+                                        <input type="text" class="form-control" readonly="">
+                                        <span class="input-group-addon"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-4">所属部门：</label>
+                                <div class="col-sm-7">
+                                    <div class="input-group">
+                                        <select class="form-control">
+                                            <option>教育处</option>
+                                            <option>教育处</option>
+                                            <option>教育处</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-4">办公电话：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-4">政治面貌：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-4">入党时间：</label>
+                                <div class="col-sm-7 dataTime">
+                                    <input type="text" class="form-control initTime" readonly>
+                                    <label class="glyphicon glyphicon-calendar fa fa-calendar"></label>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-4">在职状态：</label>
+                                <div class="col-sm-7">
+                                    <div class="input-group">
+                                        <select class="form-control">
+                                            <option>在职</option>
+                                            <option>离休</option>
+                                            <option>退休</option>
+                                            <option>离职</option>
+                                            <option>已故</option>
+                                            <option>其他</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-4">入行时间：</label>
+                                <div class="col-sm-7 dataTime">
+                                    <input type="text" class="form-control initTime" readonly>
+                                    <label class="glyphicon glyphicon-calendar fa fa-calendar"></label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="addBtn">
+                    <button type="button" class="btn btn-primary nextBtn">下一步</button>
+                </div>
+            </div>
+            <!--岗位信息-->
+            <div class="addItem">
+                <p class="addTitle"><span>➜</span>岗位信息</p>
+                <div class="addContent">
+                    <form class="form-horizontal clearfix" data-toggle="validator" role="form">
+                    <div class="form-group col-sm-6">
+                        <label class="control-label col-sm-4">到岗时间：</label>
+                        <div class="col-sm-7 dataTime">
+                            <input type="text" class="form-control initTime" readonly>
+                            <label class="glyphicon glyphicon-calendar fa fa-calendar"></label>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="control-label col-sm-4">离岗时间：</label>
+                        <div class="col-sm-7 dataTime">
+                            <input type="text" class="form-control initTime" readonly>
+                            <label class="glyphicon glyphicon-calendar fa fa-calendar"></label>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="control-label col-sm-4">组织机构：</label>
+                        <div class="col-sm-7">
+                            <div class="input-group initOrg">
+                                <input type="text" class="form-control" readonly="">
+                                <span class="input-group-addon"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="control-label col-sm-4">所属部门：</label>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <select class="form-control">
+                                    <option>教育处</option>
+                                    <option>教育处</option>
+                                    <option>教育处</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="control-label col-sm-4">岗位类型：</label>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <select class="form-control">
+                                    <option value="">管理类</option>
+                                    <option value="">专业技术类</option>
+                                    <option value="">生产操作类</option>
+                                    <option value="">业务类</option>
+                                    <option value="">服务类</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="control-label col-sm-4">职务属性：</label>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <select class="form-control">
+                                    <option value="">信息技术</option>
+                                    <option value="">国际贸易</option>
+                                    <option value="">人力资源</option>
+                                    <option value="">国家局管理</option>
+                                    <option value="">班子成员</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="control-label col-sm-4">职务：</label>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <select class="form-control">
+                                    <option value="">党团职务</option>
+                                    <option value="">行政职务</option>
+                                    <option value="">企业职务</option>
+                                    <option value="">董事会职务</option>
+                                    <option value="">工会（监事会）职务</option>
+                                    <option value="">学会职务</option>
+                                    <option value="">其他职务</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="control-label col-sm-4">职务升降：</label>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <select class="form-control">
+                                    <option value="">升</option>
+                                    <option value="">降</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="control-label col-sm-4">职级：</label>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <select class="form-control">
+                                    <option value="">正部级</option>
+                                    <option value="">副部级</option>
+                                    <option value="">正厅级</option>
+                                    <option value="">副厅级</option>
+                                    <option value="">正局级</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="control-label col-sm-4">职级升降：</label>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <select class="form-control">
+                                    <option value="">升</option>
+                                    <option value="">降</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="control-label col-sm-4">党内职务：</label>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <select class="form-control">
+                                    <option value="">正部级</option>
+                                    <option value="">副部级</option>
+                                    <option value="">正厅级</option>
+                                    <option value="">副厅级</option>
+                                    <option value="">正局级</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="control-label col-sm-4">党内职务升降：</label>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <select class="form-control">
+                                    <option value="">升</option>
+                                    <option value="">降</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                    <div class="clickBtn">
+                        <span>新增岗位信息</span>
+                    </div>
+                </div>
+                <div class="addBtn">
+                    <button type="button" class="btn btn-primary preBtn">上一步</button>
+                    <button type="button" class="btn btn-primary nextBtn">下一步</button>
+                </div>
+            </div>
+            <!--职称信息-->
+            <div class="addItem">
+                <p class="addTitle"><span>➜</span>职称信息</p>
+                <div class="addContent">
+                    <form class="form-horizontal clearfix" data-toggle="validator" role="form">
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">评定时间：</label>
+                            <div class="col-sm-7 dataTime">
+                                <input type="text" class="form-control initTime" readonly>
+                                <label class="glyphicon glyphicon-calendar fa fa-calendar"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">过期时间：</label>
+                            <div class="col-sm-7 dataTime">
+                                <input type="text" class="form-control initTime" readonly>
+                                <label class="glyphicon glyphicon-calendar fa fa-calendar"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">出具单位：</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">专业类：</label>
+                            <div class="col-sm-7">
+                                <div class="input-group">
+                                    <select class="form-control">
+                                        <option value="">经济类</option>
+                                        <option value="">管理类</option>
+                                        <option value="">法律类</option>
+                                        <option value="">语言类</option>
+                                        <option value="">理工类</option>
+                                        <option value="">农业类</option>
+                                        <option value="">财务类</option>
+                                        <option value="">信息类</option>
+                                        <option value="">烟草类</option>
+                                        <option value="">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">职称：</label>
+                            <div class="col-sm-7">
+                                <div class="input-group">
+                                    <select class="form-control">
+                                        <option value="">高级职称</option>
+                                        <option value="">高级职称</option>
+                                        <option value="">高级职称</option>
+                                        <option value="">高级职称</option>
+                                        <option value="">高级职称</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">职称升降：</label>
+                            <div class="col-sm-7">
+                                <div class="input-group">
+                                    <select class="form-control">
+                                        <option value="">升</option>
+                                        <option value="">降</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">是否在聘：</label>
+                            <div class="col-sm-7">
+                                <div class="input-group">
+                                    <select class="form-control">
+                                        <option value="">在聘</option>
+                                        <option value="">解聘</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="clickBtn">
+                        <span>新增职称信息</span>
+                    </div>
+                </div>
+                <div class="addBtn">
+                    <button type="button" class="btn btn-primary preBtn">上一步</button>
+                    <button type="button" class="btn btn-primary nextBtn">下一步</button>
+                </div>
+            </div>
+            <!--职业证书信息-->
+            <div class="addItem">
+                <p class="addTitle"><span>➜</span>职业证书信息</p>
+                <div class="addContent">
+                    <form class="form-horizontal clearfix" data-toggle="validator" role="form">
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">发证时间：</label>
+                            <div class="col-sm-7 dataTime">
+                                <input type="text" class="form-control initTime" readonly>
+                                <label class="glyphicon glyphicon-calendar fa fa-calendar"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">过期时间：</label>
+                            <div class="col-sm-7 dataTime">
+                                <input type="text" class="form-control initTime" readonly>
+                                <label class="glyphicon glyphicon-calendar fa fa-calendar"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">出具单位：</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">职业证书：</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">证书编号：</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">职业工种：</label>
+                            <div class="col-sm-7">
+                                <div class="input-group">
+                                    <select class="form-control">
+                                        <option value="">储丝工</option>
+                                        <option value="">切丝工</option>
+                                        <option value="">切尖工</option>
+                                        <option value="">切尖解把工</option>
+                                        <option value="">制烟材料收发工</option>
+                                        <option value="">加香工</option>
+                                        <option value="">卷接工</option>
+                                        <option value="">卷烟包装工</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">是否在岗：</label>
+                            <div class="col-sm-7">
+                                <div class="input-group">
+                                    <select class="form-control">
+                                        <option value="">在岗</option>
+                                        <option value="">离岗</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="clickBtn">
+                        <span>新增职业证书信息</span>
+                    </div>
+                </div>
+                <div class="addBtn">
+                    <button type="button" class="btn btn-primary preBtn">上一步</button>
+                    <button type="button" class="btn btn-primary nextBtn">下一步</button>
+                </div>
+            </div>
+            <!--教育履历-->
+            <div class="addItem">
+                <p class="addTitle"><span>➜</span>教育履历</p>
+                <div class="addContent">
+                    <form class="form-horizontal clearfix" data-toggle="validator" role="form">
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">开始时间：</label>
+                            <div class="col-sm-7 dataTime">
+                                <input type="text" class="form-control initTime" readonly>
+                                <label class="glyphicon glyphicon-calendar fa fa-calendar"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">结束时间：</label>
+                            <div class="col-sm-7 dataTime">
+                                <input type="text" class="form-control initTime" readonly>
+                                <label class="glyphicon glyphicon-calendar fa fa-calendar"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">学历情况：</label>
+                            <div class="col-sm-7">
+                                <div class="input-group">
+                                    <select class="form-control">
+                                        <option value="">博士</option>
+                                        <option value="" selected="">硕士</option>
+                                        <option value="">本科</option>
+                                        <option value="">大专</option>
+                                        <option value="">中专</option>
+                                        <option value="">技校</option>
+                                        <option value="">高中</option>
+                                        <option value="">初中</option>
+                                        <option value="">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">学校名称：</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">专业名称：</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">毕业方式：</label>
+                            <div class="col-sm-7">
+                                <div class="input-group">
+                                    <select class="form-control">
+                                        <option value="">毕业</option>
+                                        <option value="" selected="">肄业</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="clickBtn">
+                        <span>新增教育履历</span>
+                    </div>
+                </div>
+                <div class="addBtn">
+                    <button type="button" class="btn btn-primary preBtn">上一步</button>
+                    <button type="button" class="btn btn-primary nextBtn">下一步</button>
+                </div>
+            </div>
+            <!--考核记录-->
+            <div class="addItem">
+                <p class="addTitle"><span>➜</span>考核记录</p>
+                <div class="addContent">
+                    <form class="form-horizontal clearfix" data-toggle="validator" role="form">
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">考核年度：</label>
+                            <div class="col-sm-7 dataTime">
+                                <input type="text" class="form-control yearTime" readonly>
+                                <label class="glyphicon glyphicon-calendar fa fa-calendar"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">考核组织：</label>
+                            <div class="col-sm-7">
+                                <div class="input-group initOrg">
+                                    <input type="text" class="form-control" readonly="">
+                                    <span class="input-group-addon"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">考核结果：</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">考核意见人：</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" required>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="clickBtn">
+                        <span>新增考核记录</span>
+                    </div>
+                </div>
+                <div class="addBtn">
+                    <button type="button" class="btn btn-primary preBtn">上一步</button>
+                    <button type="button" class="btn btn-primary nextBtn">下一步</button>
+                </div>
+            </div>
+            <!--奖惩记录-->
+            <div class="addItem">
+                <p class="addTitle"><span>➜</span>奖惩记录</p>
+                <div class="addContent">
+                    <form class="form-horizontal clearfix" data-toggle="validator" role="form">
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">奖惩时间：</label>
+                            <div class="col-sm-7 dataTime">
+                                <input type="text" class="form-control initTime" readonly>
+                                <label class="glyphicon glyphicon-calendar fa fa-calendar"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">奖惩类型：</label>
+                            <div class="col-sm-7">
+                                <div class="input-group">
+                                    <select class="form-control">
+                                        <option value="">博士</option>
+                                        <option value="" selected="">硕士</option>
+                                        <option value="">本科</option>
+                                        <option value="">大专</option>
+                                        <option value="">中专</option>
+                                        <option value="">技校</option>
+                                        <option value="">高中</option>
+                                        <option value="">初中</option>
+                                        <option value="">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">奖惩单位：</label>
+                            <div class="col-sm-7 dataTime">
+                                <div class="input-group initOrg">
+                                    <input type="text" class="form-control" readonly="">
+                                    <span class="input-group-addon"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="control-label col-sm-4">奖惩内容：</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12" style="margin-left: -20px;">
+                            <label class="control-label col-sm-2">奖惩内容：</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" id="noticeContent" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="clickBtn">
+                        <span>新增奖惩记录</span>
+                    </div>
+                </div>
+                <div class="addBtn">
+                    <button type="button" class="btn btn-primary preBtn">上一步</button>
+                    <button type="button" class="btn btn-primary nextBtn">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 组织 -->
+    <div class="modal fade bs-example-modal-sm" id="orgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" style="width: 460px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
+                </div>
+                <div class="modal-content">
+                    <ul id="treeDemo" class="ztree leftBar"></ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="choiceIns">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 提示框 -->
+    <div class="modal fade bs-example-modal-sm" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="sss"></div>
+        <div class="modal-dialog modal-sm deleteModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
+                    <h5 class="modal-title">确定删除此项？</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary sureBtn">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,1 +1,117 @@
 @import "../common/global";
+.condition{
+  background: @white;
+  padding: 20px;
+  margin-bottom: 20px;
+  .seaResult{
+    .results{
+      float: left;
+      span{
+        color: @dBlue;
+        cursor: pointer;
+      }
+    }
+    .seaBtn{
+      float: right;
+      .iconBtn{
+        &.btnGray{
+          padding-right: 24px;
+          background: #F4F4F4;
+          color: #333;
+          position: relative;
+          i{
+            position: absolute;
+            top: 5px;
+            right: 6px;
+            margin: 0;
+            transform: rotate(90deg);
+            &:before{
+              color: #333;
+            }
+          }
+        }
+        &:first-child{
+          margin-right: 6px;
+        }
+      }
+    }
+  }
+  .seaCondition{
+    margin-top: 10px;
+    padding: 10px 0;
+    border-top: 1px dashed @borderColor;
+    border-bottom: 1px dashed @borderColor;
+    .seaItemOrg{
+      .seaTitle{
+        color: #999;
+        text-align: center;
+        width: 4em;
+        &.w2{
+          letter-spacing:2em;
+          margin-right:-2em;
+        }
+      }
+      .form-control{
+        height: 30px;
+        cursor: pointer;
+        padding: 4px 36px 4px 10px;
+        margin: 5px 10px 5px 24px;
+        display: inline-block;
+        border-radius: 0;
+        width: 280px;
+        background: url(../../images/icon-select.png) no-repeat right;
+      }
+      .choiceTemplate{
+        color: @dBlue;
+        cursor: pointer;
+      }
+    }
+    .seaItem{
+      padding-top: 10px;
+      .seaTitle{
+        vertical-align: top;
+        color: #999;
+        text-align: center;
+        width: 4em;
+        &.w2{
+          letter-spacing:2em;
+          margin-right:-2em;
+        }
+      }
+      .choiceTemplate{
+        color: @dBlue;
+        cursor: pointer;
+      }
+      .seaItems{
+        width: calc(~"100% - 84px");
+        margin-left: 24px;
+        display: inline-block;
+        .checkBox{
+          display: inline-block;
+          margin: 0 10px 10px 0;
+        }
+      }
+    }
+    .checkBox .check:checked + label {
+      span{
+        color: #F57C00;
+      }
+    }
+  }
+  .addSea{
+    margin-top: 10px;
+    text-align: right;
+  }
+}
+.errorMsg{
+  .errorText{
+    text-align: center;
+    color: @errorColor;
+  }
+}
+@media (min-width: 768px){
+  .modal .modal-content {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}

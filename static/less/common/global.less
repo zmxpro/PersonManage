@@ -93,6 +93,7 @@ body{
 @navWidth:220px;//左侧菜单宽度
 @topHeight:50px;//顶部高度
 @boxShow:#B9B9B9;//阴影色
+@errorColor:#FF3F3F;//报错颜色
 //渐变
 .gradient(@angle:top,@start:#000,@stop:#ff050e){
   background: -webkit-linear-gradient(@angle,@start,@stop);
@@ -491,7 +492,7 @@ body{
     & + label:before{
       color: @mainTitle;
       font-size: 14px;
-      margin-top: 1px;
+      margin: 1px 4px 0 0;
       float: left;
     }
     &:checked + label:before {

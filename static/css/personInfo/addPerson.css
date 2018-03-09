@@ -632,115 +632,111 @@ select.form-control::-ms-expand {
 .form-horizontal .dataTime .glyphicon-calendar:before {
   color: #999;
 }
-.navPart {
+.addPart {
   padding: 24px 36px;
   background: #fff;
   position: relative;
   min-height: calc(100vh - 80px);
 }
-.navPart .tab-content {
-  padding: 12px 0;
+.addPart .g-title {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #00726c;
+  height: 32px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #00726c;
 }
-.navPart .tab-content .iconBtn {
+.addPart .addItem {
+  display: none;
+}
+.addPart .addItem .addTitle {
+  padding: 20px 0;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  line-height: 38px;
+}
+.addPart .addItem .addTitle span {
+  font-size: 24px;
+  float: left;
+  font-weight: normal;
+  margin-right: 10px;
+}
+.addPart .addItem .addContent {
+  width: 75%;
+  /**基本信息**/
+}
+.addPart .addItem .addContent.clearfix {
+  width: 100%;
+}
+.addPart .addItem .addContent form {
+  position: relative;
+  padding: 20px 0 10px 0;
+  border-top: 1px solid #E4E4E4;
+}
+.addPart .addItem .addContent form:first-child {
+  border: 0;
+}
+.addPart .addItem .addContent form .icon-22 {
   position: absolute;
-  right: 36px;
-  top: 24px;
+  right: 10px;
+  top: 20px;
+  font-size: 18px;
+  cursor: pointer;
 }
-.navPart .tab-content .tab-pane0 .showForm {
-  margin-top: 18px;
+.addPart .addItem .addContent form .icon-22:before {
+  color: #444;
 }
-.navPart .tab-content .tab-pane0 .showForm .headImg {
-  width: 210px;
-  height: 260px;
-  margin-right: 36px;
-  float: left;
+.addPart .addItem .addContent form .icon-22:hover {
+  opacity: 0.8;
 }
-.navPart .tab-content .tab-pane0 .showForm .detail {
-  width: calc(100% - 246px);
-  float: left;
-}
-.navPart .tab-content .tab-pane0 .showForm .detail .title {
-  background: #E4E4E4;
-  height: 40px;
-  line-height: 40px;
-  margin-bottom: 8px;
-}
-.navPart .tab-content .tab-pane0 .showForm .detail .title span {
-  float: left;
-  display: inline-block;
-  height: 40px;
-  line-height: 40px;
-}
-.navPart .tab-content .tab-pane0 .showForm .detail .title span.name {
-  font-size: 21px;
-  text-indent: 10px;
-  margin-right: 20px;
-}
-.navPart .tab-content .tab-pane0 .showForm .detail .inlineItem {
-  display: inline-block;
+.addPart .addItem .addContent .clickBtn {
   width: 50%;
-  height: 36px;
-  line-height: 36px;
-  float: left;
 }
-.navPart .tab-content .tab-pane0 .showForm .detail .inlineItem span:first-child {
-  display: inline-block;
-  text-indent: 10px;
-  width: 110px;
+.addPart .addItem .addContent .clickBtn span {
+  color: #00726c;
+  display: block;
+  width: 33.33333333%;
+  padding: 16px 12px 4px 12px;
+  text-align: right;
+  cursor: pointer;
 }
-.navPart .tab-content .tab-pane1 .childNav li:last-child {
-  float: right;
-}
-.navPart .tab-content .tab-pane1 .childNav li:last-child a {
-  color: #333;
-}
-.navPart .tab-content .tab-pane1 .childNav li:last-child a span:first-child {
-  margin-right: 12px;
-}
-.navPart .modal {
-  /***头像***/
-}
-.navPart .modal .head {
+.addPart .addItem .addContent .head {
   position: relative;
   width: 210px;
   height: 260px;
   float: left;
-  margin-left: 138px;
-  margin-right: 22px;
+  margin-bottom: 6px;
 }
-.navPart .modal .head .headImg {
+.addPart .addItem .addContent .head .headImg {
   width: 210px;
   height: 260px;
   margin-right: 36px;
   float: left;
 }
-.navPart .modal .head:hover p {
-  display: block;
-}
-.navPart .modal .head:hover:before {
+.addPart .addItem .addContent .head:before {
   content: '';
   position: absolute;
   display: block;
   width: 210px;
   height: 260px;
-  background: #333;
-  opacity: 0.6;
+  background: #999;
+  opacity: 0.2;
   z-index: 10;
 }
-.navPart .modal .head p {
-  display: none;
+.addPart .addItem .addContent .head .addImg {
+  display: block;
   position: absolute;
   font-size: 16px;
   letter-spacing: 2px;
   z-index: 10;
-  color: #fff;
   width: 36px;
   line-height: 22px;
   left: 50%;
   margin-left: -18px;
   top: 108px;
 }
-.navPart .modal .head .changeHead {
+.addPart .addItem .addContent .head .changeHead {
   position: absolute;
   top: 0;
   right: 0;
@@ -751,88 +747,38 @@ select.form-control::-ms-expand {
   font-size: 0;
   z-index: 100;
 }
-.navPart .modal .form-horizontal {
-  /***单位***/
+.addPart .addItem .addContent .head .size {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 6px;
+  color: #666;
 }
-.navPart .modal .form-horizontal .unit {
+.addPart .addItem .addContent .peronInfo {
+  width: calc(100% - 210px);
+  float: left;
+}
+.addPart .addItem .addContent .peronInfo form {
+  padding: 0;
+}
+.addPart .addItem .addContent .peronInfo .line {
+  margin-right: 50%;
+}
+.addPart .addItem .addContent .peronInfo .unit {
   position: absolute;
   top: 6px;
   right: -10px;
 }
-/***表格***/
-.dataTables_wrapper {
-  background: #fff;
-  -moz-box-shadow: 0 0 8px #fff;
-  -webkit-box-shadow: 0 0 8px #fff;
-  box-shadow: 0 0 8px #fff;
+.addPart .addItem .addBtn {
+  border-top: 1px solid #E4E4E4;
+  padding-top: 15px;
+  margin-top: 15px;
+  text-align: right;
 }
-.dataTables_wrapper .dataTables_paginate.paging_simple_numbers {
-  padding: 16px 60px 0 60px;
-  border-top: 1px solid #e4e4e4;
+.addPart .addItem .addBtn .btn {
+  margin-right: 8px;
 }
-.table.tableList tr:hover {
-  background: transparent;
-  cursor: inherit;
-}
-.table.tableList tr th:last-child,
-.table.tableList tr td:last-child {
-  padding: 0;
-}
-.table.tableList tr td {
-  border: 0;
-}
-.table.tableList tr td:hover {
-  cursor: inherit;
-}
-.table.tableList tr .infoItem {
-  width: 680px;
-  margin: 12px 0;
-}
-.table.tableList tr .infoItem .infoEdit {
-  padding: 0 6px 0 16px;
-  height: 36px;
-  line-height: 36px;
-  background: #E4E4E4;
-}
-.table.tableList tr .infoItem .infoEdit span {
-  color: #00726c;
-  cursor: pointer;
-}
-.table.tableList tr .infoItem .infoEdit i {
-  cursor: pointer;
-  padding: 0 10px;
-  font-size: 22px;
-  margin-top: -1px;
-}
-.table.tableList tr .infoItem .infoDetail {
-  border-left: 1px solid #e4e4e4;
-}
-.table.tableList tr .infoItem .infoDetail li {
-  padding: 0 16px;
-  float: left;
-  width: calc(50%);
-  height: 36px;
-  line-height: 36px;
-  border-bottom: 1px solid #e4e4e4;
-  border-right: 1px solid #e4e4e4;
-}
-.table.tableList tr .infoItem .infoDetail li p {
-  float: left;
-  height: 36px;
-  line-height: 36px;
-  width: 80px;
-}
-.table.tableList tr .infoItem .infoDetail li .red {
-  color: #FF3F3F;
-}
-.table.tableList tr .infoItem .infoDetail li .gray {
-  color: #999;
-}
-.table.tableList tr:last-child td {
-  border: 0;
-}
-.table.tableList tr:last-child .infoItem {
-  margin-bottom: 16px;
+.addPart .addItem .addBtn .btn:last-child {
+  margin: 0;
 }
 @media (min-width: 768px) {
   .modal-sm {
