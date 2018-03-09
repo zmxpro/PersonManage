@@ -67,6 +67,7 @@
       }
     }
     .seaItem{
+      display: none;
       padding-top: 10px;
       .seaTitle{
         vertical-align: top;
@@ -91,10 +92,16 @@
           margin: 0 10px 10px 0;
         }
       }
-    }
-    .checkBox .check:checked + label {
-      span{
-        color: #F57C00;
+      &.inputItem{
+        .seaTitle{
+          line-height: 30px;
+        }
+        .form-control{
+          width: 160px;
+          padding: 4px 10px;
+          height: 30px;
+          border-radius: 0;
+        }
       }
     }
   }
@@ -107,6 +114,37 @@
   .errorText{
     text-align: center;
     color: @errorColor;
+  }
+}
+.addSearchModal{
+  .modal-content{
+    h5{
+      text-align: center;
+      margin: 0;
+      font-size: 16px;
+    }
+    .addSea{
+      padding: 0 20px 10px 20px;
+      p{
+        margin-bottom: 12px;
+      }
+      .info{
+        padding: 0 14px;
+        .checkBox{
+          float: left;
+          width: 74px;
+          margin-right: 14px;
+          margin-bottom: 10px;
+        }
+      }
+
+    }
+  }
+}
+/****/
+.checkBox .check:checked + label {
+  span{
+    color: #F57C00;
   }
 }
 @media (min-width: 768px){

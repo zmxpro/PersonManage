@@ -8,8 +8,11 @@
     <title>人员查询</title>
     <link rel="stylesheet" href="../../static/plugins/bootstrap-3.3.7/css/bootstrap.css">
     <link rel="stylesheet" href="../../static/css/common/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/plugins/ztree/css/metroStyle.css">
     <link rel="stylesheet" href="../../static/css/personSearch/personSearch.css">
     <script src="../../static/js/common/jquery-3.2.1.min.js"></script>
+    <script src="../../static/plugins/ztree/js/jquery.ztree.core.min.js"></script>
+    <script src="../../static/plugins/ztree/js/jquery.ztree.excheck.min.js"></script>
     <script src="../../static/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script src="../../static/js/common/jquery.dataTables.js"></script>
     <script src="../../static/js/common/dataTables.bootstrap.js"></script>
@@ -19,9 +22,1237 @@
 <div class="main clearfix">
     <p class="caption">人员查询 <i>Staff queries</i></p>
     <div class="condition">
-
+        <div class="seaResult clearfix">
+            <div class="results">
+                <span id="addSearch">新增查询条件</span>
+            </div>
+            <div class="seaBtn">
+                <button class="iconBtn btnGray" id="ContractionIn">收起查询<i class="icon-15"></i></button>
+                <button class="iconBtn" id="queryInfo"><i class="icon-02" ></i>查询</button>
+            </div>
+        </div>
+        <div class="seaCondition">
+            <div class="seaItemOrg">
+                <span class="seaTitle">组织机构</span>
+                <input type="text" class="form-control"  id="selects" placeholder="点击弹窗显示所有组织机构（可多选）" readonly>
+                <span class="choiceTemplate">选择模版</span>
+            </div>
+            <div class="seaItem inputItem">
+                <span class="seaTitle w2">姓名</span>
+                <div class="seaItems">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="seaItem">
+                <span class="seaTitle">在职状态</span>
+                <div class="seaItems">
+                    <div class="checkBox">
+                        <input type="checkbox" id="item1" name="checkItem" class="check" value="1">
+                        <label for="item1" class="icon-18">
+                            <span>正部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item2" name="checkItem" class="check" value="1">
+                        <label for="item2" class="icon-18">
+                            <span>副部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item3" name="checkItem" class="check" value="1">
+                        <label for="item3" class="icon-18">
+                            <span>正厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item4" name="checkItem" class="check" value="1">
+                        <label for="item4" class="icon-18">
+                            <span>副厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item5" name="checkItem" class="check" value="1">
+                        <label for="item5" class="icon-18">
+                            <span>正局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item6" name="checkItem" class="check" value="1">
+                        <label for="item6" class="icon-18">
+                            <span>副局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item7" name="checkItem" class="check" value="1">
+                        <label for="item7" class="icon-18">
+                            <span>正司机</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item8" name="checkItem" class="check" value="1">
+                        <label for="item8" class="icon-18">
+                            <span>副司级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item9" name="checkItem" class="check" value="1">
+                        <label for="item9" class="icon-18">
+                            <span>正处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item10" name="checkItem" class="check" value="1">
+                        <label for="item10" class="icon-18">
+                            <span>副处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item11" name="checkItem" class="check" value="1">
+                        <label for="item11" class="icon-18">
+                            <span>正科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item12" name="checkItem" class="check" value="1">
+                        <label for="item12" class="icon-18">
+                            <span>副科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item13" name="checkItem" class="check" value="1">
+                        <label for="item13" class="icon-18">
+                            <span>正股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item14" name="checkItem" class="check" value="1">
+                        <label for="item14" class="icon-18">
+                            <span>副股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item15" name="checkItem" class="check" value="1">
+                        <label for="item15" class="icon-18">
+                            <span>科员</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item16" name="checkItem" class="check" value="1">
+                        <label for="item16" class="icon-18">
+                            <span>其他</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item17" name="checkItem" class="check" value="1">
+                        <label for="item17" class="icon-18">
+                            <span>无</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="seaItem">
+                <span class="seaTitle">政治面貌</span>
+                <div class="seaItems">
+                    <div class="checkBox">
+                        <input type="checkbox" id="title1" name="checkItem" class="check" value="1">
+                        <label for="title1" class="icon-18">
+                            <span>正高级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="title2" name="checkItem" class="check" value="1">
+                        <label for="title2" class="icon-18">
+                            <span>副高级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="title3" name="checkItem" class="check" value="1">
+                        <label for="title3" class="icon-18">
+                            <span>高级职称</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="title4" name="checkItem" class="check" value="1">
+                        <label for="title4" class="icon-18">
+                            <span>中级职称</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="title5" name="checkItem" class="check" value="1">
+                        <label for="title5" class="icon-18">
+                            <span>初级职称</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="title6" name="checkItem" class="check" value="1">
+                        <label for="title6" class="icon-18">
+                            <span>无职称</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="seaItem">
+                <span class="seaTitle">单位类型</span>
+                <div class="seaItems">
+                    <div class="checkBox">
+                        <input type="checkbox" id="politics1" name="checkItem" class="check" value="1">
+                        <label for="politics1" class="icon-18">
+                            <span>中共党员</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="politics2" name="checkItem" class="check" value="1">
+                        <label for="politics2" class="icon-18">
+                            <span>共青团员</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="politics3" name="checkItem" class="check" value="1">
+                        <label for="politics3" class="icon-18">
+                            <span>民主党派</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="politics4" name="checkItem" class="check" value="1">
+                        <label for="politics4" class="icon-18">
+                            <span>无党派</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="politics5" name="checkItem" class="check" value="1">
+                        <label for="politics5" class="icon-18">
+                            <span>群众</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="politics6" name="checkItem" class="check" value="1">
+                        <label for="politics6" class="icon-18">
+                            <span>其他</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="seaItem">
+                <span class="seaTitle">单位地址</span>
+                <div class="seaItems">
+                    <div class="checkBox">
+                        <input type="checkbox" id="status1" name="checkItem" class="check" value="1">
+                        <label for="status1" class="icon-18">
+                            <span>在职</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="status2" name="checkItem" class="check" value="1">
+                        <label for="status2" class="icon-18">
+                            <span>离休</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="status3" name="checkItem" class="check" value="1">
+                        <label for="status3" class="icon-18">
+                            <span>退休</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="status4" name="checkItem" class="check" value="1">
+                        <label for="status4" class="icon-18">
+                            <span>离职</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="status5" name="checkItem" class="check" value="1">
+                        <label for="status5" class="icon-18">
+                            <span>已故</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="status6" name="checkItem" class="check" value="1">
+                        <label for="status6" class="icon-18">
+                            <span>其他</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="status7" name="checkItem" class="check" value="1">
+                        <label for="status7" class="icon-18">
+                            <span>在聘</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="status8" name="checkItem" class="check" value="1">
+                        <label for="status8" class="icon-18">
+                            <span>解聘</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="seaItem">
+                <span class="seaTitle w2">职称</span>
+                <div class="seaItems">
+                    <div class="checkBox">
+                        <input type="checkbox" id="item1" name="checkItem" class="check" value="1">
+                        <label for="item1" class="icon-18">
+                            <span>正部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item2" name="checkItem" class="check" value="1">
+                        <label for="item2" class="icon-18">
+                            <span>副部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item3" name="checkItem" class="check" value="1">
+                        <label for="item3" class="icon-18">
+                            <span>正厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item4" name="checkItem" class="check" value="1">
+                        <label for="item4" class="icon-18">
+                            <span>副厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item5" name="checkItem" class="check" value="1">
+                        <label for="item5" class="icon-18">
+                            <span>正局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item6" name="checkItem" class="check" value="1">
+                        <label for="item6" class="icon-18">
+                            <span>副局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item7" name="checkItem" class="check" value="1">
+                        <label for="item7" class="icon-18">
+                            <span>正司机</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item8" name="checkItem" class="check" value="1">
+                        <label for="item8" class="icon-18">
+                            <span>副司级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item9" name="checkItem" class="check" value="1">
+                        <label for="item9" class="icon-18">
+                            <span>正处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item10" name="checkItem" class="check" value="1">
+                        <label for="item10" class="icon-18">
+                            <span>副处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item11" name="checkItem" class="check" value="1">
+                        <label for="item11" class="icon-18">
+                            <span>正科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item12" name="checkItem" class="check" value="1">
+                        <label for="item12" class="icon-18">
+                            <span>副科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item13" name="checkItem" class="check" value="1">
+                        <label for="item13" class="icon-18">
+                            <span>正股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item14" name="checkItem" class="check" value="1">
+                        <label for="item14" class="icon-18">
+                            <span>副股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item15" name="checkItem" class="check" value="1">
+                        <label for="item15" class="icon-18">
+                            <span>科员</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item16" name="checkItem" class="check" value="1">
+                        <label for="item16" class="icon-18">
+                            <span>其他</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item17" name="checkItem" class="check" value="1">
+                        <label for="item17" class="icon-18">
+                            <span>无</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="seaItem">
+                <span class="seaTitle w2">职务</span>
+                <div class="seaItems">
+                    <div class="checkBox">
+                        <input type="checkbox" id="item1" name="checkItem" class="check" value="1">
+                        <label for="item1" class="icon-18">
+                            <span>正部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item2" name="checkItem" class="check" value="1">
+                        <label for="item2" class="icon-18">
+                            <span>副部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item3" name="checkItem" class="check" value="1">
+                        <label for="item3" class="icon-18">
+                            <span>正厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item4" name="checkItem" class="check" value="1">
+                        <label for="item4" class="icon-18">
+                            <span>副厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item5" name="checkItem" class="check" value="1">
+                        <label for="item5" class="icon-18">
+                            <span>正局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item6" name="checkItem" class="check" value="1">
+                        <label for="item6" class="icon-18">
+                            <span>副局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item7" name="checkItem" class="check" value="1">
+                        <label for="item7" class="icon-18">
+                            <span>正司机</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item8" name="checkItem" class="check" value="1">
+                        <label for="item8" class="icon-18">
+                            <span>副司级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item9" name="checkItem" class="check" value="1">
+                        <label for="item9" class="icon-18">
+                            <span>正处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item10" name="checkItem" class="check" value="1">
+                        <label for="item10" class="icon-18">
+                            <span>副处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item11" name="checkItem" class="check" value="1">
+                        <label for="item11" class="icon-18">
+                            <span>正科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item12" name="checkItem" class="check" value="1">
+                        <label for="item12" class="icon-18">
+                            <span>副科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item13" name="checkItem" class="check" value="1">
+                        <label for="item13" class="icon-18">
+                            <span>正股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item14" name="checkItem" class="check" value="1">
+                        <label for="item14" class="icon-18">
+                            <span>副股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item15" name="checkItem" class="check" value="1">
+                        <label for="item15" class="icon-18">
+                            <span>科员</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item16" name="checkItem" class="check" value="1">
+                        <label for="item16" class="icon-18">
+                            <span>其他</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item17" name="checkItem" class="check" value="1">
+                        <label for="item17" class="icon-18">
+                            <span>无</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="seaItem">
+                <span class="seaTitle">岗位类型</span>
+                <div class="seaItems">
+                    <div class="checkBox">
+                        <input type="checkbox" id="item1" name="checkItem" class="check" value="1">
+                        <label for="item1" class="icon-18">
+                            <span>正部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item2" name="checkItem" class="check" value="1">
+                        <label for="item2" class="icon-18">
+                            <span>副部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item3" name="checkItem" class="check" value="1">
+                        <label for="item3" class="icon-18">
+                            <span>正厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item4" name="checkItem" class="check" value="1">
+                        <label for="item4" class="icon-18">
+                            <span>副厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item5" name="checkItem" class="check" value="1">
+                        <label for="item5" class="icon-18">
+                            <span>正局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item6" name="checkItem" class="check" value="1">
+                        <label for="item6" class="icon-18">
+                            <span>副局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item7" name="checkItem" class="check" value="1">
+                        <label for="item7" class="icon-18">
+                            <span>正司机</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item8" name="checkItem" class="check" value="1">
+                        <label for="item8" class="icon-18">
+                            <span>副司级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item9" name="checkItem" class="check" value="1">
+                        <label for="item9" class="icon-18">
+                            <span>正处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item10" name="checkItem" class="check" value="1">
+                        <label for="item10" class="icon-18">
+                            <span>副处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item11" name="checkItem" class="check" value="1">
+                        <label for="item11" class="icon-18">
+                            <span>正科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item12" name="checkItem" class="check" value="1">
+                        <label for="item12" class="icon-18">
+                            <span>副科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item13" name="checkItem" class="check" value="1">
+                        <label for="item13" class="icon-18">
+                            <span>正股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item14" name="checkItem" class="check" value="1">
+                        <label for="item14" class="icon-18">
+                            <span>副股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item15" name="checkItem" class="check" value="1">
+                        <label for="item15" class="icon-18">
+                            <span>科员</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item16" name="checkItem" class="check" value="1">
+                        <label for="item16" class="icon-18">
+                            <span>其他</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item17" name="checkItem" class="check" value="1">
+                        <label for="item17" class="icon-18">
+                            <span>无</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="seaItem">
+                <span class="seaTitle">职业工种</span>
+                <div class="seaItems">
+                    <div class="checkBox">
+                        <input type="checkbox" id="item1" name="checkItem" class="check" value="1">
+                        <label for="item1" class="icon-18">
+                            <span>正部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item2" name="checkItem" class="check" value="1">
+                        <label for="item2" class="icon-18">
+                            <span>副部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item3" name="checkItem" class="check" value="1">
+                        <label for="item3" class="icon-18">
+                            <span>正厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item4" name="checkItem" class="check" value="1">
+                        <label for="item4" class="icon-18">
+                            <span>副厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item5" name="checkItem" class="check" value="1">
+                        <label for="item5" class="icon-18">
+                            <span>正局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item6" name="checkItem" class="check" value="1">
+                        <label for="item6" class="icon-18">
+                            <span>副局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item7" name="checkItem" class="check" value="1">
+                        <label for="item7" class="icon-18">
+                            <span>正司机</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item8" name="checkItem" class="check" value="1">
+                        <label for="item8" class="icon-18">
+                            <span>副司级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item9" name="checkItem" class="check" value="1">
+                        <label for="item9" class="icon-18">
+                            <span>正处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item10" name="checkItem" class="check" value="1">
+                        <label for="item10" class="icon-18">
+                            <span>副处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item11" name="checkItem" class="check" value="1">
+                        <label for="item11" class="icon-18">
+                            <span>正科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item12" name="checkItem" class="check" value="1">
+                        <label for="item12" class="icon-18">
+                            <span>副科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item13" name="checkItem" class="check" value="1">
+                        <label for="item13" class="icon-18">
+                            <span>正股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item14" name="checkItem" class="check" value="1">
+                        <label for="item14" class="icon-18">
+                            <span>副股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item15" name="checkItem" class="check" value="1">
+                        <label for="item15" class="icon-18">
+                            <span>科员</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item16" name="checkItem" class="check" value="1">
+                        <label for="item16" class="icon-18">
+                            <span>其他</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item17" name="checkItem" class="check" value="1">
+                        <label for="item17" class="icon-18">
+                            <span>无</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="seaItem">
+                <span class="seaTitle">证书等级</span>
+                <div class="seaItems">
+                    <div class="checkBox">
+                        <input type="checkbox" id="item1" name="checkItem" class="check" value="1">
+                        <label for="item1" class="icon-18">
+                            <span>正部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item2" name="checkItem" class="check" value="1">
+                        <label for="item2" class="icon-18">
+                            <span>副部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item3" name="checkItem" class="check" value="1">
+                        <label for="item3" class="icon-18">
+                            <span>正厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item4" name="checkItem" class="check" value="1">
+                        <label for="item4" class="icon-18">
+                            <span>副厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item5" name="checkItem" class="check" value="1">
+                        <label for="item5" class="icon-18">
+                            <span>正局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item6" name="checkItem" class="check" value="1">
+                        <label for="item6" class="icon-18">
+                            <span>副局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item7" name="checkItem" class="check" value="1">
+                        <label for="item7" class="icon-18">
+                            <span>正司机</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item8" name="checkItem" class="check" value="1">
+                        <label for="item8" class="icon-18">
+                            <span>副司级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item9" name="checkItem" class="check" value="1">
+                        <label for="item9" class="icon-18">
+                            <span>正处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item10" name="checkItem" class="check" value="1">
+                        <label for="item10" class="icon-18">
+                            <span>副处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item11" name="checkItem" class="check" value="1">
+                        <label for="item11" class="icon-18">
+                            <span>正科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item12" name="checkItem" class="check" value="1">
+                        <label for="item12" class="icon-18">
+                            <span>副科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item13" name="checkItem" class="check" value="1">
+                        <label for="item13" class="icon-18">
+                            <span>正股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item14" name="checkItem" class="check" value="1">
+                        <label for="item14" class="icon-18">
+                            <span>副股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item15" name="checkItem" class="check" value="1">
+                        <label for="item15" class="icon-18">
+                            <span>科员</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item16" name="checkItem" class="check" value="1">
+                        <label for="item16" class="icon-18">
+                            <span>其他</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item17" name="checkItem" class="check" value="1">
+                        <label for="item17" class="icon-18">
+                            <span>无</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="seaItem">
+                <span class="seaTitle">毕业院校</span>
+                <div class="seaItems">
+                    <div class="checkBox">
+                        <input type="checkbox" id="item1" name="checkItem" class="check" value="1">
+                        <label for="item1" class="icon-18">
+                            <span>正部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item2" name="checkItem" class="check" value="1">
+                        <label for="item2" class="icon-18">
+                            <span>副部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item3" name="checkItem" class="check" value="1">
+                        <label for="item3" class="icon-18">
+                            <span>正厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item4" name="checkItem" class="check" value="1">
+                        <label for="item4" class="icon-18">
+                            <span>副厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item5" name="checkItem" class="check" value="1">
+                        <label for="item5" class="icon-18">
+                            <span>正局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item6" name="checkItem" class="check" value="1">
+                        <label for="item6" class="icon-18">
+                            <span>副局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item7" name="checkItem" class="check" value="1">
+                        <label for="item7" class="icon-18">
+                            <span>正司机</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item8" name="checkItem" class="check" value="1">
+                        <label for="item8" class="icon-18">
+                            <span>副司级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item9" name="checkItem" class="check" value="1">
+                        <label for="item9" class="icon-18">
+                            <span>正处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item10" name="checkItem" class="check" value="1">
+                        <label for="item10" class="icon-18">
+                            <span>副处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item11" name="checkItem" class="check" value="1">
+                        <label for="item11" class="icon-18">
+                            <span>正科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item12" name="checkItem" class="check" value="1">
+                        <label for="item12" class="icon-18">
+                            <span>副科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item13" name="checkItem" class="check" value="1">
+                        <label for="item13" class="icon-18">
+                            <span>正股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item14" name="checkItem" class="check" value="1">
+                        <label for="item14" class="icon-18">
+                            <span>副股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item15" name="checkItem" class="check" value="1">
+                        <label for="item15" class="icon-18">
+                            <span>科员</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item16" name="checkItem" class="check" value="1">
+                        <label for="item16" class="icon-18">
+                            <span>其他</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item17" name="checkItem" class="check" value="1">
+                        <label for="item17" class="icon-18">
+                            <span>无</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="seaItem">
+                <span class="seaTitle w2">专业</span>
+                <div class="seaItems">
+                    <div class="checkBox">
+                        <input type="checkbox" id="item1" name="checkItem" class="check" value="1">
+                        <label for="item1" class="icon-18">
+                            <span>正部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item2" name="checkItem" class="check" value="1">
+                        <label for="item2" class="icon-18">
+                            <span>副部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item3" name="checkItem" class="check" value="1">
+                        <label for="item3" class="icon-18">
+                            <span>正厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item4" name="checkItem" class="check" value="1">
+                        <label for="item4" class="icon-18">
+                            <span>副厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item5" name="checkItem" class="check" value="1">
+                        <label for="item5" class="icon-18">
+                            <span>正局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item6" name="checkItem" class="check" value="1">
+                        <label for="item6" class="icon-18">
+                            <span>副局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item7" name="checkItem" class="check" value="1">
+                        <label for="item7" class="icon-18">
+                            <span>正司机</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item8" name="checkItem" class="check" value="1">
+                        <label for="item8" class="icon-18">
+                            <span>副司级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item9" name="checkItem" class="check" value="1">
+                        <label for="item9" class="icon-18">
+                            <span>正处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item10" name="checkItem" class="check" value="1">
+                        <label for="item10" class="icon-18">
+                            <span>副处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item11" name="checkItem" class="check" value="1">
+                        <label for="item11" class="icon-18">
+                            <span>正科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item12" name="checkItem" class="check" value="1">
+                        <label for="item12" class="icon-18">
+                            <span>副科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item13" name="checkItem" class="check" value="1">
+                        <label for="item13" class="icon-18">
+                            <span>正股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item14" name="checkItem" class="check" value="1">
+                        <label for="item14" class="icon-18">
+                            <span>副股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item15" name="checkItem" class="check" value="1">
+                        <label for="item15" class="icon-18">
+                            <span>科员</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item16" name="checkItem" class="check" value="1">
+                        <label for="item16" class="icon-18">
+                            <span>其他</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item17" name="checkItem" class="check" value="1">
+                        <label for="item17" class="icon-18">
+                            <span>无</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="seaItem">
+                <span class="seaTitle">学历情况</span>
+                <div class="seaItems">
+                    <div class="checkBox">
+                        <input type="checkbox" id="item1" name="checkItem" class="check" value="1">
+                        <label for="item1" class="icon-18">
+                            <span>正部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item2" name="checkItem" class="check" value="1">
+                        <label for="item2" class="icon-18">
+                            <span>副部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item3" name="checkItem" class="check" value="1">
+                        <label for="item3" class="icon-18">
+                            <span>正厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item4" name="checkItem" class="check" value="1">
+                        <label for="item4" class="icon-18">
+                            <span>副厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item5" name="checkItem" class="check" value="1">
+                        <label for="item5" class="icon-18">
+                            <span>正局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item6" name="checkItem" class="check" value="1">
+                        <label for="item6" class="icon-18">
+                            <span>副局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item7" name="checkItem" class="check" value="1">
+                        <label for="item7" class="icon-18">
+                            <span>正司机</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item8" name="checkItem" class="check" value="1">
+                        <label for="item8" class="icon-18">
+                            <span>副司级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item9" name="checkItem" class="check" value="1">
+                        <label for="item9" class="icon-18">
+                            <span>正处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item10" name="checkItem" class="check" value="1">
+                        <label for="item10" class="icon-18">
+                            <span>副处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item11" name="checkItem" class="check" value="1">
+                        <label for="item11" class="icon-18">
+                            <span>正科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item12" name="checkItem" class="check" value="1">
+                        <label for="item12" class="icon-18">
+                            <span>副科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item13" name="checkItem" class="check" value="1">
+                        <label for="item13" class="icon-18">
+                            <span>正股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item14" name="checkItem" class="check" value="1">
+                        <label for="item14" class="icon-18">
+                            <span>副股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item15" name="checkItem" class="check" value="1">
+                        <label for="item15" class="icon-18">
+                            <span>科员</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item16" name="checkItem" class="check" value="1">
+                        <label for="item16" class="icon-18">
+                            <span>其他</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item17" name="checkItem" class="check" value="1">
+                        <label for="item17" class="icon-18">
+                            <span>无</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="seaItem">
+                <span class="seaTitle w2">学位</span>
+                <div class="seaItems">
+                    <div class="checkBox">
+                        <input type="checkbox" id="item1" name="checkItem" class="check" value="1">
+                        <label for="item1" class="icon-18">
+                            <span>正部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item2" name="checkItem" class="check" value="1">
+                        <label for="item2" class="icon-18">
+                            <span>副部级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item3" name="checkItem" class="check" value="1">
+                        <label for="item3" class="icon-18">
+                            <span>正厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item4" name="checkItem" class="check" value="1">
+                        <label for="item4" class="icon-18">
+                            <span>副厅级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item5" name="checkItem" class="check" value="1">
+                        <label for="item5" class="icon-18">
+                            <span>正局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item6" name="checkItem" class="check" value="1">
+                        <label for="item6" class="icon-18">
+                            <span>副局级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item7" name="checkItem" class="check" value="1">
+                        <label for="item7" class="icon-18">
+                            <span>正司机</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item8" name="checkItem" class="check" value="1">
+                        <label for="item8" class="icon-18">
+                            <span>副司级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item9" name="checkItem" class="check" value="1">
+                        <label for="item9" class="icon-18">
+                            <span>正处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item10" name="checkItem" class="check" value="1">
+                        <label for="item10" class="icon-18">
+                            <span>副处级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item11" name="checkItem" class="check" value="1">
+                        <label for="item11" class="icon-18">
+                            <span>正科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item12" name="checkItem" class="check" value="1">
+                        <label for="item12" class="icon-18">
+                            <span>副科级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item13" name="checkItem" class="check" value="1">
+                        <label for="item13" class="icon-18">
+                            <span>正股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item14" name="checkItem" class="check" value="1">
+                        <label for="item14" class="icon-18">
+                            <span>副股级</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item15" name="checkItem" class="check" value="1">
+                        <label for="item15" class="icon-18">
+                            <span>科员</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item16" name="checkItem" class="check" value="1">
+                        <label for="item16" class="icon-18">
+                            <span>其他</span>
+                        </label>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="item17" name="checkItem" class="check" value="1">
+                        <label for="item17" class="icon-18">
+                            <span>无</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="addSea clearfix">
+            <button class="iconBtn" id="derive"><i class="icon-25"></i>下载</button>
+        </div>
     </div>
-
     <!-- 表格 -->
     <div class="notice">
         <p class="caption">汇总 : 符合条件一共 122 人</p>
@@ -45,21 +1276,184 @@
             </thead>
         </table>
     </div>
-
-    <!-- 删除弹框 -->
-    <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
+</div>
+<!-- 新增查询条件 -->
+<div class="modal fade bs-example-modal-sm addSearchModal" id="addSearchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" style="width: 450px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
+            </div>
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
-                    <h5 class="modal-title" id="myModalLabel">
-                        确认删除此人员？
-                    </h5>
+                <h5> 查询条件</h5>
+                <div class="addSea">
+                    <p>基础信息</p>
+                    <div class="info clearfix">
+                        <div class="checkBox">
+                            <input type="checkbox" id="basics1" name="addSeaItem" class="check" value="姓名" >
+                            <label for="basics1" class="icon-18">
+                                <span>姓名</span>
+                            </label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="basics2" name="addSeaItem" class="check" value="在职状态" >
+                            <label for="basics2" class="icon-18">
+                                <span>在职状态</span>
+                            </label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="basics3" name="addSeaItem" class="check" value="政治面貌" >
+                            <label for="basics3" class="icon-18">
+                                <span>政治面貌</span>
+                            </label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="basics4" name="addSeaItem" class="check" value="单位类型" >
+                            <label for="basics4" class="icon-18">
+                                <span>单位类型</span>
+                            </label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="basics5" name="addSeaItem" class="check" value="单位地址">
+                            <label for="basics5" class="icon-18">
+                                <span>单位地址</span>
+                            </label>
+                        </div>
+                    </div>
+                    <p>职业信息</p>
+                    <div class="info clearfix">
+                        <div class="checkBox">
+                            <input type="checkbox" id="occupation1" name="addSeaItem" class="check" value="职称">
+                            <label for="occupation1" class="icon-18">
+                                <span>职称</span>
+                            </label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="occupation2" name="addSeaItem" class="check" value="职务">
+                            <label for="occupation2" class="icon-18">
+                                <span>职务</span>
+                            </label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="occupation3" name="addSeaItem" class="check" value="岗位类型">
+                            <label for="occupation3" class="icon-18">
+                                <span>岗位类型</span>
+                            </label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="occupation4" name="addSeaItem" class="check" value="职级">
+                            <label for="occupation4" class="icon-18">
+                                <span>职级</span>
+                            </label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="occupation5" name="addSeaItem" class="check" value="职务属性">
+                            <label for="occupation5" class="icon-18">
+                                <span>职务属性</span>
+                            </label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="occupation6" name="addSeaItem" class="check" value="职业工种">
+                            <label for="occupation6" class="icon-18">
+                                <span>职业工种</span>
+                            </label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="occupation7" name="addSeaItem" class="check" value="证书等级">
+                            <label for="occupation7" class="icon-18">
+                                <span>证书等级</span>
+                            </label>
+                        </div>
+                    </div>
+                    <p>教育履历</p>
+                    <div class="info clearfix">
+                        <div class="checkBox">
+                            <input type="checkbox" id="education1" name="addSeaItem" class="check" value="毕业院校">
+                            <label for="education1" class="icon-18">
+                                <span>毕业院校</span>
+                            </label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="education2" name="addSeaItem" class="check" value="专业">
+                            <label for="education2" class="icon-18">
+                                <span>专业</span>
+                            </label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="education3" name="addSeaItem" class="check" value="学历情况">
+                            <label for="education3" class="icon-18">
+                                <span>学历情况</span>
+                            </label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="education4" name="addSeaItem" class="check" value="学位">
+                            <label for="education4" class="icon-18">
+                                <span>学位</span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">确定</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="infoCheck">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 组织机构 -->
+<div class="modal fade bs-example-modal-sm" id="templateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" style="width: 450px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
+            </div>
+            <div class="modal-content errorMsg">
+                <ul id="treeDemo" class="ztree leftBar"></ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="saveTemplate">保存为模板</button>
+                <button type="button" class="btn btn-primary" id="sureCheck">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 组织机构模板名称弹框 -->
+<div class="modal fade bs-example-modal-sm" id="templateNameModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" style="width: 450px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
+            </div>
+            <div class="modal-content">
+                <div class="form-horizontal errorMsg">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">模板名称:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="请输入" id="temName">
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="saveSuccess">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 表格删除弹框 -->
+<div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close icon-22" data-dismiss="modal" aria-hidden="true"></button>
+                <h5 class="modal-title" id="myModalLabel">
+                    确认删除此人员？
+                </h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">确定</button>
             </div>
         </div>
     </div>

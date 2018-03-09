@@ -1,32 +1,77 @@
-(function ($,doc) {
-    $(doc).ready(function() {
+(function ($, doc) {
+    $(doc).ready(function () {
         var personTab;
         var addSearchModal = $('#addSearchModal');//新增查询条件弹框
         var templateModal = $('#templateModal');//组织机构弹框
         var templateNameModal = $('#templateNameModal');//组织机构模板名称弹框
         var selects = $('#selects');//组织机构selects
+        var addSeaItem = $("input[name = 'addSeaItem']");//查询条件显示
 
         function personSearch() {
             this.init();
         }
+
         personSearch.prototype = {
-            init:function () {
+            init: function () {
                 this.addSearch();//新增查询条件
                 this.ContractionIn();//收起查询
                 this.checkOrg(); //选择组织机构
                 this.loadTable();//加载人员表格
+                this.loadCheckItem();//加载查询条件
+                this.queryInfo();//查询
+                this.derive();//导出
             },
             /******************查询******************/
             //新增查询条件
-            addSearch:function () {
+            addSearch: function () {
+                var self = this;
                 $('#addSearch').click(function () {
                     addSearchModal.modal('show');
+                    self.infoCheck();//显示隐藏查询条件
                 })
             },
+            loadCheckItem: function () {
+                var self = this;
+                $.ajax({
+                    type:'Get',
+                    url: "../../index.html",
+                    success:function (array) {
+                        array = [0,1]
+                        for (var i = 0; i < array.length; i++) {
+                            $(addSeaItem[array[i]]).attr("checked", true)
+                        };
+                        self.ShowTab();
+
+                    }
+                });
+            },
+            //显示隐藏查询条件
+            infoCheck: function () {
+                var self = this;
+                $('#infoCheck').click(function () {
+                    var showItem = self.ShowTab();
+                    //将showItem 存储到数据库
+                    addSearchModal.modal('hide');
+                })
+            },
+            //显示隐藏查询条件
+            ShowTab: function () {
+                var infoItem = [];
+                for (var i = 0; i < addSeaItem.length; i++) {
+                    if (!$(addSeaItem[i]).is(':checked')) {
+                        $('.seaCondition .seaItem').eq(i).hide();
+                    }
+                    if ($(addSeaItem[i]).is(':checked')) {
+                        $('.seaCondition .seaItem').eq(i).show();
+                        infoItem.push($(this).index())
+                    }
+                }
+                return infoItem;
+            },
             //收起查询
-            ContractionIn:function () {
+            ContractionIn: function () {
                 $('#ContractionIn').click(function () {
-                    if(!$('.seaCondition').is(":animated")){
+                    if (!$('.seaCondition').is(":animated")) {
                         $('.seaCondition').slideToggle();
                     }
                 })
@@ -62,12 +107,14 @@
                         onClick: onClick
                     }
                 };
+
                 function onClick(e, treeId, zNodes) {
                     var zTree = $.fn.zTree.getZTreeObj("treeDemo");
                     // if (zNodes.level > 0) {
                     zTree.expandNode(zNodes);
                     // }
                 }
+
                 var zNodes = [
                     {
                         id: 1,
@@ -106,15 +153,15 @@
                 self.saveTemplate();//保存为模板
             },
             //获取选中的组织机构
-            getTreeDate:function () {
+            getTreeDate: function () {
                 var self = this;
                 var zTree = $.fn.zTree.getZTreeObj("treeDemo");
                 var nodes = zTree.getCheckedNodes(true);
                 zTree.checkAllNodes(false);//取消选中
                 var result = [];//存储
-                if (nodes.length == 0){
+                if (nodes.length == 0) {
                     self.errorMsg('请选择机构！');
-                }else {
+                } else {
                     for (var i = 0; i < nodes.length; i++) {
                         var item = {};
                         if (nodes[i].isParent) {
@@ -130,33 +177,33 @@
 
             },
             //报错信息
-            errorMsg:function (msg) {
-                var htm = '<p class="errorText">'+msg+'</p>';
+            errorMsg: function (msg) {
+                var htm = '<p class="errorText">' + msg + '</p>';
                 var len = $('.errorMsg').find('.errorText').length;
-                if (len == 0){
+                if (len == 0) {
                     $('.errorMsg').append(htm);
                 }
                 setTimeout(function () {
                     $('.errorMsg .errorText').slideUp(400);
                     setTimeout(function () {
                         $('.errorMsg .errorText').remove();
-                    },400)
-                },1400)
+                    }, 400)
+                }, 1400)
             },
             //确定
             sureOrg: function () {
                 var self = this;
                 $('#sureCheck').unbind().click(function () {
                     var treeDate = self.getTreeDate();
-                    if (treeDate.length > 0){
+                    if (treeDate.length > 0) {
                         var val = "";
-                        for (var i=0;i<treeDate.length;i++){
-                            val += treeDate[i].name+'，'
+                        for (var i = 0; i < treeDate.length; i++) {
+                            val += treeDate[i].name + '，'
                         }
-                        if(val.length > 16){
-                            val = val.substring(0,16)+'...';
-                        }else{
-                            val = val.substring(0,val.length-1);
+                        if (val.length > 16) {
+                            val = val.substring(0, 16) + '...';
+                        } else {
+                            val = val.substring(0, val.length - 1);
                         }
                         selects.val(val);
                         templateModal.modal('hide');
@@ -164,27 +211,27 @@
                 })
             },
             //保存为模板
-            saveTemplate:function () {
+            saveTemplate: function () {
                 var self = this;
                 $('#saveTemplate').unbind().click(function () {
                     var treeDate = self.getTreeDate();
                     $('#temName').val('');
-                    if (treeDate.length > 0){
+                    if (treeDate.length > 0) {
                         templateModal.modal('hide');
                         setTimeout(function () {
                             templateNameModal.modal('show');
-                        },340);
+                        }, 340);
                         self.saveTemName(treeDate);
                     }
                 })
             },
             //确定
-            saveTemName:function (data) {
+            saveTemName: function (data) {
                 var self = this;
                 $('#saveSuccess').unbind().click(function () {
                     var temName = $('#temName').val();
                     console.log(temName)
-                    if(temName != ""){
+                    if (temName != "") {
                         $.ajax({
                             type: "GET",
                             url: "../../index.html",
@@ -192,34 +239,47 @@
                                 templateNameModal.modal('hide');
                             }
                         })
-                    }else {
+                    } else {
                         self.errorMsg('请输入模板名称');
                     }
 
                 })
             },
-
+            //查询
+            queryInfo: function () {
+                var self = this
+                $('#queryInfo').click(function () {
+                    alert(" 重新加載表格")
+                });
+            },
+            //导出
+            derive: function () {
+                var self = this
+                $('#derive').click(function () {
+                    alert(" 导出")
+                });
+            },
             /******************表格******************/
             //加载人员表格
-            loadTable:function () {
+            loadTable: function () {
                 var self = this;
                 personTab = $('#tbUserList').DataTable({
                     "dom": '<"top">rt<"bottom"><"clear">p',
                     "bAutoWidth": true,
-                    "iDisplayLength" : 20, //默认显示的记录数
+                    "iDisplayLength": 20, //默认显示的记录数
                     "bSort": false,
-                    "fnDrawCallback": function(){
+                    "fnDrawCallback": function () {
                         //输入页码跳转
                         var oTable = $('#tbUserList').dataTable();
-                        $('#redirect').click(function(){
+                        $('#redirect').click(function () {
                             var num = $('#currentText').val();
                             var pageNum;
-                            if(num && num>0){
-                                pageNum = num-1;
-                            }else{
+                            if (num && num > 0) {
+                                pageNum = num - 1;
+                            } else {
                                 pageNum = 0;
                             }
-                            oTable.fnPageChange( pageNum );
+                            oTable.fnPageChange(pageNum);
                         });
                     },
                     ajax: function (data, callback, settings) {
@@ -230,88 +290,613 @@
                             url: "../../index.html",
                             cache: false, //禁用缓存
                             success: function (result) {
-                                result =  [{id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'11',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'12',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'13',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'14',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'15',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'16',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'17',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'18',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'19',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'111',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1112',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'112',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'113',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'114',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'115',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'116',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'117',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'118',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'119',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'120',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'122',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'123',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'在职',mobile:'13586428745'},
-                                    {id:'1',name:'程皓',section:'管理部门',job:'1209',workStatus:'离职',mobile:'13586428745'}];
+                                result = [{
+                                    id: '1',
+                                    name: '程皓',
+                                    section: '管理部门',
+                                    job: '1209',
+                                    workStatus: '在职',
+                                    mobile: '13586428745'
+                                },
+                                    {
+                                        id: '11',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '12',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '13',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '14',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '15',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '16',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '17',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '18',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '19',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '111',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1112',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '112',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '113',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '114',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '115',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '116',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '117',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '118',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '119',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '120',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '122',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '123',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '在职',
+                                        mobile: '13586428745'
+                                    },
+                                    {
+                                        id: '1',
+                                        name: '程皓',
+                                        section: '管理部门',
+                                        job: '1209',
+                                        workStatus: '离职',
+                                        mobile: '13586428745'
+                                    }];
                                 //console.log(result);
                                 //setTimeout仅为测试延迟效果
                                 setTimeout(function () {
                                     //封装返回数据
                                     var returnData = {};
                                     returnData.total = result.length;
-                                    returnData.limit = 20   ;
+                                    returnData.limit = 20;
                                     returnData.page = 10;
                                     returnData.data = result;
                                     //console.log(returnData);
@@ -319,7 +904,7 @@
                                     //此时的数据需确保正确无误，异常判断应在执行此回调前自行处理完毕
                                     callback(returnData);
                                     //数据加载完成后显示全选框
-                                    $('.checkBoxAll').css('visibility','inherit');
+                                    $('.checkBoxAll').css('visibility', 'inherit');
                                     self.checkAll();
                                     //调用删除方法
                                     self.deleteItem();
@@ -339,31 +924,31 @@
                                 return htm;
                             }
                         },
-                        { "data": "id" },
-                        { "data": "name" },
-                        { "data": "section" },
-                        { "data": "job" },
-                        { "data": "workStatus" },
-                        { "data": "mobile" }
+                        {"data": "id"},
+                        {"data": "name"},
+                        {"data": "section"},
+                        {"data": "job"},
+                        {"data": "workStatus"},
+                        {"data": "mobile"}
                     ],
-                    columnDefs:[{
+                    columnDefs: [{
                         targets: 7,
                         render: function (data, type, row) {
-                            return '<a class="icon-16" data-id="'+row.id+'" data-toggle="modal" data-target="#myModal"></a>';
+                            return '<a class="icon-16" data-id="' + row.id + '" data-toggle="modal" data-target="#myModal"></a>';
                         }
                     }]
                 });
             },
             //全选
-            checkAll:function () {
-                $('input[name="checkAll"]').click(function(){
-                    if($(this).is(':checked')){
-                        $('input[name="personItem"]').each(function(){
-                            $(this).prop("checked",true);
+            checkAll: function () {
+                $('input[name="checkAll"]').click(function () {
+                    if ($(this).is(':checked')) {
+                        $('input[name="personItem"]').each(function () {
+                            $(this).prop("checked", true);
                         });
-                    }else{
-                        $('input[name="personItem"]').each(function(){
-                            $(this).prop("checked",false);
+                    } else {
+                        $('input[name="personItem"]').each(function () {
+                            $(this).prop("checked", false);
                         });
                     }
                 });
@@ -377,7 +962,7 @@
                 })
             },
             //删除
-            deleteItem:function () {
+            deleteItem: function () {
                 $('#myModal').on('show.bs.modal', function (event) {
                     var button = $(event.relatedTarget);// 触发事件的按钮
                     var recipient = button.data("id");// 解析出id
@@ -387,5 +972,5 @@
 
         };
         new personSearch();
-    } );
-})(jQuery,document);
+    });
+})(jQuery, document);

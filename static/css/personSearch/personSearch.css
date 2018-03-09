@@ -696,6 +696,7 @@ select.form-control::-ms-expand {
   cursor: pointer;
 }
 .condition .seaCondition .seaItem {
+  display: none;
   padding-top: 10px;
 }
 .condition .seaCondition .seaItem .seaTitle {
@@ -721,8 +722,14 @@ select.form-control::-ms-expand {
   display: inline-block;
   margin: 0 10px 10px 0;
 }
-.condition .seaCondition .checkBox .check:checked + label span {
-  color: #F57C00;
+.condition .seaCondition .seaItem.inputItem .seaTitle {
+  line-height: 30px;
+}
+.condition .seaCondition .seaItem.inputItem .form-control {
+  width: 160px;
+  padding: 4px 10px;
+  height: 30px;
+  border-radius: 0;
 }
 .condition .addSea {
   margin-top: 10px;
@@ -731,6 +738,30 @@ select.form-control::-ms-expand {
 .errorMsg .errorText {
   text-align: center;
   color: #FF3F3F;
+}
+.addSearchModal .modal-content h5 {
+  text-align: center;
+  margin: 0;
+  font-size: 16px;
+}
+.addSearchModal .modal-content .addSea {
+  padding: 0 20px 10px 20px;
+}
+.addSearchModal .modal-content .addSea p {
+  margin-bottom: 12px;
+}
+.addSearchModal .modal-content .addSea .info {
+  padding: 0 14px;
+}
+.addSearchModal .modal-content .addSea .info .checkBox {
+  float: left;
+  width: 74px;
+  margin-right: 14px;
+  margin-bottom: 10px;
+}
+/****/
+.checkBox .check:checked + label span {
+  color: #F57C00;
 }
 @media (min-width: 768px) {
   .modal .modal-content {
