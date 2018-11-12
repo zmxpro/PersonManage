@@ -12,7 +12,7 @@
     <script src="static/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script src="static/js/index/index.js"></script>
 </head>
-<body>
+<body onload="speckText('目前 API 仅支持整段语音识别的模式，即需要上传完整语音文件进行识别。文件大小不超过10M，时长不超过60s。')">
 <!--左侧导航-->
 <div class="leftBar">
     <div class="navTop">
@@ -34,7 +34,7 @@
         <a href="views/personInfo/personInfo.html" target="mainIframe" class="item">
             <i class="icon icon-04"></i>行业内人员信息<i class="icon-15"></i>
         </a>
-        <a href="views/personInfo/personInfo.html" target="mainIframe" class="item">
+        <a href="views/personInfo/personDetail.html" target="mainIframe" class="item">
             <i class="icon icon-05"></i>行业外人员信息<i class="icon-15"></i>
         </a>
         <a href="views/authorityManage/authorityManage.html" target="mainIframe" class="item">
@@ -70,4 +70,25 @@
     <iframe src="" id="mainIframe" name="mainIframe" frameborder="0"></iframe>
 </div>
 </body>
+<script>
+    function speckText(str){
+        //var request=  new URLRequest();
+        var url = "http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&text=" + encodeURI(str);        // baidu
+        //url = "http://translate.google.cn/translate_tts?ie=UTF-8&tl=zh-CN&total=1&idx=0&textlen=19&prev=input&q=" + encodeURI(str); // google
+
+        //request.url = encodeURI(url);
+        // request.contentType = "audio/mp3"; // for baidu
+        //request.contentType = "audio/mpeg"; // for google
+
+        var n = new Audio(url);
+
+        n.src = url;
+
+        n.play();
+
+        // $("...").play();
+        // var sound = new Sound(request);
+        // sound.play();
+    }
+</script>
 </html>

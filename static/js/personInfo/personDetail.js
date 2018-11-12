@@ -232,7 +232,14 @@
             sureOrg: function (obj) {
                 var self = this;
                 $('#choiceIns').unbind().click(function () {
-                    var name = $('#treeDemo').find('.curSelectedNode').attr('title');
+                    var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+
+                    var node = zTree.getSelectedNodes();
+
+                    console.log(node);
+                    zTree.selectNode(node);
+
+                    var name = node[0].name;
                     if(name == undefined){
                         alert('请选择！');
                     }else {
